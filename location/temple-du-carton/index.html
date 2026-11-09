@@ -525,7 +525,7 @@ function vAccueil(){
   <div class="head"><h1 class="grow">Tableau de bord</h1>
     <button class="btn" data-act="newresa">+ Réservation</button>
     <button class="btn primary" data-act="newloc">+ Nouvelle location</button></div>
-  ${!jeux.length?`<div class="panel" style="margin-bottom:24px"><h3>Bienvenue !</h3><p class="muted">Commencez par ajouter vos jeux (avec la liste des pièces) : chaque jeu reçoit un QR code à coller sur la boîte. Vous pouvez aussi charger quelques exemples pour essayer l'application, puis les effacer d'un clic.</p><div class="toolbar"><button class="btn primary" data-act="newjeu">Ajouter mon premier jeu</button><button class="btn" data-act="exemples">Charger des exemples</button></div></div>`:""}
+  ${!jeux.length?`<div class="panel" style="margin-bottom:24px"><h3>Bienvenue !</h3><p class="muted">Commencez par ajouter vos jeux (avec la liste des pièces) : chaque jeu reçoit un QR code à coller sur la boîte. Vous pouvez aussi charger quelques exemples pour essayer l'application, puis les effacer d'un clic.</p><div class="toolbar"><button class="btn primary" data-act="rapide">Ajout rapide de plusieurs jeux</button><button class="btn" data-act="newjeu">Ajouter un jeu</button><button class="btn" data-act="exemples">Charger des exemples</button></div></div>`:""}
   <div class="kpis">
     <div class="kpi"><div class="v">${dispo}<span class="muted" style="font-size:18px"> / ${jeux.length}</span></div><div class="l">Jeux disponibles</div></div>
     <div class="kpi"><div class="v">${act.length}</div><div class="l">Locations en cours</div></div>
@@ -606,7 +606,7 @@ function vJeux(){
     if(ui.jeuFilter!=="tous"&&!(ui.jeuFilter===st||(ui.jeuFilter==="loue"&&st==="retard")))return false;
     return!q||[j.nom,j.code,j.editeur,j.categorie].join(" ").toLowerCase().includes(q)});
   const F=[["tous","Tous"],["dispo","Disponibles"],["loue","Loués"],["indispo","Indisponibles"]];
-  $("#view").innerHTML=`<div class="head"><h1 class="grow">Jeux</h1><button class="btn" data-act="labels">Étiquettes QR</button><button class="btn primary" data-act="newjeu">+ Ajouter un jeu</button></div>
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Jeux</h1><button class="btn" data-act="labels">Étiquettes QR</button><button class="btn" data-act="rapide">Ajout rapide</button><button class="btn primary" data-act="newjeu">+ Ajouter un jeu</button></div>
   <div class="toolbar"><input class="search" id="jeuQ" placeholder="Rechercher un jeu, un code, un éditeur…" value="${esc(ui.jeuQ)}" aria-label="Rechercher"><div class="chips">${F.map(([k,t])=>`<button class="chip ${ui.jeuFilter===k?"on":""}" data-f="${k}">${t}</button>`).join("")}</div></div>
   ${jeux.length?`<div class="games">${jeux.map(j=>{const r=nextResa(j.id);return`<div class="game" data-jeu="${j.id}" tabindex="0"><div class="ph">${j.photo?`<img src="${esc(j.photo)}" alt="">`:esc((j.nom||"?")[0])}</div><div class="b"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="code">${esc(j.code)}</span>${pill(JEU_PILL[jeuState(j)])}</div><h3>${esc(j.nom)}</h3><div class="small muted">${(j.pieces||[]).length} types de pièces<span class="pay"> · ${eur(j.tarif)} · caution ${eur(j.caution)}</span></div>${r?`<div class="small" style="color:var(--warn)">Réservé à partir du ${fd(r.dateDepart)}</div>`:""}</div></div>`}).join("")}</div>`
   :'<div class="panel empty">Aucun jeu ici. Ajoutez votre premier jeu avec sa liste de pièces.</div>'}`;
@@ -772,7 +772,7 @@ function bindCommon(){
   $$("[data-jeu]").forEach(e=>{e.onclick=()=>openJeu(e.dataset.jeu);e.onkeydown=k=>{if(k.key==="Enter")openJeu(e.dataset.jeu)}});
   $$("[data-cli]").forEach(e=>e.onclick=()=>openClient(e.dataset.cli));
   $$("[data-act]").forEach(b=>b.onclick=()=>{const a=b.dataset.act;
-    if(a==="newloc")openLocForm({});if(a==="newresa")openLocForm({mode:"reservation"});if(a==="newjeu")openJeuForm();if(a==="newcli")openClientForm();if(a==="labels")openLabels();
+    if(a==="newloc")openLocForm({});if(a==="newresa")openLocForm({mode:"reservation"});if(a==="newjeu")openJeuForm();if(a==="newcli")openClientForm();if(a==="labels")openLabels();if(a==="rapide")openAjoutRapide();
     if(a==="exemples"){loadExamples();toast("Exemples chargés");render()}
     if(a==="csv")exportCSV();if(a==="backup")openBackup();if(a==="exportCat")exportCatalog();
     if(a==="install")doInstall();if(a==="installHide"){lsSet(NS+":installHide","1");render()}});
@@ -831,6 +831,44 @@ function openLabels(){
       $("#dlLab").onclick=async()=>{const per=10;for(let p=0;p*per<jeux.length;p++){const page=document.createElement("canvas");page.width=1240;page.height=1754;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,1240,1754);
         jeux.slice(p*per,p*per+per).forEach((j,i)=>{x.drawImage(labelCanvas(j),20+(i%2)*610,27+Math.floor(i/2)*340)});
         await saveFile(`etiquettes-qr-page${p+1}.png`,await canvasBlob(page),"image/png")}}});
+}
+/* ================= Ajout rapide (liste collée) =================
+   Une ligne = un jeu. Les lignes qui commencent par « - » sont les pièces du jeu au-dessus :
+   « - 95 Cartes ressources », « - Dés x2 », « - 2 Dés (1,50 €) » (prix de remplacement facultatif). */
+const normNom=t=>String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+function parsePiece(t){let q=1,n=t,mm=t.match(/^(\d+)\s*[x×]?\s+(.+)$/i);if(mm){q=+mm[1];n=mm[2]}else if((mm=t.match(/^(.+?)\s*[x×:]\s*(\d+)$/i))){n=mm[1];q=+mm[2]}
+  let prix=0;const pm=n.match(/^(.*?)\s*[(\[]\s*(\d+(?:[.,]\d+)?)\s*€\s*[)\]]\s*$/);if(pm){n=pm[1];prix=num(pm[2])}
+  n=n.trim();return n?{nom:n.charAt(0).toUpperCase()+n.slice(1),qte:q,prix}:null}
+function parseListe(txt){const out=[];let cur=null;
+  String(txt).split(/\r?\n/).forEach(raw=>{const t=raw.trim();if(!t)return;
+    const m=t.match(/^[-•*–—]\s*(.+)$/);
+    if(m){if(cur){const pc=parsePiece(m[1]);if(pc)cur.pieces.push(pc)}return}
+    cur={nom:t.replace(/^#+\s*/,"").replace(/^\d+[.)]\s+/,"").trim(),pieces:[]};if(cur.nom)out.push(cur)});
+  return out}
+function listeJeuxTexte(seulementSansPieces){return Store.all("jeux").filter(j=>!seulementSansPieces||!(j.pieces||[]).length).sort((a,b)=>a.nom.localeCompare(b.nom,"fr")).map(j=>j.nom).join("\n")}
+function openAjoutRapide(){
+  const sans=Store.all("jeux").filter(j=>!(j.pieces||[]).length).length;
+  openModal("Ajout rapide de jeux",`<p style="margin:0">Collez ou tapez la liste de vos jeux, <b>un jeu par ligne</b>. Chaque jeu reçoit son code QR. Les pièces peuvent être ajoutées tout de suite ou plus tard.</p>
+    <div class="callout info small">Pour ajouter les pièces, mettez-les sous le jeu, une par ligne, en commençant par un tiret :<br><code>Catan</code><br><code>- 19 Tuiles terrain</code><br><code>- 2 Dés</code><br><code>Dixit</code><br><code>- 84 Cartes illustrées</code><br>Si le jeu existe déjà, sa liste de pièces est remplacée.</div>
+    <div class="f"><label for="rapTxt">Liste</label><textarea id="rapTxt" rows="12" placeholder="Catan&#10;Dixit&#10;Skyjo&#10;Les Aventuriers du Rail"></textarea></div>
+    <div id="rapPrev"></div>
+    ${Store.all("jeux").length?`<div class="toolbar" style="margin:0"><span class="small muted" style="flex:1">${sans?`${sans} jeu(x) sans liste de pièces.`:"Tous vos jeux ont une liste de pièces."}</span><button class="btn sm" type="button" id="rapCopy">Copier la liste de mes jeux${sans?" sans pièces":""}</button></div>`:""}`,
+  `<button class="btn" type="button" id="rapCancel">Annuler</button><button class="btn primary" type="button" id="rapGo" disabled>Ajouter</button>`,
+  ()=>{
+    $("#rapCancel").onclick=closeModal;
+    const byNom=()=>{const m={};Store.all("jeux").forEach(j=>m[normNom(j.nom)]=j);return m};
+    const prev=()=>{const L=parseListe($("#rapTxt").value),ex=byNom();let nv=0,maj=0,rien=0;
+      L.forEach(g=>{const j=ex[normNom(g.nom)];if(!j)nv++;else if(g.pieces.length)maj++;else rien++});
+      $("#rapGo").disabled=!(nv+maj);$("#rapGo").textContent=nv&&maj?`Ajouter ${nv} jeu(x) et mettre à jour ${maj}`:maj?`Mettre à jour ${maj} jeu(x)`:`Ajouter ${nv} jeu(x)`;
+      $("#rapPrev").innerHTML=L.length?`<div class="small">${L.map(g=>{const j=ex[normNom(g.nom)];return`<div>${j?(g.pieces.length?"↻":"=") :"+"} <b>${esc(g.nom)}</b> <span class="muted">${g.pieces.length?`${g.pieces.length} types de pièces (${g.pieces.reduce((a,p)=>a+p.qte,0)} éléments)`:j?"déjà présent, inchangé":"sans pièces pour l'instant"}</span></div>`}).join("")}</div>`:""};
+    $("#rapTxt").oninput=prev;
+    if($("#rapCopy"))$("#rapCopy").onclick=()=>{const t=listeJeuxTexte(sans>0);navigator.clipboard.writeText(t).then(()=>toast("Liste copiée"),()=>{$("#rapTxt").value=t;$("#rapTxt").select();prev();toast("Liste placée dans la case : copiez-la")})};
+    $("#rapGo").onclick=()=>{const L=parseListe($("#rapTxt").value),ex=byNom(),s=S();let nv=0,maj=0;
+      L.forEach(g=>{const j=ex[normNom(g.nom)];
+        if(j){if(g.pieces.length){j.pieces=g.pieces;Store.put("jeux",j);maj++}return}
+        const n={id:uid(),code:nextCode(),nom:g.nom,pieces:g.pieces,tarif:s.tarifDefaut,caution:s.cautionDefaut,etat:"Très bon",creeLe:Date.now()};Store.put("jeux",n);ex[normNom(n.nom)]=n;nv++});
+      closeModal();toast(`${nv} jeu(x) ajouté(s)${maj?`, ${maj} mis à jour`:""}`);location.hash="jeux";render()};
+  });
 }
 function openJeuForm(j,code){
   const s=S();const isNew=!j;j=j||{id:uid(),code:code||nextCode(),nom:"",pieces:[],tarif:s.tarifDefaut,caution:s.cautionDefaut,etat:"Très bon",creeLe:Date.now()};
