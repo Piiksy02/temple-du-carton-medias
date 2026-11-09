@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#04271B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head><body>
+<title>Le Temple du Carton · Location de jeux</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="TC Location">
+<style>
+@font-face{font-family:"Oswald";font-weight:400 500;font-display:swap;src:url(lib/fonts/Oswald-400.ttf) format("truetype")}
+@font-face{font-family:"Oswald";font-weight:600 700;font-display:swap;src:url(lib/fonts/Oswald-600.ttf) format("truetype")}
+@font-face{font-family:"Work Sans";font-weight:400;font-display:swap;src:url(lib/fonts/WorkSans-400.ttf) format("truetype")}
+@font-face{font-family:"Work Sans";font-weight:500 700;font-display:swap;src:url(lib/fonts/WorkSans-500.ttf) format("truetype")}
+</style>
+<script src="lib/jsQR.js"></script>
+<script src="lib/qrcode.js"></script>
+<script src="config.js"></script>
+<style>
+/* Layout : bandeau de marque collant + onglets, contenu en colonne 1100px, fiches en panneau modal.
+   Charte par défaut : vert profond + or du Temple du Carton, modifiable dans Réglages (couleur, logo, nom). */
+:root{
+  --brand:#04271B; --on-brand:#F4F1E6; --gold:#D49404;
+  --bg:#F2F4F1; --surface:#FFFFFF; --surface-2:#E8ECE7; --line:#D3DAD3;
+  --ink:#13211A; --muted:#5B6A61; --accent:#0E6B47; --on-accent:#FFFFFF;
+  --ok:#1B7F4B; --ok-bg:#DDF1E4; --info:#1F5FA8; --info-bg:#DEE9F7;
+  --warn:#9A6200; --warn-bg:#FBEFD4; --bad:#B42318; --bad-bg:#FBE1DE;
+  --display:"Oswald","Arial Narrow",Impact,sans-serif;
+  --body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#07130E; --surface:#0F2019; --surface-2:#173026; --line:#26443A;
+  --ink:#E6EEE8; --muted:#9CB0A5; --accent:#4FC08D; --on-accent:#04140C; --gold:#E3A51A;
+  --ok:#5BD08F; --ok-bg:#123A26; --info:#7FB0F0; --info-bg:#13294A;
+  --warn:#F0B54A; --warn-bg:#3A2A0A; --bad:#FF8A7E; --bad-bg:#43160F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#07130E; --surface:#0F2019; --surface-2:#173026; --line:#26443A;
+  --ink:#E6EEE8; --muted:#9CB0A5; --accent:#4FC08D; --on-accent:#04140C; --gold:#E3A51A;
+  --ok:#5BD08F; --ok-bg:#123A26; --info:#7FB0F0; --info-bg:#13294A;
+  --warn:#F0B54A; --warn-bg:#3A2A0A; --bad:#FF8A7E; --bad-bg:#43160F; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body.gratuit .pay{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--brand)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+a{color:var(--accent)}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--brand);color:var(--on-brand);box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.brandrow{display:flex;align-items:center;gap:12px;padding-block:10px}
+.logo{width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--gold);color:#04271B;font-family:var(--display);font-size:16px;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:cover}
+.brandname{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.02em;line-height:1.1;text-transform:uppercase}
+.brandsub{font-size:12px;opacity:.75;letter-spacing:.06em;text-transform:uppercase}
+.brandrow .spacer{flex:1}
+.scanbtn{background:var(--gold);color:#1a1200;border:0;border-radius:999px;padding:8px 16px;font-weight:600;cursor:pointer;display:flex;gap:8px;align-items:center}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs a{color:var(--on-brand);opacity:.72;text-decoration:none;padding:9px 14px 11px;font-family:var(--display);font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:14px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.tabs a.on{opacity:1;border-bottom-color:var(--gold)}
+main{padding-block:22px 60px}
+h1{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.02em;text-transform:uppercase;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:.05em;text-transform:uppercase;margin:0 0 10px;color:var(--muted)}
+h3{font-size:16px;margin:0}
+.head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:18px}
+.head .grow{flex:1}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 14px;cursor:pointer;font-weight:500;text-decoration:none;color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.danger{color:var(--bad);border-color:var(--bad)}
+.btn.sm{padding:5px 10px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:24px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.kpi .v{font-family:var(--display);font-size:30px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.kpi.alert .v{color:var(--bad)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+@media (max-width:400px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;min-width:0}
+.list{display:flex;flex-direction:column}
+.row{display:flex;align-items:center;gap:10px;padding:10px 4px;border-top:1px solid var(--line);cursor:pointer;min-width:0}
+.row:first-child{border-top:0}
+.row:hover{background:var(--surface-2)}
+.row .main{flex:1;min-width:0}
+.row .t{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .s{font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.p-dispo{background:var(--ok-bg);color:var(--ok)}
+.p-loue{background:var(--info-bg);color:var(--info)}
+.p-retard{background:var(--bad-bg);color:var(--bad)}
+.p-indispo{background:var(--surface-2);color:var(--muted)}
+.p-warn{background:var(--warn-bg);color:var(--warn)}
+.empty{padding:26px 10px;text-align:center;color:var(--muted)}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.search{flex:1;min-width:160px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:13px}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.game{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;display:flex;flex-direction:column}
+.game:hover{border-color:var(--accent)}
+.game .ph{aspect-ratio:4/3;max-width:100%;background:var(--surface-2);display:grid;place-items:center;color:var(--muted);font-family:var(--display);font-size:34px}
+.game .ph img{width:100%;height:100%;object-fit:cover}
+.game .b{padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:var(--surface-2);border-radius:4px;padding:1px 6px}
+table.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;padding:8px;border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr.click{cursor:pointer}
+.tbl tr.click:hover td{background:var(--surface-2)}
+.scroll{overflow-x:auto}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 14px}
+.f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.f.full{grid-column:1/-1}
+.f label,.lbl{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.f label.btn{font-size:inherit;font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink)}
+.f input,.f select,.f textarea{padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);width:100%}
+.f textarea{min-height:80px;resize:vertical}
+.check{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.check input{margin-top:4px;width:17px;height:17px;flex:none;accent-color:var(--accent)}
+fieldset{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin:0;min-width:0}
+legend{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:14px;padding:0 6px;color:var(--accent)}
+.pieces{display:flex;flex-direction:column;gap:6px}
+.piece{display:grid;grid-template-columns:minmax(0,1fr) 64px 80px 34px;gap:6px}
+body.gratuit .piece{grid-template-columns:minmax(0,1fr) 64px 34px}
+.piecehead{display:grid;grid-template-columns:minmax(0,1fr) 64px 80px 34px;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+body.gratuit .piecehead{grid-template-columns:minmax(0,1fr) 64px 34px}
+.piece input{padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);min-width:0}
+.pcheck{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line)}
+.pcheck:first-child{border-top:0}
+.pcheck input[type=number]{width:72px;padding:5px 7px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.pcheck.miss .pn{color:var(--bad);font-weight:600}
+.itemhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.itemhead b{flex:1;min-width:0}
+.itemhead select{padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.sel{display:flex;flex-direction:column;gap:6px}
+.selrow{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.selrow .main{flex:1;min-width:0}
+.sig{width:100%;height:150px;border:1px dashed var(--muted);border-radius:8px;background:#fff;touch-action:none;display:block}
+.callout{border-radius:8px;padding:10px 12px;font-size:14px}
+.callout.warn{background:var(--warn-bg);color:var(--warn)}
+.callout.bad{background:var(--bad-bg);color:var(--bad)}
+.callout.info{background:var(--info-bg);color:var(--info)}
+.callout.ok{background:var(--ok-bg);color:var(--ok)}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px}
+.thumb{position:relative;width:84px;height:84px;border-radius:8px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line);cursor:zoom-in}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb .rm{position:absolute;top:2px;right:2px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;line-height:1}
+.addphoto{width:84px;height:84px;border:1px dashed var(--muted);border-radius:8px;display:grid;place-items:center;text-align:center;font-size:12px;color:var(--muted);cursor:pointer;padding:4px}
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(4,20,12,.55);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:max(20px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-right,0px)) max(20px,env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
+.modal{background:var(--surface);border-radius:14px;width:100%;max-width:780px;box-shadow:0 20px 60px rgba(0,0,0,.35);min-width:0}
+.modal .mh{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.modal .mh h1{font-size:21px;flex:1;min-width:0}
+.modal .mb{padding:18px;display:flex;flex-direction:column;gap:16px}
+.modal .mf{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;padding:14px 18px;border-top:1px solid var(--line)}
+.x{border:0;background:transparent;font-size:24px;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.9);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px));cursor:zoom-out}
+.lightbox img{max-width:100%;max-height:100%;border-radius:8px}
+.dl{display:grid;grid-template-columns:minmax(120px,auto) minmax(0,1fr);gap:6px 14px;margin:0}
+.dl dt{color:var(--muted);font-size:13px}
+.dl dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.qrbox{background:#fff;border-radius:10px;padding:10px;width:180px;max-width:100%}
+.qrbox svg{display:block;width:100%;height:auto}
+.labels{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.label{border:1px dashed var(--line);border-radius:8px;padding:10px;text-align:center;background:#fff;color:#111}
+.label svg{width:110px;height:110px}
+.label b{display:block;font-size:13px}
+.scanbox{position:relative;background:#000;border-radius:12px;overflow:hidden;aspect-ratio:4/3;max-width:100%;width:520px}
+.scanbox video{width:100%;height:100%;object-fit:cover;display:block}
+.scanbox .frame{position:absolute;inset:18%;border:3px solid var(--gold);border-radius:14px;box-shadow:0 0 0 999px rgba(0,0,0,.35)}
+.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;z-index:95;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:calc(100% - 32px)}
+.banner{font-size:13px;padding:8px 12px;border-radius:8px;background:var(--surface-2);color:var(--muted);margin-bottom:16px;display:flex;gap:8px 12px;flex-wrap:wrap;align-items:center}
+.banner.warn{background:var(--warn-bg);color:var(--warn)}
+.banner .grow{flex:1;min-width:200px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal .dow{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:center;padding:4px 0}
+.day{min-height:78px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:5px;cursor:pointer;display:flex;flex-direction:column;gap:3px;min-width:0;text-align:left;color:var(--ink)}
+.day.out{opacity:.45}
+.day.today{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+.day.sel{background:var(--surface-2);border-color:var(--ink)}
+.day .n{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.bar{font-size:11px;line-height:1.3;border-radius:4px;padding:1px 5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.bar.b-loue{background:var(--info-bg);color:var(--info)}
+.bar.b-resa{background:var(--warn-bg);color:var(--warn)}
+.bar.b-retard{background:var(--bad-bg);color:var(--bad)}
+.more{font-size:11px;color:var(--muted)}
+.dots{display:none;gap:3px;flex-wrap:wrap}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+@media (max-width:640px){.day{min-height:52px}.day .bar,.day .more{display:none}.dots{display:flex}}
+@media (max-width:560px){.brandsub{display:none}.scanbtn span{display:none}h1{font-size:22px}.dl{grid-template-columns:110px minmax(0,1fr);gap:6px 10px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{header.top,.noprint,.toast{display:none!important}.overlay{position:static;background:none;padding:0}.modal{box-shadow:none}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="logo" id="logo">TC</div>
+      <div><div class="brandname" id="brandName">Le Temple du Carton</div><div class="brandsub" id="brandSub">Location de jeux de société</div></div>
+      <div class="spacer"></div>
+      <button class="scanbtn" id="scanTop" type="button" aria-label="Scanner un QR code">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 8V4h4M17 4h4v4M21 16v4h-4M7 20H3v-4M7 12h10"/></svg><span>Scanner</span></button>
+    </div>
+    <nav class="tabs" id="tabs">
+      <a href="#accueil" data-v="accueil">Tableau de bord</a>
+      <a href="#planning" data-v="planning">Planning</a>
+      <a href="#locations" data-v="locations">Locations</a>
+      <a href="#jeux" data-v="jeux">Jeux</a>
+      <a href="#clients" data-v="clients">Clients</a>
+      <a href="#scanner" data-v="scanner">Scanner</a>
+      <a href="#reglages" data-v="reglages">Réglages</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap" id="view"><div class="empty">Chargement de vos données…</div></main>
+<div id="modalRoot"></div>
+
+<script>
+"use strict";
+/* ================= Outils ================= */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const pad=n=>String(n).padStart(2,"0");
+const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const today=()=>iso(new Date());
+const addDays=(s,n)=>{const d=new Date(s+"T12:00:00");d.setDate(d.getDate()+Number(n||0));return iso(d)};
+const diffDays=(a,b)=>Math.round((new Date(b+"T12:00:00")-new Date(a+"T12:00:00"))/864e5);
+const fd=s=>{if(!s)return"—";const[y,m,d]=s.split("-");return d+"/"+m+"/"+y};
+const fdLong=s=>s?new Date(s+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"}):"";
+const eur=n=>(Number(n)||0).toLocaleString("fr-FR",{style:"currency",currency:"EUR"});
+const num=v=>{const n=parseFloat(String(v??"").replace(",","."));return isNaN(n)?0:n};
+const framed=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+/* dans la page claude.ai, ouvrir directement l'appareil photo donne un écran noir : on passe par le choix du téléphone (Prendre une photo / Photothèque) */
+const CAP=framed?"":'capture="environment"';
+const ETATS=["Neuf","Très bon","Bon","Usé","Abîmé"];
+function toast(msg){$$(".toast").forEach(x=>x.remove());const t=document.createElement("div");t.className="toast";t.setAttribute("role","status");t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2800)}
+const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+
+/* ================= Stockage =================
+   - page claude.ai : base de données de l'artefact (synchronisée)
+   - version autonome : IndexedDB du navigateur (beaucoup de place, photos comprises)
+   - secours : localStorage (sans photos), puis mémoire */
+const COLS=["jeux","clients","locations","reglages"];
+const NS="locjeux:"+location.pathname;
+const LKEY="locjeux_v1:"+location.pathname;
+const idbReq=r=>new Promise((res,rej)=>{r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+function idbOpen(){return new Promise((res,rej)=>{const r=indexedDB.open(NS,1);r.onupgradeneeded=()=>{r.result.createObjectStore("kv");r.result.createObjectStore("photos")};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);r.onblocked=()=>rej(new Error("bloqué"))})}
+const Store={mode:"memory",db:null,idb:null,mem:{},data:{jeux:{},clients:{},locations:{},reglages:{}},
+  reset(){this.data={jeux:{},clients:{},locations:{},reglages:{}}},
+  async init(){
+    try{
+      if(window.claude&&typeof claude.use==="function"){
+        const db=await Promise.race([claude.use("db"),new Promise(r=>setTimeout(()=>r(null),10000))]);
+        if(db){for(const c of COLS){const snap=await db.collection(c).limit(1000).get();snap.docs.forEach(d=>{this.data[c][d.id]=d.data()})}
+          this.db=db;this.mode="cloud";return}
+      }
+    }catch(e){console.warn("Stockage synchronisé indisponible",e);this.reset()}
+    try{
+      if(!window.indexedDB)throw new Error("pas d'IndexedDB");
+      this.idb=await idbOpen();
+      const st=this.idb.transaction("kv").objectStore("kv");
+      const [keys,vals]=await Promise.all([idbReq(st.getAllKeys()),idbReq(st.getAll())]);
+      keys.forEach((k,i)=>{const [c,id]=String(k).split("/");if(this.data[c])this.data[c][id]=vals[i]});
+      this.mode="idb";
+      const old=lsGet(LKEY);
+      if(old&&!keys.length){try{const d=JSON.parse(old);COLS.forEach(c=>Object.values(d[c]||{}).forEach(r=>this.put(c,r)))}catch(e){}}
+      if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
+      return;
+    }catch(e){console.warn("IndexedDB indisponible",e);this.idb=null;this.reset()}
+    try{const raw=localStorage.getItem(LKEY);if(raw){const d=JSON.parse(raw);COLS.forEach(c=>this.data[c]=d[c]||{})}this.mode="local"}catch(e){this.mode="memory"}
+  },
+  all(c){return Object.values(this.data[c])},
+  get(c,id){return this.data[c][id]},
+  put(c,rec){rec=JSON.parse(JSON.stringify(rec));this.data[c][rec.id]=rec;
+    const err=e=>toast("Erreur d'enregistrement : "+(e&&(e.message||e.code)||"inconnue"));
+    if(this.mode==="cloud")this.db.collection(c).doc(rec.id).set(rec).catch(err);
+    else if(this.mode==="idb"){try{const tx=this.idb.transaction("kv","readwrite");tx.objectStore("kv").put(rec,c+"/"+rec.id);tx.onerror=()=>err(tx.error)}catch(e){err(e)}}
+    else if(this.mode==="local"){try{localStorage.setItem(LKEY,JSON.stringify(this.data))}catch(e){toast("Mémoire pleine sur cet appareil : exportez une sauvegarde.")}}
+    return rec},
+  del(c,id){delete this.data[c][id];
+    if(this.mode==="cloud")this.db.collection(c).doc(id).delete().catch(()=>{});
+    else if(this.mode==="idb"){try{this.idb.transaction("kv","readwrite").objectStore("kv").delete(c+"/"+id)}catch(e){}}
+    else if(this.mode==="local"){try{localStorage.setItem(LKEY,JSON.stringify(this.data))}catch(e){}}},
+  photosOK(){return this.mode!=="local"},
+  async putPhoto(id,data){
+    if(this.mode==="cloud")return this.db.collection("photos").doc(id).set({id,data});
+    if(this.mode==="idb")return new Promise((res,rej)=>{const tx=this.idb.transaction("photos","readwrite");tx.objectStore("photos").put(data,id);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});
+    this.mem[id]=data},
+  async getPhoto(id){try{
+    if(this.mode==="cloud"){const d=await this.db.collection("photos").doc(id).get();return(d.data()||{}).data||null}
+    if(this.mode==="idb")return await idbReq(this.idb.transaction("photos").objectStore("photos").get(id))||null;
+    return this.mem[id]||null}catch(e){return null}},
+  delPhoto(id){if(this.mode==="cloud")this.db.collection("photos").doc(id).delete().catch(()=>{});else if(this.mode==="idb"){try{this.idb.transaction("photos","readwrite").objectStore("photos").delete(id)}catch(e){}}else delete this.mem[id]}
+};
+const DEFAULTS={id:"general",nom:"Le Temple du Carton",slogan:"Location de jeux de société",adresse:"12 rue du Gouvernement, 02100 Saint-Quentin",telephone:"",email:"",siret:"",couleur:"#04271B",logo:"",
+  dureeDefaut:7,cautionDefaut:50,tarifDefaut:5,penaliteJour:0.5,delaiEncaissement:20,gratuit:false,prefixe:"JEU",rappelSauvegarde:7,
+  conditions:"Les jeux sont loués complets et en bon état ; la liste des pièces a été vérifiée ensemble au départ.\nLe locataire s'engage à les rendre à la date prévue, complets et propres.\nChaque jour de retard est facturé {penalite} par jeu.\nAu-delà de {delai} jours de retard, et après une relance écrite restée sans réponse, le jeu est considéré comme non rendu et la caution est encaissée.\nLes pièces manquantes ou abîmées sont facturées à leur prix de remplacement et déduites de la caution. La caution est restituée au retour si les jeux sont complets et en bon état.",
+  msgVeille:"Bonjour {prenom}, petit rappel : votre location ({jeux}) est à rendre demain, {date_retour}, chez {structure}. Merci et bon jeu !",
+  msgRetard:"Bonjour {prenom}, votre location ({jeux}) devait être rendue le {date_retour}. Merci de les rapporter dès que possible chez {structure} ({adresse}). Des frais de retard s'appliquent ({penalite} par jour et par jeu).",
+  msgResa:"Bonjour {prenom}, votre réservation est confirmée : {jeux} du {date_depart} au {date_retour}, à retirer chez {structure} ({adresse}). À bientôt !"};
+const S=()=>Object.assign({},DEFAULTS,Store.get("reglages","general")||{});
+const G=()=>!!S().gratuit;
+const condTxt=()=>{const s=S();return String(s.conditions||"").replace(/\{penalite\}/g,eur(s.penaliteJour)).replace(/\{delai\}/g,String(s.delaiEncaissement))};
+const saveS=patch=>Store.put("reglages",Object.assign(S(),patch,{id:"general"}));
+
+/* ================= Règles métier ================= */
+/* une location contient un ou plusieurs jeux (items) ; les anciennes fiches à un seul jeu sont converties à la volée */
+function norm(l){if(!l.items){l.items=l.jeuId?[{jeuId:l.jeuId,tarif:l.tarif,caution:l.caution,piecesDepart:l.piecesDepart||[],piecesRetour:l.piecesRetour,etatDepart:l.etatDepart,etatRetour:l.etatRetour}]:[]}
+  l.photosDepart=l.photosDepart||[];l.photosRetour=l.photosRetour||[];l.rappels=l.rappels||[];return l}
+const LOCS=()=>Store.all("locations").map(norm);
+const jeuIds=l=>l.items.map(i=>i.jeuId);
+const isOpen=l=>l.statut==="en_cours"||l.statut==="reservee";
+const activeLoc=jeuId=>LOCS().find(l=>l.statut==="en_cours"&&jeuIds(l).includes(jeuId));
+function locState(l){if(l.statut==="annulee")return"annulee";if(l.statut==="nonrendu")return"nonrendu";if(l.statut==="reservee")return l.dateDepart<today()?"resa_passee":"reservee";if(l.statut!=="en_cours")return"rendue";return l.dateRetourPrevue<today()?"retard":"en_cours"}
+const occEnd=l=>l.statut==="en_cours"&&l.dateRetourPrevue<today()?"9999-12-31":l.dateRetourPrevue;
+function conflict(jeuId,dep,ret,exceptId){return LOCS().find(l=>l.id!==exceptId&&isOpen(l)&&jeuIds(l).includes(jeuId)&&l.dateDepart<=ret&&dep<=occEnd(l))||null}
+const isLateOut=l=>l.statut==="en_cours"&&l.dateRetourPrevue<today();
+const cautionEncaissable=l=>!G()&&l.statut==="en_cours"&&l.cautionStatut==="detenue"&&num(l.caution)>0&&lateDays(l)>=(num(S().delaiEncaissement)||20);
+const recentRappel=(l,jours)=>l.rappels.some(r=>diffDays(r.date,today())<jours);
+/* rappels à faire aujourd'hui : veille du retour, ou retard sans relance depuis 3 jours */
+const rappelsDuJour=()=>LOCS().filter(l=>l.statut==="en_cours"&&Store.get("clients",l.clientId)&&((l.dateRetourPrevue===addDays(today(),1)&&!recentRappel(l,1))||(isLateOut(l)&&!recentRappel(l,3))));
+const conflictText=cf=>isLateOut(cf)?`Pas encore rendu : en retard depuis le ${fd(cf.dateRetourPrevue)} (${clientName(Store.get("clients",cf.clientId))})`:`Déjà ${cf.statut==="reservee"?"réservé":"loué"} du ${fd(cf.dateDepart)} au ${fd(cf.dateRetourPrevue)} (${clientName(Store.get("clients",cf.clientId))})`;
+/* jeux d'une réservation encore dehors chez un autre client, en retard */
+const resaBloquee=l=>l.statut==="reservee"?l.items.filter(i=>{const a=activeLoc(i.jeuId);return a&&a.id!==l.id&&isLateOut(a)}).map(i=>jeuNom(i.jeuId)):[];
+const nextResa=jeuId=>LOCS().filter(l=>l.statut==="reservee"&&jeuIds(l).includes(jeuId)).sort((a,b)=>a.dateDepart.localeCompare(b.dateDepart))[0]||null;
+function jeuState(j){const l=activeLoc(j.id);if(l)return locState(l)==="retard"?"retard":"loue";return j.indisponible?"indispo":"dispo"}
+const JEU_PILL={dispo:["p-dispo","Disponible"],loue:["p-loue","Loué"],retard:["p-retard","En retard"],indispo:["p-indispo","Indisponible"]};
+const LOC_PILL={en_cours:["p-loue","En cours"],retard:["p-retard","En retard"],rendue:["p-dispo","Rendu"],reservee:["p-warn","Réservée"],resa_passee:["p-retard","Réservation non retirée"],annulee:["p-indispo","Annulée"],nonrendu:["p-retard","Non rendu · caution encaissée"]};
+const pill=([c,t])=>`<span class="pill ${c}">${t}</span>`;
+const clientName=c=>c?((c.prenom?c.prenom+" ":"")+(c.nom||"")+(c.societe?" · "+c.societe:"")).trim():"Client supprimé";
+const jeuNom=id=>(Store.get("jeux",id)||{}).nom||"Jeu supprimé";
+const locTitle=l=>{const n=l.items.length;if(!n)return"Aucun jeu";return jeuNom(l.items[0].jeuId)+(n>1?` + ${n-1} autre${n>2?"s":""} jeu${n>2?"x":""}`:"")};
+const jeuxPhrase=l=>{const ns=l.items.map(i=>jeuNom(i.jeuId));return ns.length<=1?(ns[0]||""):ns.slice(0,-1).join(", ")+" et "+ns[ns.length-1]};
+const lateDays=l=>{if(l.statut==="reservee"||l.statut==="annulee")return 0;const end=l.statut==="en_cours"?today():(l.dateRetour||l.dateNonRendu||today());return Math.max(0,diffDays(l.dateRetourPrevue,end))};
+const piecesTotal=j=>(j.pieces||[]).reduce((a,p)=>a+(Number(p.qte)||0),0);
+function nextCode(){const p=(S().prefixe||"JEU").toUpperCase();let n=1;const codes=new Set(Store.all("jeux").map(j=>j.code));while(codes.has(p+"-"+String(n).padStart(4,"0")))n++;return p+"-"+String(n).padStart(4,"0")}
+function nextLocNum(){const y=new Date().getFullYear(),set=new Set(Store.all("locations").map(l=>l.numero));let n=Store.all("locations").filter(l=>(l.numero||"").startsWith("LOC-"+y)).length+1;while(set.has("LOC-"+y+"-"+String(n).padStart(4,"0")))n++;return"LOC-"+y+"-"+String(n).padStart(4,"0")}
+const CAUTION_STATUT={detenue:"Détenue",restituee:"Restituée",partielle:"Retenue en partie",encaissee:"Encaissée",aucune:"Sans caution"};
+
+/* ================= QR ================= */
+function qrSvg(text){try{const q=qrcode(0,"M");q.addData(text);q.make();return q.createSvgTag({cellSize:4,margin:2,scalable:true})}catch(e){return'<div class="muted small">QR indisponible</div>'}}
+function qrCanvas(text,size){const q=qrcode(0,"M");q.addData(text);q.make();const n=q.getModuleCount(),m=2,cell=Math.floor(size/(n+2*m));const c=document.createElement("canvas");c.width=c.height=cell*(n+2*m);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.fillStyle="#000";for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))x.fillRect((k+m)*cell,(r+m)*cell,cell,cell);return c}
+async function detectIn(source,w,h){
+  if("BarcodeDetector"in window){try{const d=new BarcodeDetector({formats:["qr_code"]});const r=await d.detect(source);if(r[0])return r[0].rawValue}catch(e){}}
+  if(typeof jsQR!=="function")return null;
+  const c=detectIn.c||(detectIn.c=document.createElement("canvas"));const s=Math.min(1,900/Math.max(w,h));c.width=Math.round(w*s);c.height=Math.round(h*s);
+  const x=c.getContext("2d",{willReadFrequently:true});x.drawImage(source,0,0,c.width,c.height);
+  const r=jsQR(x.getImageData(0,0,c.width,c.height).data,c.width,c.height,{inversionAttempts:"attemptBoth"});return r?r.data:null}
+function decodeFile(file){return new Promise(res=>{const img=new Image();img.onload=async()=>{res(await detectIn(img,img.naturalWidth,img.naturalHeight));URL.revokeObjectURL(img.src)};img.onerror=()=>res(null);img.src=URL.createObjectURL(file)})}
+function findByCode(raw){let code=String(raw).trim();const m=code.match(/[?&#]jeu=([^&]+)/i);if(m)code=decodeURIComponent(m[1]);code=code.toUpperCase();return Store.all("jeux").find(j=>(j.code||"").toUpperCase()===code)||null}
+
+/* ================= Fichiers ================= */
+let downloadsCap=null;
+async function saveFile(filename,data,mime){
+  const blob=data instanceof Blob?data:new Blob([data],{type:mime||"application/octet-stream"});
+  if(downloadsCap){try{await downloadsCap.save({filename,data:blob});return true}catch(e){if(e&&e.code==="declined")return false;toast("Téléchargement impossible ici ("+(e.code||"erreur")+")");return false}}
+  if(framed){toast("Le téléchargement n'est pas disponible dans cet aperçu.");return false}
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);return true}
+function canShareFile(){try{return!framed&&!!navigator.canShare&&navigator.canShare({files:[new File(["x"],"x.json",{type:"application/json"})]})}catch(e){return false}}
+async function shareFile(filename,data,mime){const f=new File([data],filename,{type:mime});try{await navigator.share({files:[f],title:filename});return true}catch(e){if(e&&e.name==="AbortError")return false;return saveFile(filename,data,mime)}}
+const canvasBlob=c=>new Promise(r=>c.toBlob(r,"image/png"));
+function resizeImage(file,max=520,q=.72){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>{const img=new Image();img.onload=()=>{const s=Math.min(1,max/Math.max(img.width,img.height));const c=document.createElement("canvas");c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext("2d").drawImage(img,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",q))};img.onerror=rej;img.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
+
+/* ================= Photos d'état ================= */
+function lightbox(src){const d=document.createElement("div");d.className="lightbox";d.innerHTML=`<img src="${esc(src)}" alt="Photo">`;d.onclick=()=>d.remove();document.body.appendChild(d)}
+/* champ photos : les nouvelles photos ne sont enregistrées qu'à la validation du formulaire */
+function photoField(el,existing=[]){
+  const pending=[];let kept=[...existing];
+  const draw=()=>{el.innerHTML=`<div class="thumbs">${kept.map(id=>`<div class="thumb" data-id="${id}"><img alt="Photo enregistrée"><button type="button" class="rm" data-rm="${id}" aria-label="Retirer">×</button></div>`).join("")}${pending.map((p,i)=>`<div class="thumb"><img src="${p.data}" alt="Nouvelle photo"><button type="button" class="rm" data-rmp="${i}" aria-label="Retirer">×</button></div>`).join("")}
+    ${Store.photosOK()?`<label class="addphoto">+ Photo<input type="file" accept="image/*" ${CAP} multiple hidden></label>`:'<span class="small muted">Photos indisponibles sur ce navigateur.</span>'}</div>`;
+    kept.forEach(id=>Store.getPhoto(id).then(src=>{const im=$(`[data-id="${id}"] img`,el);if(im&&src)im.src=src}));
+    $$("[data-rm]",el).forEach(b=>b.onclick=e=>{e.stopPropagation();kept=kept.filter(x=>x!==b.dataset.rm);draw()});
+    $$("[data-rmp]",el).forEach(b=>b.onclick=e=>{e.stopPropagation();pending.splice(+b.dataset.rmp,1);draw()});
+    $$(".thumb",el).forEach(t=>t.onclick=()=>{const im=$("img",t);if(im.src)lightbox(im.src)});
+    const inp=$("input[type=file]",el);if(inp)inp.onchange=async e=>{for(const f of e.target.files){try{pending.push({id:uid(),data:await resizeImage(f,1100,.62)})}catch(x){}}draw()}};
+  draw();
+  return{async save(){for(const p of pending){try{await Store.putPhoto(p.id,p.data);kept.push(p.id)}catch(e){toast("Une photo n'a pas pu être enregistrée.")}}pending.length=0;return kept}};
+}
+function photoStrip(ids){return ids.length?`<div class="thumbs">${ids.map(id=>`<div class="thumb" data-ph="${id}"><img alt="Photo"></div>`).join("")}</div>`:'<span class="small muted">Aucune photo.</span>'}
+function bindPhotoStrip(root){$$("[data-ph]",root).forEach(t=>{Store.getPhoto(t.dataset.ph).then(src=>{if(src)$("img",t).src=src});t.onclick=()=>{const s=$("img",t).getAttribute("src");if(s)lightbox(s)}})}
+
+/* ================= Modal ================= */
+function openModal(title,body,foot,onMount){
+  closeModal();
+  const root=$("#modalRoot");
+  root.innerHTML=`<div class="overlay" id="ov"><div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="mh"><h1>${esc(title)}</h1><button class="x noprint" id="mx" aria-label="Fermer" type="button">×</button></div><div class="mb">${body}</div>${foot?`<div class="mf noprint">${foot}</div>`:""}</div></div>`;
+  $("#mx").onclick=closeModal;
+  $("#ov").addEventListener("mousedown",e=>{if(e.target.id==="ov")closeModal()});
+  if(onMount)onMount($(".modal",root));
+}
+function closeModal(){stopCamera();$("#modalRoot").innerHTML=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){const lb=$(".lightbox");if(lb){lb.remove();return}if($("#ov"))closeModal()}});
+function confirmBtn(btn,label,fn){btn.addEventListener("click",()=>{if(btn.dataset.armed){fn();return}btn.dataset.armed="1";const old=btn.textContent;btn.textContent=label;setTimeout(()=>{if(btn.isConnected){delete btn.dataset.armed;btn.textContent=old}},4000)})}
+
+/* ================= Navigation ================= */
+const VIEWS=["accueil","planning","locations","jeux","clients","scanner","reglages"];
+let ui={locFilter:"actives",locQ:"",jeuFilter:"tous",jeuQ:"",cliQ:"",month:today().slice(0,7),day:today()};
+function current(){const h=location.hash.replace("#","");return VIEWS.includes(h)?h:"accueil"}
+function render(){
+  stopCamera();
+  const v=current();
+  $$("#tabs a").forEach(a=>a.classList.toggle("on",a.dataset.v===v));
+  ({accueil:vAccueil,planning:vPlanning,locations:vLocations,jeux:vJeux,clients:vClients,scanner:vScanner,reglages:vReglages})[v]();
+}
+function initials(s){return(s||"L").split(/\s+/).filter(w=>w.length>2).map(w=>w[0]).join("").slice(0,2).toUpperCase()||"L"}
+function applyBrand(){
+  const s=S();
+  document.documentElement.style.setProperty("--brand",s.couleur||DEFAULTS.couleur);
+  document.body.classList.toggle("gratuit",!!s.gratuit);
+  $("#brandName").textContent=s.nom||"Ma ludothèque";
+  $("#brandSub").textContent=s.slogan||"";
+  $("#logo").innerHTML=s.logo?`<img src="${esc(s.logo)}" alt="">`:esc(initials(s.nom));
+  document.title=(s.nom?s.nom+" · ":"")+"Location de jeux";
+  const tc=$('meta[name="theme-color"]');if(tc)tc.content=s.couleur||DEFAULTS.couleur;
+}
+window.addEventListener("hashchange",()=>{closeModal();render()});
+$("#scanTop").onclick=()=>{location.hash="scanner";if(current()==="scanner")render()};
+
+/* ================= Sauvegarde ================= */
+const hasData=()=>Store.all("jeux").length+Store.all("locations").length>0;
+function backupBanner(){
+  if(!hasData())return"";
+  const s=S(),freq=Store.mode==="cloud"?30:(num(s.rappelSauvegarde)||7);
+  const last=s.derniereSauvegarde;const days=last?Math.floor((Date.now()-last)/864e5):null;
+  if(days!==null&&days<freq)return"";
+  return`<div class="banner warn"><span class="grow"><b>${days===null?"Aucune sauvegarde pour l'instant.":"Dernière sauvegarde il y a "+days+" jours."}</b> ${Store.mode==="cloud"?"Vos données sont synchronisées, une copie de sécurité reste conseillée.":"Vos données ne sont que sur cet appareil : gardez une copie ailleurs (e-mail, Drive…)."}</span><button class="btn sm" data-act="backup">Sauvegarder maintenant</button></div>`;
+}
+async function buildBackup(catalogOnly){
+  const strip=r=>{const o=Object.assign({},r);delete o.pinHash;delete o.pinSalt;delete o.secoursHash;delete o.pinLen;return o};
+  const data={app:"location-jeux",version:2,exporteLe:new Date().toISOString(),type:catalogOnly?"catalogue":"complet",
+    jeux:Store.all("jeux").map(j=>catalogOnly?Object.assign({},j,{indisponible:false,manques:""}):j),clients:catalogOnly?[]:Store.all("clients"),locations:catalogOnly?[]:Store.all("locations"),reglages:catalogOnly?[]:Store.all("reglages").map(strip),photos:{}};
+  if(!catalogOnly){const ids=new Set();LOCS().forEach(l=>[...l.photosDepart,...l.photosRetour].forEach(i=>ids.add(i)));for(const id of ids){const p=await Store.getPhoto(id);if(p)data.photos[id]=p}}
+  return JSON.stringify(data);
+}
+const slug=()=>(S().nom||"ludo").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").toLowerCase();
+function openBackup(){
+  const share=canShareFile();
+  openModal("Sauvegarde",`<p style="margin:0">La sauvegarde contient tous vos jeux, clients, locations et photos. Gardez-la en lieu sûr, hors de cet appareil : envoyez-la par e-mail, sur Google Drive, iCloud ou WhatsApp.</p>
+    <p class="small muted" style="margin:0">Pour tout récupérer sur un nouvel appareil : Réglages → Importer une sauvegarde.</p>`,
+  `${share?'<button class="btn primary" id="bkShare" type="button">Envoyer la sauvegarde…</button>':""}<button class="btn ${share?"":"primary"}" id="bkDl" type="button">Télécharger le fichier</button>`,
+  ()=>{const go=async how=>{toast("Préparation…");const data=await buildBackup(false);const name=`${slug()}-sauvegarde-${today()}.json`;
+      const ok=how==="share"?await shareFile(name,data,"application/json"):await saveFile(name,data,"application/json");
+      if(ok){saveS({derniereSauvegarde:Date.now()});toast("Sauvegarde faite");closeModal();render()}};
+    if($("#bkShare"))$("#bkShare").onclick=()=>go("share");$("#bkDl").onclick=()=>go("dl")});
+}
+
+/* ================= Installation sur l'écran d'accueil ================= */
+let installEvt=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installEvt=e;if(!$("#ov")&&(current()==="accueil"||current()==="reglages"))render()});
+const isInstalled=()=>(window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;
+const isIOS=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+const canInstall=()=>!framed&&!!window.APP_SW&&!isInstalled()&&/^https?:/.test(location.protocol)&&(!!installEvt||isIOS());
+function installBanner(){if(!canInstall()||lsGet(NS+":installHide"))return"";return`<div class="banner"><span class="grow">Installez l'application sur cet appareil : une icône sur l'écran d'accueil, et elle marche même sans internet.</span><button class="btn sm" data-act="install">Installer</button><button class="btn sm" data-act="installHide">Plus tard</button></div>`}
+function doInstall(){
+  if(installEvt){installEvt.prompt();installEvt.userChoice.finally(()=>{installEvt=null;render()});return}
+  openModal("Installer sur iPhone / iPad",`<ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px"><li>Ouvrez cette page dans <b>Safari</b>.</li><li>Touchez le bouton <b>Partager</b> (le carré avec une flèche vers le haut).</li><li>Choisissez <b>« Sur l'écran d'accueil »</b>, puis <b>Ajouter</b>.</li></ol><p class="small muted" style="margin:0">L'application s'ouvre ensuite depuis son icône, en plein écran.</p>`,`<button class="btn primary" type="button" id="okIos">Compris</button>`,()=>{$("#okIos").onclick=closeModal});
+}
+
+
+/* ================= Rappels clients ================= */
+function fillMsg(tpl,l){const s=S(),c=Store.get("clients",l.clientId)||{};
+  const v={prenom:c.prenom||c.nom||"",nom:c.nom||"",jeux:jeuxPhrase(l),date_retour:fdLong(l.dateRetourPrevue),date_depart:fdLong(l.dateDepart),structure:s.nom||"",adresse:s.adresse||"",telephone:s.telephone||"",penalite:eur(s.penaliteJour),retard:String(lateDays(l))};
+  return String(tpl||"").replace(/\{(\w+)\}/g,(m,k)=>k in v?v[k]:m)}
+function phoneIntl(t){let d=String(t||"").replace(/[^\d+]/g,"");if(d.startsWith("+"))return d.slice(1);if(d.startsWith("00"))return d.slice(2);if(d.startsWith("0")&&d.length===10)return"33"+d.slice(1);return d}
+function defaultRappel(l){return locState(l)==="retard"?"retard":l.statut==="reservee"?"resa":"veille"}
+function openRappel(locId,type){
+  const l=norm(Store.get("locations",locId)),c=Store.get("clients",l.clientId)||{},s=S();type=type||defaultRappel(l);
+  const T={veille:["Rappel de retour",s.msgVeille],retard:["Retard",s.msgRetard],resa:["Confirmation de réservation",s.msgResa]};
+  openModal("Rappel : "+clientName(c),`<div class="chips">${Object.entries(T).map(([k,[t]])=>`<button type="button" class="chip ${k===type?"on":""}" data-t="${k}">${t}</button>`).join("")}</div>
+    <div class="f"><label for="rmsg">Message (modifiable)</label><textarea id="rmsg" rows="5">${esc(fillMsg(T[type][1],l))}</textarea></div>
+    <div class="small muted">Téléphone : ${esc(c.telephone||"non renseigné")} · E-mail : ${esc(c.email||"non renseigné")}</div>
+    <div class="toolbar" style="margin:0" id="rlinks"></div>
+    ${l.rappels.length?`<div class="small muted">Déjà envoyé : ${l.rappels.map(r=>esc(r.canal)+" le "+fd(r.date)).join(", ")}</div>`:""}`,
+  `<button class="btn" type="button" id="rClose">Fermer</button>`,
+  ()=>{
+    $("#rClose").onclick=()=>openLoc(locId);
+    const log=canal=>{const L=norm(Store.get("locations",locId));L.rappels.push({type,canal,date:today()});Store.put("locations",L)};
+    const links=()=>{const m=encodeURIComponent($("#rmsg").value),tel=(c.telephone||"").replace(/\s/g,"");
+      $("#rlinks").innerHTML=`${tel?`<a class="btn primary" data-canal="SMS" href="sms:${esc(tel)}?&body=${m}">SMS</a><a class="btn" data-canal="WhatsApp" target="_blank" rel="noopener" href="https://wa.me/${esc(phoneIntl(tel))}?text=${m}">WhatsApp</a>`:""}${c.email?`<a class="btn" data-canal="E-mail" href="mailto:${esc(c.email)}?subject=${encodeURIComponent((s.nom||"")+" – location de jeux")}&body=${m}">E-mail</a>`:""}<button class="btn" type="button" data-canal="Copie">Copier le message</button>`;
+      $$("[data-canal]").forEach(a=>a.addEventListener("click",()=>{const canal=a.dataset.canal;
+        if(canal==="Copie"){navigator.clipboard.writeText($("#rmsg").value).then(()=>toast("Message copié"),()=>{$("#rmsg").select();toast("Message sélectionné : copiez-le")})}
+        else toast("Rappel noté ("+canal+")");log(canal)}))};
+    links();$("#rmsg").oninput=links;
+    $$("[data-t]").forEach(b=>b.onclick=()=>openRappel(locId,b.dataset.t));
+  });
+}
+
+/* ================= Vue : Tableau de bord ================= */
+function locRow(l,{rappel}={}){const c=Store.get("clients",l.clientId);const st=locState(l);
+  const when=l.statut==="reservee"?`retrait ${fd(l.dateDepart)}`:`retour ${fd(l.dateRetourPrevue)}`;const bl=resaBloquee(l);
+  return`<div class="row" data-loc="${l.id}"><div class="main"><div class="t">${esc(locTitle(l))}</div><div class="s">${esc(clientName(c))} · ${when}${st==="retard"?` · <b style="color:var(--bad)">${lateDays(l)} j de retard</b>`:""}${bl.length?` · <b style="color:var(--bad)">${esc(bl.join(", "))} pas encore rendu</b>`:""}</div></div>${rappel?`${l.rappels.length?`<span class="small muted">✓ ${fd(l.rappels[l.rappels.length-1].date).slice(0,5)}</span>`:""}<button class="btn sm" data-rap="${l.id}" type="button">${l.rappels.length?"Relancer":"Rappel"}</button>`:pill(LOC_PILL[st])}</div>`}
+function storageBanner(){
+  if(Store.mode==="memory")return`<div class="banner warn">Ce navigateur bloque l'enregistrement (navigation privée ?) : les données seront perdues à la fermeture.</div>`;
+  if(Store.mode==="local")return`<div class="banner warn">Ce navigateur offre peu de place : les photos sont désactivées. Pensez aux sauvegardes.</div>`;
+  return"";
+}
+function vAccueil(){
+  const jeux=Store.all("jeux"),locs=LOCS(),t=today(),dem=addDays(t,1);
+  const act=locs.filter(l=>l.statut==="en_cours");
+  const late=act.filter(l=>locState(l)==="retard").sort((a,b)=>a.dateRetourPrevue.localeCompare(b.dateRetourPrevue));
+  const demain=act.filter(l=>l.dateRetourPrevue===dem);
+  const soon=act.filter(l=>l.dateRetourPrevue>=t&&l.dateRetourPrevue<=addDays(t,7)&&l.dateRetourPrevue!==dem).sort((a,b)=>a.dateRetourPrevue.localeCompare(b.dateRetourPrevue));
+  const resas=locs.filter(l=>l.statut==="reservee"&&l.dateDepart<=addDays(t,14)).sort((a,b)=>a.dateDepart.localeCompare(b.dateDepart));
+  const dispo=jeux.filter(j=>jeuState(j)==="dispo").length;
+  const cautions=locs.filter(l=>l.cautionStatut==="detenue").reduce((a,l)=>a+num(l.caution),0);
+  const ca=locs.filter(l=>(l.statut==="en_cours"||l.statut==="rendue")&&(l.dateDepart||"").startsWith(t.slice(0,7))).reduce((a,l)=>a+num(l.tarif)+num(l.cautionRetenue),0);
+  const aVerifier=jeux.filter(j=>j.indisponible);
+  const encaiss=act.filter(cautionEncaissable),todo=rappelsDuJour();
+  $("#view").innerHTML=`${storageBanner()}${installBanner()}${backupBanner()}
+  ${todo.length?`<div class="panel" style="margin-bottom:20px;border-color:var(--gold)"><h2>Rappels à envoyer aujourd'hui (${todo.length})</h2><div class="list">${todo.map(l=>locRow(l,{rappel:true})).join("")}</div></div>`:""}
+  <div class="head"><h1 class="grow">Tableau de bord</h1>
+    <button class="btn" data-act="newresa">+ Réservation</button>
+    <button class="btn primary" data-act="newloc">+ Nouvelle location</button></div>
+  ${!jeux.length?`<div class="panel" style="margin-bottom:24px"><h3>Bienvenue !</h3><p class="muted">Commencez par ajouter vos jeux (avec la liste des pièces) : chaque jeu reçoit un QR code à coller sur la boîte. Vous pouvez aussi charger quelques exemples pour essayer l'application, puis les effacer d'un clic.</p><div class="toolbar"><button class="btn primary" data-act="newjeu">Ajouter mon premier jeu</button><button class="btn" data-act="exemples">Charger des exemples</button></div></div>`:""}
+  <div class="kpis">
+    <div class="kpi"><div class="v">${dispo}<span class="muted" style="font-size:18px"> / ${jeux.length}</span></div><div class="l">Jeux disponibles</div></div>
+    <div class="kpi"><div class="v">${act.length}</div><div class="l">Locations en cours</div></div>
+    <div class="kpi ${late.length?"alert":""}"><div class="v">${late.length}</div><div class="l">En retard</div></div>
+    <div class="kpi"><div class="v">${resas.length}</div><div class="l">Réservations (14 j)</div></div>
+    <div class="kpi pay"><div class="v">${eur(cautions)}</div><div class="l">Cautions détenues</div></div>
+    <div class="kpi pay"><div class="v">${eur(ca)}</div><div class="l">Recettes du mois</div></div>
+  </div>
+  <div class="grid2">
+    ${encaiss.length?`<div class="panel" style="border-color:var(--bad)"><h2>Cautions encaissables (plus de ${esc(S().delaiEncaissement)} j de retard)</h2><div class="list">${encaiss.map(l=>locRow(l)).join("")}</div></div>`:""}
+    <div class="panel"><h2>En retard</h2><div class="list">${late.map(l=>locRow(l,{rappel:true})).join("")||'<div class="empty">Aucun retard.</div>'}</div></div>
+    <div class="panel"><h2>À rendre demain</h2><div class="list">${demain.map(l=>locRow(l,{rappel:true})).join("")||'<div class="empty">Aucun retour prévu demain.</div>'}</div></div>
+    <div class="panel"><h2>Réservations à venir</h2><div class="list">${resas.map(l=>locRow(l)).join("")||'<div class="empty">Aucune réservation dans les 14 prochains jours.</div>'}</div></div>
+    <div class="panel"><h2>Autres retours de la semaine</h2><div class="list">${soon.map(l=>locRow(l)).join("")||'<div class="empty">Aucun autre retour cette semaine.</div>'}</div></div>
+    ${aVerifier.length?`<div class="panel"><h2>Jeux à compléter ou réparer</h2><div class="list">${aVerifier.map(j=>`<div class="row" data-jeu="${j.id}"><div class="main"><div class="t">${esc(j.nom)}</div><div class="s">${esc(j.manques||j.notes||"Marqué indisponible")}</div></div>${pill(JEU_PILL.indispo)}</div>`).join("")}</div></div>`:""}
+  </div>`;
+  bindCommon();
+}
+
+/* ================= Vue : Planning ================= */
+function vPlanning(){
+  const [y,m]=ui.month.split("-").map(Number);const first=new Date(y,m-1,1);const start=new Date(y,m-1,1-((first.getDay()+6)%7));
+  const days=[];for(let i=0;i<42;i++){const d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);days.push(iso(d))}
+  if(days[35].slice(0,7)!==ui.month)days.length=35;
+  const locs=LOCS().filter(l=>l.statut!=="annulee");
+  const endOf=l=>l.statut==="nonrendu"?(l.dateNonRendu||today()):l.statut==="rendue"?(l.dateRetour||l.dateRetourPrevue):(l.statut==="en_cours"&&l.dateRetourPrevue<today()?today():l.dateRetourPrevue);
+  const on=d=>locs.filter(l=>l.dateDepart<=d&&d<=endOf(l));
+  const cls=l=>{const st=locState(l);return st==="retard"||st==="resa_passee"||st==="nonrendu"?"b-retard":l.statut==="reservee"?"b-resa":"b-loue"};
+  const col={"b-retard":"var(--bad)","b-resa":"var(--warn)","b-loue":"var(--info)"};
+  const label=first.toLocaleDateString("fr-FR",{month:"long",year:"numeric"});
+  const sel=ui.day;const selL=on(sel).filter(l=>l.statut!=="rendue"||l.dateDepart===sel||l.dateRetour===sel);
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Planning</h1><button class="btn" data-act="newresa">+ Réservation</button></div>
+  <div class="toolbar"><button class="btn sm" id="mPrev" aria-label="Mois précédent">‹</button><b style="min-width:140px;text-align:center;text-transform:capitalize">${esc(label)}</b><button class="btn sm" id="mNext" aria-label="Mois suivant">›</button><button class="btn sm" id="mToday">Aujourd'hui</button>
+    <span class="small muted" style="display:flex;gap:10px;flex-wrap:wrap"><span><span class="dot" style="background:var(--info)"></span> En location</span><span><span class="dot" style="background:var(--warn)"></span> Réservé</span><span><span class="dot" style="background:var(--bad)"></span> En retard</span></span></div>
+  <div class="cal">${["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"].map(d=>`<div class="dow">${d}</div>`).join("")}
+  ${days.map(d=>{const L=on(d).filter(l=>l.statut!=="rendue");return`<button type="button" class="day ${d.slice(0,7)!==ui.month?"out":""} ${d===today()?"today":""} ${d===sel?"sel":""}" data-day="${d}" aria-label="${esc(fdLong(d))} : ${L.length} location(s)"><span class="n">${+d.slice(8)}</span>
+    ${L.slice(0,3).map(l=>`<span class="bar ${cls(l)}">${l.dateDepart===d?"↗ ":l.dateRetourPrevue===d?"↘ ":""}${esc(locTitle(l))}</span>`).join("")}${L.length>3?`<span class="more">+${L.length-3}</span>`:""}
+    <span class="dots">${L.slice(0,6).map(l=>`<span class="dot" style="background:${col[cls(l)]}"></span>`).join("")}</span></button>`}).join("")}</div>
+  <div class="panel" style="margin-top:18px"><div class="head" style="margin-bottom:8px"><h2 class="grow" style="margin:0;text-transform:capitalize">${esc(fdLong(sel))}</h2><button class="btn sm" data-resaday="${sel}">+ Réserver à cette date</button></div>
+    <div class="list">${selL.map(l=>{const c=Store.get("clients",l.clientId);const what=l.dateDepart===sel?(l.statut==="reservee"?"Retrait prévu":"Départ"):(l.dateRetour===sel?"Rendu":l.dateRetourPrevue===sel?"Retour prévu":"En cours");
+      return`<div class="row" data-loc="${l.id}"><div class="main"><div class="t">${esc(locTitle(l))}</div><div class="s">${what} · ${esc(clientName(c))} · ${fd(l.dateDepart)} → ${fd(l.dateRetourPrevue)}</div></div>${pill(LOC_PILL[locState(l)])}</div>`}).join("")||'<div class="empty">Rien ce jour-là.</div>'}</div></div>`;
+  const shift=n=>{const d=new Date(y,m-1+n,1);ui.month=iso(d).slice(0,7);vPlanning()};
+  $("#mPrev").onclick=()=>shift(-1);$("#mNext").onclick=()=>shift(1);$("#mToday").onclick=()=>{ui.month=today().slice(0,7);ui.day=today();vPlanning()};
+  $$("[data-day]").forEach(b=>b.onclick=()=>{ui.day=b.dataset.day;ui.month=ui.day.slice(0,7);vPlanning()});
+  $$("[data-resaday]").forEach(b=>b.onclick=()=>openLocForm({mode:"reservation",dep:b.dataset.resaday<today()?today():b.dataset.resaday}));
+  bindCommon();
+}
+
+/* ================= Vue : Locations ================= */
+function vLocations(){
+  const q=ui.locQ.toLowerCase();
+  let locs=LOCS().sort((a,b)=>(b.dateDepart||"").localeCompare(a.dateDepart||"")||(b.creeLe||0)-(a.creeLe||0));
+  locs=locs.filter(l=>{const st=locState(l);
+    if(ui.locFilter==="actives"&&!(st==="en_cours"||st==="retard"))return false;
+    if(ui.locFilter==="resa"&&!(st==="reservee"||st==="resa_passee"))return false;
+    if(ui.locFilter==="retard"&&st!=="retard")return false;
+    if(ui.locFilter==="rendues"&&st!=="rendue")return false;
+    if(ui.locFilter==="caution"&&l.cautionStatut!=="detenue")return false;
+    if(ui.locFilter==="nonrendu"&&st!=="nonrendu")return false;
+    if(!q)return true;const c=Store.get("clients",l.clientId);
+    return[l.numero,...l.items.map(i=>{const j=Store.get("jeux",i.jeuId)||{};return(j.nom||"")+" "+(j.code||"")}),clientName(c),c&&c.telephone].join(" ").toLowerCase().includes(q)});
+  const F=[["actives","En cours"],["resa","Réservations"],["retard","En retard"],["rendues","Rendues"],...(G()?[]:[["caution","Caution à rendre"]]),["nonrendu","Non rendus"],["toutes","Toutes"]];
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Locations</h1><button class="btn" data-act="csv">Exporter (CSV)</button><button class="btn" data-act="newresa">+ Réservation</button><button class="btn primary" data-act="newloc">+ Nouvelle location</button></div>
+  <div class="toolbar"><input class="search" id="locQ" placeholder="Rechercher un jeu, un client, un n° de location…" value="${esc(ui.locQ)}" aria-label="Rechercher"><div class="chips">${F.map(([k,t])=>`<button class="chip ${ui.locFilter===k?"on":""}" data-f="${k}">${t}</button>`).join("")}</div></div>
+  <div class="panel scroll">${locs.length?`<table class="tbl"><thead><tr><th>N°</th><th>Jeux</th><th>Client</th><th>Départ</th><th>Retour prévu</th><th class="pay">Caution</th><th>Statut</th></tr></thead><tbody>
+  ${locs.map(l=>{const c=Store.get("clients",l.clientId),st=locState(l);
+    return`<tr class="click" data-loc="${l.id}"><td class="num small">${esc(l.numero)}</td><td><b>${esc(locTitle(l))}</b></td><td>${esc(clientName(c))}</td><td class="num">${fd(l.dateDepart)}</td><td class="num">${fd(l.dateRetourPrevue)}${st==="retard"?`<div class="small" style="color:var(--bad)">${lateDays(l)} j de retard</div>`:""}${l.dateRetour?`<div class="small muted">rendu le ${fd(l.dateRetour)}</div>`:""}</td><td class="num pay">${eur(l.caution)}<div class="small muted">${CAUTION_STATUT[l.cautionStatut]||""}</div></td><td>${pill(LOC_PILL[st])}</td></tr>`}).join("")}
+  </tbody></table>`:'<div class="empty">Aucune location dans cette liste.</div>'}</div>`;
+  $("#locQ").oninput=e=>{ui.locQ=e.target.value;const p=e.target.selectionStart;vLocations();const i=$("#locQ");i.focus();i.setSelectionRange(p,p)};
+  $$("[data-f]").forEach(b=>b.onclick=()=>{ui.locFilter=b.dataset.f;vLocations()});
+  bindCommon();
+}
+
+/* ================= Vue : Jeux ================= */
+function vJeux(){
+  const q=ui.jeuQ.toLowerCase();
+  const jeux=Store.all("jeux").sort((a,b)=>a.nom.localeCompare(b.nom,"fr")).filter(j=>{const st=jeuState(j);
+    if(ui.jeuFilter!=="tous"&&!(ui.jeuFilter===st||(ui.jeuFilter==="loue"&&st==="retard")))return false;
+    return!q||[j.nom,j.code,j.editeur,j.categorie].join(" ").toLowerCase().includes(q)});
+  const F=[["tous","Tous"],["dispo","Disponibles"],["loue","Loués"],["indispo","Indisponibles"]];
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Jeux</h1><button class="btn" data-act="labels">Étiquettes QR</button><button class="btn primary" data-act="newjeu">+ Ajouter un jeu</button></div>
+  <div class="toolbar"><input class="search" id="jeuQ" placeholder="Rechercher un jeu, un code, un éditeur…" value="${esc(ui.jeuQ)}" aria-label="Rechercher"><div class="chips">${F.map(([k,t])=>`<button class="chip ${ui.jeuFilter===k?"on":""}" data-f="${k}">${t}</button>`).join("")}</div></div>
+  ${jeux.length?`<div class="games">${jeux.map(j=>{const r=nextResa(j.id);return`<div class="game" data-jeu="${j.id}" tabindex="0"><div class="ph">${j.photo?`<img src="${esc(j.photo)}" alt="">`:esc((j.nom||"?")[0])}</div><div class="b"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="code">${esc(j.code)}</span>${pill(JEU_PILL[jeuState(j)])}</div><h3>${esc(j.nom)}</h3><div class="small muted">${(j.pieces||[]).length} types de pièces<span class="pay"> · ${eur(j.tarif)} · caution ${eur(j.caution)}</span></div>${r?`<div class="small" style="color:var(--warn)">Réservé à partir du ${fd(r.dateDepart)}</div>`:""}</div></div>`}).join("")}</div>`
+  :'<div class="panel empty">Aucun jeu ici. Ajoutez votre premier jeu avec sa liste de pièces.</div>'}`;
+  $("#jeuQ").oninput=e=>{ui.jeuQ=e.target.value;const p=e.target.selectionStart;vJeux();const i=$("#jeuQ");i.focus();i.setSelectionRange(p,p)};
+  $$("[data-f]").forEach(b=>b.onclick=()=>{ui.jeuFilter=b.dataset.f;vJeux()});
+  bindCommon();
+}
+
+/* ================= Vue : Clients ================= */
+function vClients(){
+  const q=ui.cliQ.toLowerCase();
+  const locs=LOCS();
+  const cl=Store.all("clients").sort((a,b)=>(a.nom||"").localeCompare(b.nom||"","fr")).filter(c=>!q||[c.nom,c.prenom,c.societe,c.telephone,c.email,c.ville].join(" ").toLowerCase().includes(q));
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Clients</h1><button class="btn primary" data-act="newcli">+ Nouveau client</button></div>
+  <div class="toolbar"><input class="search" id="cliQ" placeholder="Rechercher un nom, une société, un téléphone…" value="${esc(ui.cliQ)}" aria-label="Rechercher"></div>
+  <div class="panel scroll">${cl.length?`<table class="tbl"><thead><tr><th>Client</th><th>Téléphone</th><th>Ville</th><th>Locations</th><th></th></tr></thead><tbody>${cl.map(c=>{const mine=locs.filter(l=>l.clientId===c.id&&l.statut!=="annulee");const act=mine.filter(l=>l.statut==="en_cours");const late=act.some(l=>locState(l)==="retard");
+    return`<tr class="click" data-cli="${c.id}"><td><b>${esc(clientName(c))}</b>${c.type==="pro"?' <span class="pill p-warn">Pro</span>':""}</td><td class="num">${esc(c.telephone||"—")}</td><td>${esc(c.ville||"—")}</td><td class="num">${mine.length}${act.length?` <span class="small muted">(${act.length} en cours)</span>`:""}</td><td>${c.bloque?pill(["p-retard","Ne plus louer"]):late?pill(LOC_PILL.retard):""}</td></tr>`}).join("")}</tbody></table>`:'<div class="empty">Aucun client. Ils sont aussi créés automatiquement lors d\'une nouvelle location.</div>'}</div>`;
+  $("#cliQ").oninput=e=>{ui.cliQ=e.target.value;const p=e.target.selectionStart;vClients();const i=$("#cliQ");i.focus();i.setSelectionRange(p,p)};
+  bindCommon();
+}
+
+/* ================= Vue : Scanner ================= */
+let camStream=null,camRAF=0;
+function stopCamera(){if(camRAF)cancelAnimationFrame(camRAF);camRAF=0;if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null}}
+function vScanner(){
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Scanner un jeu</h1></div>
+  <div class="grid2">
+    <div class="panel" style="display:flex;flex-direction:column;gap:14px">
+      <div class="scanbox" id="scanbox" hidden><video id="video" playsinline muted></video><div class="frame"></div></div>
+      <div class="toolbar" style="margin:0">
+        <button class="btn primary" id="camBtn" type="button">Ouvrir la caméra</button>
+        <label class="btn" for="qrPhoto">${framed?"Photo du QR code":"Prendre une photo du QR code"}</label>
+        <input type="file" id="qrPhoto" accept="image/*" ${CAP} hidden>
+      </div>
+      ${framed?`<div class="callout info small">Sur téléphone : touchez « Photo du QR code », puis choisissez <b>« Prendre une photo »</b> (ou une photo déjà prise dans la galerie).</div>`:""}
+      <div id="scanMsg" class="small muted">Visez le QR code collé sur la boîte : la fiche du jeu s'ouvre et vous propose de le louer, de démarrer sa réservation ou d'enregistrer son retour.</div>
+      <form id="manual" class="toolbar" style="margin:0"><input class="search" id="manualCode" placeholder="…ou tapez le code (ex. ${esc((S().prefixe||"JEU").toUpperCase())}-0001)" autocomplete="off" aria-label="Code du jeu"><button class="btn" type="submit">Chercher</button></form>
+    </div>
+    <div class="panel" id="scanResult"><h2>Résultat</h2><div class="empty">Aucun jeu scanné pour l'instant.</div></div>
+  </div>`;
+  $("#camBtn").onclick=startCamera;
+  $("#qrPhoto").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;$("#scanMsg").textContent="Lecture de la photo…";const code=await decodeFile(f);if(code)handleCode(code);else $("#scanMsg").innerHTML='<span style="color:var(--bad)">Aucun QR code lisible sur la photo. Reprenez-la plus près, bien éclairée et nette.</span>'};
+  $("#manual").onsubmit=e=>{e.preventDefault();const v=$("#manualCode").value.trim();if(v)handleCode(v)};
+}
+async function startCamera(){
+  const msg=$("#scanMsg");
+  try{camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"},audio:false})}
+  catch(e){msg.innerHTML='<span style="color:var(--warn)">La caméra n\'est pas accessible ici. Utilisez « Prendre une photo du QR code » : sur téléphone, l\'appareil photo s\'ouvre directement.</span>';return}
+  const v=$("#video");v.srcObject=camStream;$("#scanbox").hidden=false;await v.play().catch(()=>{});
+  msg.textContent="Visez le QR code…";$("#camBtn").textContent="Arrêter la caméra";$("#camBtn").onclick=()=>{stopCamera();vScanner()};
+  let busy=false,last=0;
+  const loop=async t=>{if(!camStream)return;camRAF=requestAnimationFrame(loop);if(busy||t-last<180||!v.videoWidth)return;busy=true;last=t;
+    const code=await detectIn(v,v.videoWidth,v.videoHeight);busy=false;
+    if(code&&camStream){stopCamera();$("#scanbox").hidden=true;$("#camBtn").textContent="Scanner un autre jeu";$("#camBtn").onclick=startCamera;if(navigator.vibrate)navigator.vibrate(80);handleCode(code)}};
+  camRAF=requestAnimationFrame(loop);
+}
+function handleCode(raw){
+  const j=findByCode(raw);const box=$("#scanResult");
+  if(!j){if(box){box.innerHTML=`<h2>Résultat</h2><div class="callout warn">Code « ${esc(raw)} » inconnu.</div><div class="toolbar" style="margin-top:12px"><button class="btn primary" id="mkJeu">Créer un jeu avec ce code</button></div>`;$("#mkJeu").onclick=()=>openJeuForm(null,String(raw).trim().toUpperCase())}else toast("Code inconnu : "+raw);return}
+  if(box){$("#scanMsg").textContent="Jeu trouvé : "+j.nom;box.innerHTML=`<h2>Résultat</h2>${scanCard(j)}`;bindScanCard(box,j)}else openJeu(j.id);
+}
+function resaDue(jeuId){const r=nextResa(jeuId);return r&&r.dateDepart<=addDays(today(),1)?r:null}
+function scanCard(j){const st=jeuState(j),l=activeLoc(j.id),c=l&&Store.get("clients",l.clientId),r=nextResa(j.id),rd=resaDue(j.id);
+  return`<div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap"><div style="flex:1;min-width:180px"><span class="code">${esc(j.code)}</span><h3 style="font-size:20px;margin:6px 0">${esc(j.nom)}</h3>${pill(JEU_PILL[st])}
+  ${l?`<p class="small" style="margin:10px 0 0">Loué à <b>${esc(clientName(c))}</b> depuis le ${fd(l.dateDepart)}, retour prévu le <b>${fd(l.dateRetourPrevue)}</b>${l.items.length>1?` (avec ${l.items.length-1} autre(s) jeu(x))`:""}.</p>`:`<p class="small muted" style="margin:10px 0 0">${(j.pieces||[]).length} types de pièces (${piecesTotal(j)} éléments)<span class="pay"> · ${eur(j.tarif)} · caution ${eur(j.caution)}</span></p>`}
+  ${r?`<p class="small" style="color:var(--warn);margin:6px 0 0">Réservé par ${esc(clientName(Store.get("clients",r.clientId)))} du ${fd(r.dateDepart)} au ${fd(r.dateRetourPrevue)}.</p>`:""}
+  ${j.indisponible?`<p class="small" style="color:var(--warn)">${esc(j.manques||"Marqué indisponible")}</p>`:""}</div>${j.photo?`<img src="${esc(j.photo)}" alt="" style="width:110px;border-radius:8px">`:""}</div>
+  <div class="toolbar" style="margin:14px 0 0">${l?`<button class="btn primary" data-sc="retour">Enregistrer le retour</button><button class="btn" data-sc="loc">Voir la location</button>`:rd?`<button class="btn primary" data-sc="start">Démarrer la réservation</button>`:`<button class="btn primary" data-sc="louer" ${j.indisponible?"disabled":""}>Louer ce jeu</button>`}<button class="btn" data-sc="fiche">Fiche du jeu</button></div>`}
+function bindScanCard(box,j){const l=activeLoc(j.id),rd=resaDue(j.id);
+  $$("[data-sc]",box).forEach(b=>b.onclick=()=>{const a=b.dataset.sc;if(a==="retour")openRetourForm(l.id);if(a==="loc")openLoc(l.id);if(a==="louer")openLocForm({jeuIds:[j.id]});if(a==="start")openLocForm({resaId:rd.id});if(a==="fiche")openJeu(j.id)})}
+
+/* ================= Vue : Réglages ================= */
+function vReglages(){
+  const s=S();const ex=Store.all("jeux").some(j=>j.exemple)||Store.all("clients").some(c=>c.exemple);
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Réglages</h1></div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+  <form class="panel" id="setForm" style="display:flex;flex-direction:column;gap:16px">
+    <h2>Votre structure</h2>
+    <p class="small muted" style="margin:0">Ces informations apparaissent dans l'en-tête, sur les bons de location et dans les messages aux clients.</p>
+    <div class="form">
+      <div class="f"><label for="s_nom">Nom</label><input id="s_nom" value="${esc(s.nom)}" required></div>
+      <div class="f"><label for="s_slogan">Sous-titre</label><input id="s_slogan" value="${esc(s.slogan)}"></div>
+      <div class="f full"><label for="s_adresse">Adresse</label><input id="s_adresse" value="${esc(s.adresse)}"></div>
+      <div class="f"><label for="s_tel">Téléphone</label><input id="s_tel" value="${esc(s.telephone)}"></div>
+      <div class="f"><label for="s_mail">E-mail</label><input id="s_mail" type="email" value="${esc(s.email)}"></div>
+      <div class="f"><label for="s_siret">SIRET</label><input id="s_siret" value="${esc(s.siret)}"></div>
+      <div class="f"><label for="s_couleur">Couleur principale</label><input id="s_couleur" type="color" value="${esc(s.couleur)}" style="height:42px;padding:4px"></div>
+      <div class="f"><label for="s_logo">Logo</label><input id="s_logo" type="file" accept="image/*"><div class="small muted">${s.logo?'Logo en place. <button type="button" class="btn sm" id="rmLogo">Retirer</button>':"Rond de préférence."}</div></div>
+    </div>
+    <h2>Règles de location</h2>
+    <div class="form">
+      <div class="f"><label for="s_duree">Durée par défaut (jours)</label><input id="s_duree" type="number" min="1" value="${esc(s.dureeDefaut)}"></div>
+      <label class="check f full"><input type="checkbox" id="s_gratuit" ${s.gratuit?"checked":""}><span><b>Prêt gratuit</b> : pas de prix, de caution ni de pénalités (on suit seulement quel jeu est chez qui, et jusqu'à quand)</span></label>
+      <div class="f pay"><label for="s_tarif">Tarif par défaut (€)</label><input id="s_tarif" type="number" step="0.5" min="0" value="${esc(s.tarifDefaut)}"></div>
+      <div class="f pay"><label for="s_caution">Caution par défaut (€)</label><input id="s_caution" type="number" step="1" min="0" value="${esc(s.cautionDefaut)}"></div>
+      <div class="f pay"><label for="s_pen">Pénalité par jour de retard et par jeu (€)</label><input id="s_pen" type="number" step="0.1" min="0" value="${esc(s.penaliteJour)}"></div>
+      <div class="f pay"><label for="s_delai">Caution encaissable après (jours de retard)</label><input id="s_delai" type="number" min="1" value="${esc(s.delaiEncaissement)}"></div>
+      <div class="f"><label for="s_prefixe">Préfixe des codes jeux</label><input id="s_prefixe" value="${esc(s.prefixe)}" maxlength="8"></div>
+      <div class="f"><label for="s_bk">Rappel de sauvegarde (jours)</label><input id="s_bk" type="number" min="1" value="${esc(s.rappelSauvegarde)}"></div>
+      <div class="f full"><label for="s_cond">Conditions (signées par le client) · {penalite} et {delai} sont remplacés automatiquement</label><textarea id="s_cond" rows="5">${esc(s.conditions)}</textarea></div>
+    </div>
+    <h2>Messages aux clients</h2>
+    <p class="small muted" style="margin:0">Mots remplacés automatiquement : {prenom} {nom} {jeux} {date_depart} {date_retour} {structure} {adresse} {telephone} {penalite}</p>
+    <div class="form">
+      <div class="f full"><label for="s_m1">Rappel la veille du retour</label><textarea id="s_m1" rows="3">${esc(s.msgVeille)}</textarea></div>
+      <div class="f full"><label for="s_m2">Retard</label><textarea id="s_m2" rows="3">${esc(s.msgRetard)}</textarea></div>
+      <div class="f full"><label for="s_m3">Confirmation de réservation</label><textarea id="s_m3" rows="3">${esc(s.msgResa)}</textarea></div>
+    </div>
+    <div><button class="btn primary" type="submit">Enregistrer les réglages</button></div>
+  </form>
+  <div class="panel" style="display:flex;flex-direction:column;gap:12px">
+    <h2>Sauvegarde</h2>
+    <p class="small muted" style="margin:0">${Store.mode==="cloud"?"Vos données sont synchronisées dans votre espace Claude.":"Vos données sont enregistrées sur cet appareil uniquement."} Dernière sauvegarde : <b>${s.derniereSauvegarde?new Date(s.derniereSauvegarde).toLocaleDateString("fr-FR"):"jamais"}</b>.</p>
+    <div class="toolbar" style="margin:0"><button class="btn primary" data-act="backup">Sauvegarder maintenant</button><label class="btn" for="importFile">Importer une sauvegarde</label><input type="file" id="importFile" accept="application/json,.json" hidden><button class="btn" data-act="exportCat">Exporter le catalogue des jeux seul</button><button class="btn" data-act="csv">Exporter les locations (CSV)</button></div>
+    <div id="importBox"></div>
+  </div>
+  ${!framed&&window.APP_SW?`<div class="panel" style="display:flex;flex-direction:column;gap:12px"><h2>Application</h2><p class="small muted" style="margin:0">${isInstalled()?"L'application est installée sur cet appareil.":"Installez l'application pour l'ouvrir depuis l'écran d'accueil, en plein écran et même sans internet."}</p>${canInstall()?'<div><button class="btn primary" data-act="install">Installer l\'application</button></div>':""}</div>`:""}
+  <div class="panel" style="display:flex;flex-direction:column;gap:12px">
+    <h2>Exemples</h2>
+    <p class="small muted" style="margin:0">Quelques jeux, clients, locations et réservations fictifs pour essayer l'application.</p>
+    <div class="toolbar" style="margin:0">${ex?'<button class="btn danger" id="clearEx">Effacer les exemples</button>':'<button class="btn" data-act="exemples">Charger des exemples</button>'}</div>
+  </div>
+  </div>`;
+  let logo=s.logo;
+  $("#s_logo").onchange=async e=>{const f=e.target.files[0];if(f){logo=await resizeImage(f,240,.85);toast("Logo prêt, enregistrez les réglages")}};
+  if($("#rmLogo"))$("#rmLogo").onclick=()=>{logo="";toast("Logo retiré, enregistrez les réglages")};
+  $("#setForm").onsubmit=e=>{e.preventDefault();
+    saveS({nom:$("#s_nom").value.trim(),slogan:$("#s_slogan").value.trim(),adresse:$("#s_adresse").value.trim(),telephone:$("#s_tel").value.trim(),email:$("#s_mail").value.trim(),siret:$("#s_siret").value.trim(),couleur:$("#s_couleur").value,logo,
+      dureeDefaut:num($("#s_duree").value)||7,tarifDefaut:num($("#s_tarif").value),cautionDefaut:num($("#s_caution").value),penaliteJour:num($("#s_pen").value),delaiEncaissement:num($("#s_delai").value)||20,gratuit:$("#s_gratuit").checked,prefixe:($("#s_prefixe").value.trim()||"JEU").toUpperCase(),rappelSauvegarde:num($("#s_bk").value)||7,conditions:$("#s_cond").value,
+      msgVeille:$("#s_m1").value,msgRetard:$("#s_m2").value,msgResa:$("#s_m3").value});
+    applyBrand();toast("Réglages enregistrés");vReglages()};
+  $("#importFile").onchange=e=>{const f=e.target.files[0];e.target.value="";if(f)importBackup(f)};
+  if($("#clearEx"))confirmBtn($("#clearEx"),"Confirmer l'effacement",()=>{["jeux","clients","locations"].forEach(c=>Store.all(c).filter(r=>r.exemple).forEach(r=>Store.del(c,r.id)));toast("Exemples effacés");vReglages()});
+  bindCommon();
+}
+async function exportCatalog(){const data=await buildBackup(true);saveFile(`${slug()}-catalogue-${today()}.json`,data,"application/json")}
+function importBackup(file){
+  const fr=new FileReader();fr.onload=()=>{let d;try{d=JSON.parse(fr.result)}catch(e){toast("Ce fichier n'est pas une sauvegarde valide.");return}
+    if(!d||d.app!=="location-jeux"){toast("Ce fichier ne vient pas de cette application.");return}
+    const box=$("#importBox"),np=Object.keys(d.photos||{}).length;
+    box.innerHTML=`<div class="callout info">Fichier « ${esc(file.name)} » : ${(d.jeux||[]).length} jeux, ${(d.clients||[]).length} clients, ${(d.locations||[]).length} locations${np?`, ${np} photos`:""}.<br>Les éléments déjà présents seront mis à jour, les autres ajoutés.${d.type==="catalogue"?" Vos réglages actuels sont conservés.":""}</div><div class="toolbar" style="margin-top:8px"><button class="btn primary" id="doImport">Importer</button><button class="btn" id="noImport">Annuler</button></div>`;
+    $("#noImport").onclick=()=>box.innerHTML="";
+    $("#doImport").onclick=async()=>{const keep={};
+      ["jeux","clients","locations"].forEach(c=>(d[c]||[]).forEach(r=>{if(r&&r.id)Store.put(c,r)}));
+      (d.reglages||[]).forEach(r=>{if(r&&r.id==="general"){const clean=Object.fromEntries(Object.entries(r).filter(([k,v])=>v!=null&&!/^pin|secours/i.test(k)));saveS(Object.assign(clean,keep))}});
+      for(const [id,data] of Object.entries(d.photos||{})){try{await Store.putPhoto(id,data)}catch(e){}}
+      applyBrand();toast("Import terminé");vReglages()};
+  };fr.readAsText(file)}
+function exportCSV(){
+  const head=["N°","Statut","Jeux","Codes","Client","Téléphone","E-mail","Départ","Retour prévu","Retour effectif","Jours de retard","Tarif","Paiement","Payé","Caution","Mode caution","Statut caution","Retenue","Pièces manquantes","Rappels"];
+  const f2=n=>num(n).toFixed(2).replace(".",",");
+  const rows=LOCS().sort((a,b)=>(a.dateDepart||"").localeCompare(b.dateDepart||"")).map(l=>{const c=Store.get("clients",l.clientId)||{};
+    const miss=l.items.flatMap(i=>(i.piecesRetour||[]).filter(p=>p.manquant>0).map(p=>p.manquant+" × "+p.nom+" ("+jeuNom(i.jeuId)+")")).join(" ; ");
+    return[l.numero,LOC_PILL[locState(l)][1],l.items.map(i=>jeuNom(i.jeuId)).join(" + "),l.items.map(i=>(Store.get("jeux",i.jeuId)||{}).code||"").join(" "),clientName(c),c.telephone,c.email,fd(l.dateDepart),fd(l.dateRetourPrevue),l.dateRetour?fd(l.dateRetour):"",lateDays(l),f2(l.tarif),l.paiementMode,l.paye?"oui":"non",f2(l.caution),l.cautionMode,CAUTION_STATUT[l.cautionStatut]||"",f2(l.cautionRetenue),miss,l.rappels.length]});
+  const csv="﻿"+[head,...rows].map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(";")).join("\r\n");
+  saveFile(`locations-${today()}.csv`,csv,"text/csv");
+}
+
+/* ================= Liaisons communes ================= */
+function bindCommon(){
+  $$("[data-loc]").forEach(e=>e.onclick=()=>openLoc(e.dataset.loc));
+  $$("[data-rap]").forEach(b=>b.onclick=e=>{e.stopPropagation();openRappel(b.dataset.rap)});
+  $$("[data-jeu]").forEach(e=>{e.onclick=()=>openJeu(e.dataset.jeu);e.onkeydown=k=>{if(k.key==="Enter")openJeu(e.dataset.jeu)}});
+  $$("[data-cli]").forEach(e=>e.onclick=()=>openClient(e.dataset.cli));
+  $$("[data-act]").forEach(b=>b.onclick=()=>{const a=b.dataset.act;
+    if(a==="newloc")openLocForm({});if(a==="newresa")openLocForm({mode:"reservation"});if(a==="newjeu")openJeuForm();if(a==="newcli")openClientForm();if(a==="labels")openLabels();
+    if(a==="exemples"){loadExamples();toast("Exemples chargés");render()}
+    if(a==="csv")exportCSV();if(a==="backup")openBackup();if(a==="exportCat")exportCatalog();
+    if(a==="install")doInstall();if(a==="installHide"){lsSet(NS+":installHide","1");render()}});
+}
+
+/* ================= Fiche + formulaire Jeu ================= */
+function openJeu(id){
+  const j=Store.get("jeux",id);if(!j)return;const st=jeuState(j),l=activeLoc(id);
+  const hist=LOCS().filter(x=>jeuIds(x).includes(id)&&x.statut!=="annulee").sort((a,b)=>(b.dateDepart||"").localeCompare(a.dateDepart||""));
+  const futur=hist.filter(x=>x.statut==="reservee");
+  openModal(j.nom,`
+    <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
+      <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="code">${esc(j.code)}</span>${pill(JEU_PILL[st])}${j.exemple?'<span class="pill p-warn">Exemple</span>':""}</div>
+        <dl class="dl">
+          ${j.editeur?`<dt>Éditeur</dt><dd>${esc(j.editeur)}</dd>`:""}${j.categorie?`<dt>Catégorie</dt><dd>${esc(j.categorie)}</dd>`:""}
+          ${j.joueursMin||j.joueursMax?`<dt>Joueurs</dt><dd>${esc(j.joueursMin||"?")} à ${esc(j.joueursMax||"?")}</dd>`:""}${j.age?`<dt>Âge</dt><dd>${esc(j.age)} ans et +</dd>`:""}${j.dureePartie?`<dt>Durée d'une partie</dt><dd>${esc(j.dureePartie)} min</dd>`:""}
+          <dt class="pay">Tarif location</dt><dd class="num pay">${eur(j.tarif)}</dd><dt class="pay">Caution</dt><dd class="num pay">${eur(j.caution)}</dd>${j.valeur?`<dt class="pay">Valeur à neuf</dt><dd class="num pay">${eur(j.valeur)}</dd>`:""}
+          <dt>État</dt><dd>${esc(j.etat||"—")}</dd>
+          ${j.manques?`<dt>À compléter</dt><dd style="color:var(--warn)">${esc(j.manques)}</dd>`:""}${j.notes?`<dt>Notes</dt><dd>${esc(j.notes)}</dd>`:""}
+        </dl>
+        ${l?`<div class="callout ${st==="retard"?"bad":"info"}">Loué à <b>${esc(clientName(Store.get("clients",l.clientId)))}</b>, retour prévu le ${fd(l.dateRetourPrevue)}${st==="retard"?` (${lateDays(l)} j de retard)`:""}.</div>`:""}
+        ${futur.length?`<div class="callout warn">Réservé : ${futur.map(r=>`du ${fd(r.dateDepart)} au ${fd(r.dateRetourPrevue)}`).join(" ; ")}</div>`:""}
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">${j.photo?`<img src="${esc(j.photo)}" alt="" style="width:180px;border-radius:10px">`:""}<div class="qrbox">${qrSvg(j.code)}</div><button class="btn sm" id="dlQR" type="button">Télécharger l'étiquette</button></div>
+    </div>
+    <fieldset><legend>Liste des pièces (${piecesTotal(j)} éléments)</legend>${(j.pieces||[]).length?`<table class="tbl"><tbody>${j.pieces.map(p=>`<tr><td>${esc(p.nom)}</td><td class="num" style="text-align:right">${esc(p.qte)}</td><td class="num pay muted small" style="text-align:right">${num(p.prix)?eur(p.prix)+" pièce":""}</td></tr>`).join("")}</tbody></table>`:'<div class="muted small">Aucune pièce renseignée.</div>'}</fieldset>
+    <fieldset><legend>Historique (${hist.length})</legend>${hist.length?`<div class="list">${hist.map(x=>`<div class="row" data-loc="${x.id}"><div class="main"><div class="t">${esc(clientName(Store.get("clients",x.clientId)))}</div><div class="s">${fd(x.dateDepart)} → ${x.dateRetour?fd(x.dateRetour):fd(x.dateRetourPrevue)}${((x.items.find(i=>i.jeuId===id)||{}).piecesRetour||[]).some(p=>p.manquant>0)?" · pièces manquantes":""}</div></div>${pill(LOC_PILL[locState(x)])}</div>`).join("")}</div>`:'<div class="muted small">Jamais loué.</div>'}</fieldset>`,
+    `<button class="btn danger" id="delJeu" type="button">Supprimer</button><span style="flex:1"></span><button class="btn" id="editJeu" type="button">Modifier</button><button class="btn" id="resaJeu" type="button">Réserver</button>${l?`<button class="btn primary" id="retJeu" type="button">Enregistrer le retour</button>`:`<button class="btn primary" id="locJeu" type="button" ${j.indisponible?"disabled":""}>Louer ce jeu</button>`}`,
+    m=>{
+      $$("[data-loc]",m).forEach(e=>e.onclick=()=>openLoc(e.dataset.loc));
+      $("#editJeu").onclick=()=>openJeuForm(j);
+      $("#resaJeu").onclick=()=>openLocForm({mode:"reservation",jeuIds:[id]});
+      if(l)$("#retJeu").onclick=()=>openRetourForm(l.id);else $("#locJeu").onclick=()=>openLocForm({jeuIds:[id]});
+      $("#dlQR").onclick=async()=>{saveFile(`etiquette-${j.code}.png`,await canvasBlob(labelCanvas(j)),"image/png")};
+      if(hist.some(isOpen))$("#delJeu").onclick=()=>toast("Ce jeu est loué ou réservé : impossible de le supprimer maintenant.");
+      else confirmBtn($("#delJeu"),"Confirmer la suppression",()=>{Store.del("jeux",id);closeModal();toast("Jeu supprimé (l'historique est conservé)");render()});
+    });
+}
+function labelCanvas(j){
+  const s=S(),W=600,H=300,c=document.createElement("canvas");c.width=W;c.height=H;const x=c.getContext("2d");
+  x.fillStyle="#fff";x.fillRect(0,0,W,H);x.strokeStyle="#bbb";x.setLineDash([8,6]);x.strokeRect(4,4,W-8,H-8);x.setLineDash([]);
+  try{x.drawImage(qrCanvas(j.code,250),25,25,250,250)}catch(e){}
+  x.fillStyle="#111";x.font="600 30px Oswald, Arial Narrow, sans-serif";wrapText(x,j.nom.toUpperCase(),295,70,280,34,3);
+  x.font="500 24px ui-monospace, Menlo, monospace";x.fillText(j.code,295,190);
+  x.font="16px Work Sans, sans-serif";x.fillStyle="#555";x.fillText(`${(j.pieces||[]).length} types de pièces · ${piecesTotal(j)} éléments`,295,222);
+  x.fillText((s.nom||"").slice(0,32),295,255);return c;
+}
+function wrapText(x,t,X,Y,w,lh,max){const words=t.split(" ");let line="",n=0;for(const wd of words){const test=line?line+" "+wd:wd;if(x.measureText(test).width>w&&line){x.fillText(line,X,Y+n*lh);n++;line=wd;if(n>=max-1)break}else line=test}if(n<max)x.fillText(line,X,Y+n*lh)}
+function openLabels(){
+  const jeux=Store.all("jeux").sort((a,b)=>a.code.localeCompare(b.code));
+  openModal("Étiquettes QR",`<p class="small muted" style="margin:0">Collez une étiquette sur chaque boîte (de préférence sous plastique). Chaque étiquette se télécharge en image, ou toutes d'un coup en planche A4.</p>
+    ${jeux.length?`<div class="labels">${jeux.map(j=>`<div class="label">${qrSvg(j.code)}<b>${esc(j.nom)}</b><span class="code">${esc(j.code)}</span></div>`).join("")}</div>`:'<div class="empty">Aucun jeu.</div>'}`,
+    `${framed?"":'<button class="btn" id="prLab" type="button">Imprimer</button>'}<button class="btn primary" id="dlLab" type="button" ${jeux.length?"":"disabled"}>Télécharger la planche A4 (PNG)</button>`,
+    ()=>{if($("#prLab"))$("#prLab").onclick=()=>window.print();
+      $("#dlLab").onclick=async()=>{const per=10;for(let p=0;p*per<jeux.length;p++){const page=document.createElement("canvas");page.width=1240;page.height=1754;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,1240,1754);
+        jeux.slice(p*per,p*per+per).forEach((j,i)=>{x.drawImage(labelCanvas(j),20+(i%2)*610,27+Math.floor(i/2)*340)});
+        await saveFile(`etiquettes-qr-page${p+1}.png`,await canvasBlob(page),"image/png")}}});
+}
+function openJeuForm(j,code){
+  const s=S();const isNew=!j;j=j||{id:uid(),code:code||nextCode(),nom:"",pieces:[],tarif:s.tarifDefaut,caution:s.cautionDefaut,etat:"Très bon",creeLe:Date.now()};
+  let photo=j.photo||"";
+  const pieceRow=(p={nom:"",qte:1})=>`<div class="piece"><input placeholder="Ex. Cartes ressources" value="${esc(p.nom)}" aria-label="Nom de la pièce"><input type="number" min="0" value="${esc(p.qte)}" aria-label="Quantité"><input class="pay" type="number" min="0" step="0.1" value="${num(p.prix)?esc(p.prix):""}" placeholder="—" aria-label="Prix de remplacement d'une pièce (€)"><button type="button" class="btn sm" aria-label="Retirer">×</button></div>`;
+  openModal(isNew?"Nouveau jeu":"Modifier le jeu",`<form id="jf" class="form">
+    <div class="f"><label for="j_nom">Nom du jeu *</label><input id="j_nom" required value="${esc(j.nom)}"></div>
+    <div class="f"><label for="j_code">Code (QR)</label><input id="j_code" required value="${esc(j.code)}" style="font-family:ui-monospace,monospace"></div>
+    <div class="f"><label for="j_editeur">Éditeur</label><input id="j_editeur" value="${esc(j.editeur)}"></div>
+    <div class="f"><label for="j_cat">Catégorie</label><input id="j_cat" list="cats" value="${esc(j.categorie)}"><datalist id="cats"><option>Famille</option><option>Ambiance</option><option>Stratégie</option><option>Enfants</option><option>Coopératif</option><option>Cartes</option><option>Expert</option></datalist></div>
+    <div class="f"><label for="j_jmin">Joueurs min.</label><input id="j_jmin" type="number" min="1" value="${esc(j.joueursMin)}"></div>
+    <div class="f"><label for="j_jmax">Joueurs max.</label><input id="j_jmax" type="number" min="1" value="${esc(j.joueursMax)}"></div>
+    <div class="f"><label for="j_age">Âge minimum</label><input id="j_age" type="number" min="0" value="${esc(j.age)}"></div>
+    <div class="f"><label for="j_duree">Durée d'une partie (min)</label><input id="j_duree" type="number" min="0" value="${esc(j.dureePartie)}"></div>
+    <div class="f pay"><label for="j_tarif">Tarif de location (€)</label><input id="j_tarif" type="number" step="0.5" min="0" value="${esc(j.tarif)}"></div>
+    <div class="f pay"><label for="j_caution">Caution (€)</label><input id="j_caution" type="number" step="1" min="0" value="${esc(j.caution)}"></div>
+    <div class="f"><label for="j_valeur">Valeur à neuf (€)</label><input id="j_valeur" type="number" step="1" min="0" value="${esc(j.valeur)}"></div>
+    <div class="f"><label for="j_etat">État</label><select id="j_etat">${ETATS.map(e=>`<option ${j.etat===e?"selected":""}>${e}</option>`).join("")}</select></div>
+    <div class="f full"><label for="j_photo">Photo de la boîte</label><input id="j_photo" type="file" accept="image/*"></div>
+    <fieldset class="f full"><legend>Liste des pièces</legend>
+      <div class="piecehead"><span>Pièce</span><span>Qté</span><span class="pay">Prix 1 pièce (€)</span><span></span></div>
+      <div class="pieces" id="plist">${(j.pieces.length?j.pieces:[{nom:"Livret de règles",qte:1}]).map(pieceRow).join("")}</div>
+      <div class="toolbar" style="margin:10px 0 0"><button type="button" class="btn sm" id="addP">+ Ajouter une pièce</button><button type="button" class="btn sm" id="bulkP">Coller une liste</button></div>
+      <div id="bulkBox" hidden><textarea id="bulkTxt" rows="5" style="width:100%;margin-top:8px;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--bg)" placeholder="Une pièce par ligne, ex. :&#10;95 cartes ressources&#10;2 dés&#10;Plateau x1" aria-label="Liste de pièces"></textarea><button type="button" class="btn sm" id="bulkGo" style="margin-top:6px">Ajouter ces pièces</button></div>
+    </fieldset>
+    <div class="f full"><label for="j_manques">Pièces manquantes / à réparer</label><input id="j_manques" value="${esc(j.manques)}"></div>
+    <div class="f full"><label for="j_notes">Notes</label><textarea id="j_notes">${esc(j.notes)}</textarea></div>
+    <label class="check f full"><input type="checkbox" id="j_indispo" ${j.indisponible?"checked":""}><span>Indisponible à la location (incomplet, en réparation…)</span></label>
+  </form>`,`<button class="btn" type="button" id="cancel">Annuler</button><button class="btn primary" type="submit" form="jf">Enregistrer</button>`,
+  ()=>{
+    const plist=$("#plist");
+    const bindRows=()=>$$(".piece button",plist).forEach(b=>b.onclick=()=>b.parentElement.remove());bindRows();
+    $("#addP").onclick=()=>{plist.insertAdjacentHTML("beforeend",pieceRow());bindRows();$$(".piece input",plist).slice(-2)[0].focus()};
+    $("#bulkP").onclick=()=>{$("#bulkBox").hidden=!$("#bulkBox").hidden};
+    $("#bulkGo").onclick=()=>{$("#bulkTxt").value.split(/\n/).map(t=>t.trim()).filter(Boolean).forEach(t=>{let q=1,n=t,mm=t.match(/^(\d+)\s*[x×]?\s+(.+)$/i);if(mm){q=+mm[1];n=mm[2]}else if((mm=t.match(/^(.+?)\s*[x×:]\s*(\d+)$/i))){n=mm[1];q=+mm[2]}plist.insertAdjacentHTML("beforeend",pieceRow({nom:n.charAt(0).toUpperCase()+n.slice(1),qte:q}))});bindRows();$("#bulkTxt").value="";$("#bulkBox").hidden=true};
+    $("#j_photo").onchange=async e=>{const f=e.target.files[0];if(f)photo=await resizeImage(f)};
+    $("#cancel").onclick=()=>isNew?closeModal():openJeu(j.id);
+    $("#jf").onsubmit=e=>{e.preventDefault();
+      const code=$("#j_code").value.trim().toUpperCase();
+      if(Store.all("jeux").some(x=>x.id!==j.id&&(x.code||"").toUpperCase()===code)){toast("Ce code est déjà utilisé par un autre jeu.");return}
+      const pieces=$$(".piece",plist).map(r=>{const i=$$("input",r);return{nom:i[0].value.trim(),qte:num(i[1].value),prix:num(i[2].value)}}).filter(p=>p.nom);
+      Object.assign(j,{nom:$("#j_nom").value.trim(),code,editeur:$("#j_editeur").value.trim(),categorie:$("#j_cat").value.trim(),joueursMin:$("#j_jmin").value,joueursMax:$("#j_jmax").value,age:$("#j_age").value,dureePartie:$("#j_duree").value,
+        tarif:num($("#j_tarif").value),caution:num($("#j_caution").value),valeur:num($("#j_valeur").value),etat:$("#j_etat").value,photo,pieces,manques:$("#j_manques").value.trim(),notes:$("#j_notes").value.trim(),indisponible:$("#j_indispo").checked});
+      Store.put("jeux",j);toast(isNew?"Jeu ajouté":"Jeu enregistré");render();openJeu(j.id)};
+  });
+}
+
+/* ================= Clients ================= */
+const clientFields=(c={},p="c_")=>`
+  <div class="f"><label for="${p}type">Type</label><select id="${p}type"><option value="part" ${c.type!=="pro"?"selected":""}>Particulier</option><option value="pro" ${c.type==="pro"?"selected":""}>Professionnel / société</option></select></div>
+  <div class="f"><label for="${p}societe">Société</label><input id="${p}societe" value="${esc(c.societe)}"></div>
+  <div class="f"><label for="${p}nom">Nom *</label><input id="${p}nom" required value="${esc(c.nom)}" autocomplete="family-name"></div>
+  <div class="f"><label for="${p}prenom">Prénom</label><input id="${p}prenom" value="${esc(c.prenom)}" autocomplete="given-name"></div>
+  <div class="f"><label for="${p}tel">Téléphone *</label><input id="${p}tel" type="tel" required value="${esc(c.telephone)}" autocomplete="tel"></div>
+  <div class="f"><label for="${p}email">E-mail</label><input id="${p}email" type="email" value="${esc(c.email)}" autocomplete="email"></div>
+  <div class="f full"><label for="${p}adresse">Adresse</label><input id="${p}adresse" value="${esc(c.adresse)}" autocomplete="street-address"></div>
+  <div class="f"><label for="${p}cp">Code postal</label><input id="${p}cp" value="${esc(c.cp)}" autocomplete="postal-code"></div>
+  <div class="f"><label for="${p}ville">Ville</label><input id="${p}ville" value="${esc(c.ville)}" autocomplete="address-level2"></div>
+  <div class="f"><label for="${p}naiss">Date de naissance</label><input id="${p}naiss" type="date" value="${esc(c.naissance)}"></div>
+  <div class="f"><label for="${p}pid">Pièce d'identité</label><select id="${p}pid">${["","Carte d'identité","Passeport","Permis de conduire","Titre de séjour","Kbis (société)"].map(o=>`<option ${c.pieceType===o?"selected":""}>${o}</option>`).join("")}</select></div>
+  <div class="f"><label for="${p}pidn">N° de la pièce</label><input id="${p}pidn" value="${esc(c.pieceNum)}"></div>
+  <div class="f"><label for="${p}siret">SIRET (pro)</label><input id="${p}siret" value="${esc(c.siret)}"></div>
+  <div class="f full"><label for="${p}notes">Notes</label><textarea id="${p}notes" rows="2">${esc(c.notes)}</textarea></div>`;
+function readClient(c,p="c_"){const g=k=>$("#"+p+k).value.trim();return Object.assign(c,{type:g("type"),societe:g("societe"),nom:g("nom"),prenom:g("prenom"),telephone:g("tel"),email:g("email"),adresse:g("adresse"),cp:g("cp"),ville:g("ville"),naissance:g("naiss"),pieceType:g("pid"),pieceNum:g("pidn"),siret:g("siret"),notes:g("notes")})}
+function openClientForm(c){
+  const isNew=!c;c=c||{id:uid(),creeLe:Date.now()};
+  openModal(isNew?"Nouveau client":"Modifier le client",`<form id="cf" class="form">${clientFields(c)}
+    <label class="check f full"><input type="checkbox" id="c_bloque" ${c.bloque?"checked":""}><span>Ne plus louer à ce client</span></label>
+    <div class="f full"><label for="c_motif">Motif</label><input id="c_motif" value="${esc(c.motifBlocage)}"></div></form>`,
+  `<button class="btn" type="button" id="cancel">Annuler</button><button class="btn primary" type="submit" form="cf">Enregistrer</button>`,
+  ()=>{$("#cancel").onclick=()=>isNew?closeModal():openClient(c.id);
+    $("#cf").onsubmit=e=>{e.preventDefault();readClient(c);c.bloque=$("#c_bloque").checked;c.motifBlocage=$("#c_motif").value.trim();Store.put("clients",c);toast("Client enregistré");render();openClient(c.id)}});
+}
+function openClient(id){
+  const c=Store.get("clients",id);if(!c)return;
+  const mine=LOCS().filter(l=>l.clientId===id).sort((a,b)=>(b.dateDepart||"").localeCompare(a.dateDepart||""));
+  const incidents=mine.filter(l=>lateDays(l)>0||l.items.some(i=>(i.piecesRetour||[]).some(p=>p.manquant>0))).length;
+  const contact=[c.telephone,c.email].filter(Boolean).join(" · ");
+  openModal(clientName(c),`
+    ${c.bloque?`<div class="callout bad">Ne plus louer à ce client${c.motifBlocage?" : "+esc(c.motifBlocage):""}</div>`:""}
+    <div class="kpis" style="margin:0"><div class="kpi"><div class="v">${mine.filter(l=>l.statut!=="annulee").length}</div><div class="l">Locations</div></div><div class="kpi"><div class="v">${mine.filter(l=>l.statut==="en_cours").length}</div><div class="l">En cours</div></div><div class="kpi ${incidents?"alert":""}"><div class="v">${incidents}</div><div class="l">Incidents (retard, pièces)</div></div></div>
+    <dl class="dl">
+      <dt>Type</dt><dd>${c.type==="pro"?"Professionnel":"Particulier"}${c.exemple?' <span class="pill p-warn">Exemple</span>':""}</dd>
+      ${c.societe?`<dt>Société</dt><dd>${esc(c.societe)}${c.siret?" · SIRET "+esc(c.siret):""}</dd>`:""}
+      <dt>Contact</dt><dd>${esc(contact||"—")} ${contact?'<button class="btn sm" id="cpy" type="button">Copier</button>':""}</dd>
+      <dt>Adresse</dt><dd>${esc([c.adresse,[c.cp,c.ville].filter(Boolean).join(" ")].filter(Boolean).join(", ")||"—")}</dd>
+      ${c.naissance?`<dt>Date de naissance</dt><dd>${fd(c.naissance)}</dd>`:""}
+      ${c.pieceType?`<dt>Pièce d'identité</dt><dd>${esc(c.pieceType)} ${esc(c.pieceNum||"")}</dd>`:""}
+      ${c.notes?`<dt>Notes</dt><dd>${esc(c.notes)}</dd>`:""}
+    </dl>
+    <fieldset><legend>Historique</legend>${mine.length?`<div class="list">${mine.map(l=>`<div class="row" data-loc="${l.id}"><div class="main"><div class="t">${esc(locTitle(l))}</div><div class="s">${fd(l.dateDepart)} → ${l.dateRetour?fd(l.dateRetour):"retour prévu "+fd(l.dateRetourPrevue)}</div></div>${pill(LOC_PILL[locState(l)])}</div>`).join("")}</div>`:'<div class="muted small">Aucune location.</div>'}</fieldset>`,
+  `<button class="btn danger" id="delC" type="button">Supprimer</button><span style="flex:1"></span><button class="btn" id="editC" type="button">Modifier</button><button class="btn" id="resaC" type="button" ${c.bloque?"disabled":""}>Réservation</button><button class="btn primary" id="locC" type="button" ${c.bloque?"disabled":""}>Nouvelle location</button>`,
+  m=>{$$("[data-loc]",m).forEach(e=>e.onclick=()=>openLoc(e.dataset.loc));
+    $("#editC").onclick=()=>openClientForm(c);$("#locC").onclick=()=>openLocForm({clientId:id});$("#resaC").onclick=()=>openLocForm({mode:"reservation",clientId:id});
+    if($("#cpy"))$("#cpy").onclick=()=>navigator.clipboard.writeText(contact).then(()=>toast("Copié"),()=>toast(contact));
+    if(mine.some(isOpen))$("#delC").onclick=()=>toast("Ce client a une location ou une réservation en cours.");
+    else confirmBtn($("#delC"),"Confirmer la suppression",()=>{Store.del("clients",id);closeModal();toast("Client supprimé");render()})});
+}
+
+/* ================= Location / réservation (un ou plusieurs jeux) ================= */
+function openLocForm({jeuIds:preJeux=[],clientId,resaId,mode="location",dep}){
+  const s=S();
+  const resa=resaId?norm(Store.get("locations",resaId)):null;
+  const isResa=mode==="reservation"&&!resa;
+  const clients=Store.all("clients").sort((a,b)=>(a.nom||"").localeCompare(b.nom||"","fr"));
+  let sel=resa?resa.items.map(i=>i.jeuId):[...preJeux];
+  const d0=resa?today():dep||(isResa?addDays(today(),1):today());
+  const r0=resa?(resa.dateRetourPrevue<d0?addDays(d0,s.dureeDefaut):resa.dateRetourPrevue):addDays(d0,s.dureeDefaut);
+  const cid0=resa?resa.clientId:clientId;
+  const title=resa?"Démarrer la réservation "+(resa.numero||""):isResa?"Nouvelle réservation":"Nouvelle location";
+  openModal(title,`<form id="lf" style="display:flex;flex-direction:column;gap:16px">
+    <fieldset><legend>Dates</legend><div class="form">
+      <div class="f"><label for="l_dep">${isResa?"Date de retrait":"Date de location"}</label><input id="l_dep" type="date" required value="${d0}"></div>
+      <div class="f"><label for="l_ret">Date de retour prévue</label><input id="l_ret" type="date" required value="${r0}"></div>
+    </div></fieldset>
+    <fieldset><legend>Jeux</legend>
+      <div class="sel" id="selList"></div>
+      <div class="form" style="margin-top:10px"><div class="f full"><label for="l_add">Ajouter un jeu libre sur ces dates</label><div style="display:flex;gap:6px;flex-wrap:wrap"><select id="l_add" style="flex:1;min-width:180px"></select><button type="button" class="btn" id="l_addBtn">Ajouter</button><label class="btn" for="l_qr">Par QR code</label><input type="file" id="l_qr" accept="image/*" ${CAP} hidden></div></div></div>
+    </fieldset>
+    <fieldset><legend>Locataire</legend>
+      <div class="chips" style="margin-bottom:12px"><button type="button" class="chip ${clients.length?"on":""}" data-cm="old" ${clients.length?"":"disabled"}>Client existant</button><button type="button" class="chip ${clients.length?"":"on"}" data-cm="new">Nouveau client</button></div>
+      <div id="cmOld" ${clients.length?"":"hidden"}><div class="form"><div class="f full"><label for="l_cliQ">Rechercher</label><input id="l_cliQ" placeholder="Nom, téléphone…" autocomplete="off"></div><div class="f full"><label for="l_cli">Client</label><select id="l_cli" size="4">${clients.map(c=>`<option value="${c.id}" ${c.id===cid0?"selected":""}>${esc(clientName(c))}${c.telephone?" · "+esc(c.telephone):""}${c.bloque?" ⚠ ne plus louer":""}</option>`).join("")}</select></div></div><div id="cliWarn" style="margin-top:8px"></div></div>
+      <div id="cmNew" class="form" ${clients.length?"hidden":""}>${clientFields({},"n_")}</div>
+    </fieldset>
+    <fieldset class="pay"><legend>Prix et caution</legend><div class="form">
+      <div class="f"><label for="l_tarif">Prix de la location (€)</label><input id="l_tarif" type="number" step="0.5" min="0"></div>
+      <div class="f"><label for="l_caution">Caution (€)</label><input id="l_caution" type="number" step="1" min="0"></div>
+      ${isResa?`<div class="f"><label for="l_acompte">Acompte versé (€)</label><input id="l_acompte" type="number" step="0.5" min="0" value="0"></div>`:`
+      <div class="f"><label for="l_pay">Paiement</label><select id="l_pay">${["Espèces","Carte bancaire","Chèque","Virement","Sur facture","Gratuit"].map(o=>`<option>${o}</option>`).join("")}</select></div>
+      <label class="check f"><input type="checkbox" id="l_paye" checked><span>Location payée${resa&&num(resa.acompte)?` (acompte de ${eur(resa.acompte)} déjà versé)`:""}</span></label>
+      <div class="f"><label for="l_cmode">Forme de la caution</label><select id="l_cmode">${["Chèque (non encaissé)","Espèces","Empreinte carte bancaire","Virement","Aucune caution"].map(o=>`<option>${o}</option>`).join("")}</select></div>
+      <div class="f"><label for="l_cref">Référence (n° de chèque, banque…)</label><input id="l_cref"></div>`}
+    </div></fieldset>
+    ${isResa?"":`<fieldset><legend>Vérification des pièces au départ</legend><div id="pDep"></div></fieldset>
+    <fieldset><legend>Photos de l'état au départ</legend><div class="small muted" style="margin-bottom:8px">Utile en cas de désaccord au retour (boîte, plateau, pièces fragiles).</div><div id="phDep"></div></fieldset>`}
+    <div class="form"><div class="f full"><label for="l_notes">Remarques</label><textarea id="l_notes" rows="2" placeholder="Ex. boîte légèrement enfoncée, soirée d'entreprise du 12…">${esc(resa?resa.notes:"")}</textarea></div></div>
+    ${isResa?"":`<fieldset><legend>Signature du locataire${G()?" (facultative)":""}</legend>
+      <div class="small muted" style="white-space:pre-line;margin-bottom:8px">${esc(condTxt())}</div>
+      <label class="check" style="margin-bottom:8px"><input type="checkbox" id="l_cgv" ${G()?"":"required"}><span>Le locataire accepte les conditions de location.</span></label>
+      <canvas class="sig" id="sig"></canvas><div class="toolbar" style="margin:6px 0 0"><span class="small muted" style="flex:1">Signez avec le doigt ou la souris.</span><button type="button" class="btn sm" id="sigClear">Effacer</button></div>
+    </fieldset>`}
+  </form>`,`<button class="btn" type="button" id="cancel">Annuler</button><button class="btn primary" type="submit" form="lf">${isResa?"Enregistrer la réservation":"Valider la location"}</button>`,
+  ()=>{
+    let mode2=clients.length?"old":"new",autoT=true,autoC=true;
+    const checks={};
+    const sig=isResa?null:signaturePad($("#sig"));if(sig)$("#sigClear").onclick=sig.clear;
+    const photos=isResa?null:photoField($("#phDep"));
+    const exceptId=resa&&resa.id;
+    const dates=()=>[$("#l_dep").value,$("#l_ret").value];
+    const totals=()=>{const js=sel.map(id=>Store.get("jeux",id)).filter(Boolean);if(autoT)$("#l_tarif").value=js.reduce((a,j)=>a+num(j.tarif),0);if(autoC)$("#l_caution").value=js.reduce((a,j)=>a+num(j.caution),0)};
+    $("#l_tarif").oninput=()=>autoT=false;$("#l_caution").oninput=()=>autoC=false;
+    if(resa){$("#l_tarif").value=num(resa.tarif);$("#l_caution").value=num(resa.caution);autoT=autoC=false}
+    const drawPieces=()=>{if(isResa)return;const box=$("#pDep");
+      box.innerHTML=sel.length?sel.map(id=>{const j=Store.get("jeux",id);if(!j)return"";return`<div style="margin-bottom:10px"><div class="itemhead"><b>${esc(j.nom)}</b><select data-etat="${id}" aria-label="État au départ : ${esc(j.nom)}">${ETATS.map(e=>`<option ${e===(checks["e_"+id]||j.etat||"Très bon")?"selected":""}>${e}</option>`).join("")}</select></div>
+        ${(j.pieces||[]).length?j.pieces.map((p,i)=>{const k=id+"_"+i,on=checks[k]!==false;return`<label class="pcheck ${on?"":"miss"}"><input type="checkbox" data-pk="${k}" ${on?"checked":""}><span class="pn">${esc(p.nom)}</span><span class="num muted">× ${esc(p.qte)}</span></label>`}).join(""):'<div class="small muted">Aucune liste de pièces pour ce jeu.</div>'}</div>`}).join("")+`<div class="small muted">Décochez une pièce absente au départ : elle sera notée sur le bon.</div>`:'<div class="small muted">Ajoutez au moins un jeu.</div>';
+      $$("[data-pk]",box).forEach(c=>c.onchange=()=>{checks[c.dataset.pk]=c.checked;c.parentElement.classList.toggle("miss",!c.checked)});
+      $$("[data-etat]",box).forEach(x=>x.onchange=()=>checks["e_"+x.dataset.etat]=x.value)};
+    const drawSel=()=>{const [d,r]=dates();
+      $("#selList").innerHTML=sel.length?sel.map(id=>{const j=Store.get("jeux",id)||{nom:"Jeu supprimé"};const cf=d&&r?conflict(id,d,r,exceptId):null;
+        return`<div class="selrow"><div class="main"><b>${esc(j.nom)}</b> <span class="code">${esc(j.code||"")}</span><div class="small muted pay">${eur(j.tarif)} · caution ${eur(j.caution)}</div>${cf?`<div class="small" style="color:var(--bad)">${esc(conflictText(cf))}</div>`:""}${j.indisponible?'<div class="small" style="color:var(--warn)">Marqué indisponible</div>':""}</div><button type="button" class="btn sm" data-unsel="${id}" aria-label="Retirer ${esc(j.nom)}">×</button></div>`}).join(""):'<div class="small muted">Aucun jeu choisi.</div>';
+      $$("[data-unsel]").forEach(b=>b.onclick=()=>{sel=sel.filter(x=>x!==b.dataset.unsel);refresh()});
+      const avail=Store.all("jeux").filter(j=>!sel.includes(j.id)&&!j.indisponible&&!(d&&r&&conflict(j.id,d,r,exceptId))).sort((a,b)=>a.nom.localeCompare(b.nom,"fr"));
+      $("#l_add").innerHTML=avail.length?avail.map(j=>`<option value="${j.id}">${esc(j.nom)} (${esc(j.code)})</option>`).join(""):'<option value="">Aucun autre jeu libre sur toute la période</option>'};
+    const refresh=()=>{drawSel();totals();drawPieces()};
+    refresh();
+    const addJeu=id=>{if(!id)return;if(sel.includes(id)){toast("Ce jeu est déjà dans la liste.");return}const [d,r]=dates();{const cf=conflict(id,d,r,exceptId);if(cf){toast(conflictText(cf));return}}if((Store.get("jeux",id)||{}).indisponible){toast("Ce jeu est marqué indisponible.");return}sel.push(id);refresh()};
+    $("#l_addBtn").onclick=()=>addJeu($("#l_add").value);
+    $("#l_qr").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;const code=await decodeFile(f);const j=code&&findByCode(code);if(!j){toast(code?"Code inconnu : "+code:"QR code illisible, reprenez la photo.");return}addJeu(j.id)};
+    $("#l_dep").onchange=()=>{if($("#l_ret").value<$("#l_dep").value)$("#l_ret").value=addDays($("#l_dep").value,s.dureeDefaut);drawSel()};$("#l_ret").onchange=drawSel;
+    $$("[data-cm]").forEach(b=>b.onclick=()=>{mode2=b.dataset.cm;$$("[data-cm]").forEach(x=>x.classList.toggle("on",x===b));$("#cmOld").hidden=mode2!=="old";$("#cmNew").hidden=mode2!=="new";$$("#cmNew [required]").forEach(i=>i.disabled=mode2!=="new")});
+    $$("#cmNew [required]").forEach(i=>i.disabled=mode2!=="new");
+    const warn=()=>{const c=Store.get("clients",$("#l_cli").value);if(!c){$("#cliWarn").innerHTML="";return}const late=LOCS().filter(l=>l.clientId===c.id&&locState(l)==="retard").length;
+      $("#cliWarn").innerHTML=c.bloque?`<div class="callout bad">Ce client est marqué « ne plus louer »${c.motifBlocage?" : "+esc(c.motifBlocage):""}.</div>`:late?`<div class="callout warn">Ce client a déjà ${late} location(s) en retard.</div>`:""};
+    if($("#l_cli")){$("#l_cli").onchange=warn;warn();
+      $("#l_cliQ").oninput=e=>{const q=e.target.value.toLowerCase();$$("#l_cli option").forEach(o=>o.hidden=!o.textContent.toLowerCase().includes(q));const vis=$$("#l_cli option").filter(o=>!o.hidden);if(vis.length===1){$("#l_cli").value=vis[0].value;warn()}}}
+    $("#cancel").onclick=()=>resa?openLoc(resa.id):closeModal();
+    $("#lf").onsubmit=async e=>{e.preventDefault();
+      const [d,r]=dates();
+      if(!sel.length){toast("Ajoutez au moins un jeu.");return}
+      if(r<d){toast("La date de retour est avant la date de départ.");return}
+      for(const id of sel){const cf=conflict(id,d,r,exceptId);if(cf){toast(jeuNom(id)+" : "+conflictText(cf));return}if(!isResa&&activeLoc(id)){toast(jeuNom(id)+" est déjà en location.");return}}
+      if(!isResa&&!G()&&sig.isEmpty()){toast("Il manque la signature du locataire.");return}
+      let cid;
+      if(mode2==="old"){cid=$("#l_cli").value;if(!cid){toast("Choisissez un client, ou créez-en un nouveau.");return}if(Store.get("clients",cid).bloque){toast("Ce client est marqué « ne plus louer ».");return}}
+      else{const c=readClient({id:uid(),creeLe:Date.now()},"n_");if(!c.nom||!c.telephone){toast("Nom et téléphone du client obligatoires.");return}Store.put("clients",c);cid=c.id}
+      const base=resa||{id:uid(),numero:nextLocNum(),creeLe:Date.now(),rappels:[]};
+      const items=sel.map(id=>{const j=Store.get("jeux",id)||{};return{jeuId:id,tarif:num(j.tarif),caution:num(j.caution),
+        piecesDepart:isResa?[]:(j.pieces||[]).map((p,i)=>({nom:p.nom,qte:num(p.qte),prix:num(p.prix),present:checks[id+"_"+i]!==false})),etatDepart:isResa?"":(checks["e_"+id]||j.etat||"Très bon")}});
+      Object.assign(base,{clientId:cid,dateDepart:d,dateRetourPrevue:r,dateRetour:"",items,tarif:num($("#l_tarif").value),notes:$("#l_notes").value.trim()});
+      delete base.jeuId;delete base.piecesDepart;
+      if(isResa)Object.assign(base,{statut:"reservee",acompte:num($("#l_acompte").value),caution:num($("#l_caution").value),cautionStatut:"aucune",paye:false});
+      else{const cmode=$("#l_cmode").value,caution=cmode==="Aucune caution"?0:num($("#l_caution").value);
+        Object.assign(base,{statut:"en_cours",paiementMode:$("#l_pay").value,paye:$("#l_paye").checked,caution,cautionMode:cmode,cautionRef:$("#l_cref").value.trim(),cautionStatut:caution>0?"detenue":"aucune",cautionRetenue:0,signature:sig.data(),photosDepart:await photos.save()})}
+      if(G())Object.assign(base,{tarif:0,caution:0,acompte:0,paiementMode:"",paye:true,cautionMode:"",cautionRef:"",cautionStatut:"aucune"});
+      if(G()&&!isResa&&sig.isEmpty())base.signature="";
+      Store.put("locations",base);
+      toast(isResa?"Réservation enregistrée : "+base.numero:"Location enregistrée : "+base.numero);render();openLoc(base.id)};
+  });
+}
+function signaturePad(cv){
+  const ctx=cv.getContext("2d");let drawing=false,empty=true;
+  const r=cv.getBoundingClientRect(),dpr=window.devicePixelRatio||1;cv.width=Math.max(1,r.width*dpr);cv.height=Math.max(1,r.height*dpr);ctx.scale(dpr,dpr);ctx.lineWidth=2.2;ctx.lineCap="round";ctx.lineJoin="round";ctx.strokeStyle="#111";
+  const pos=e=>{const b=cv.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+  cv.addEventListener("pointerdown",e=>{drawing=true;empty=false;cv.setPointerCapture(e.pointerId);ctx.beginPath();ctx.moveTo(...pos(e))});
+  cv.addEventListener("pointermove",e=>{if(!drawing)return;ctx.lineTo(...pos(e));ctx.stroke()});
+  ["pointerup","pointercancel"].forEach(t=>cv.addEventListener(t,()=>drawing=false));
+  return{clear:()=>{ctx.clearRect(0,0,cv.width,cv.height);empty=true},isEmpty:()=>empty,
+    data:()=>{const c=document.createElement("canvas"),k=Math.min(1,500/cv.width);c.width=cv.width*k;c.height=cv.height*k;const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(cv,0,0,c.width,c.height);return c.toDataURL("image/jpeg",.6)}};
+}
+
+/* ================= Fiche location ================= */
+function openLoc(id){
+  const raw=Store.get("locations",id);if(!raw)return;const l=norm(raw);const c=Store.get("clients",l.clientId),st=locState(l),late=lateDays(l);
+  const isR=l.statut==="reservee";
+  openModal((isR?"Réservation ":"Location ")+(l.numero||""),`
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">${pill(LOC_PILL[st])}${isR?(num(l.acompte)?`<span class="pill p-dispo">Acompte ${eur(l.acompte)}</span>`:""):l.statut==="annulee"?"":(l.paye?'<span class="pill p-dispo pay">Payée</span>':'<span class="pill p-warn pay">À payer</span>')}${l.exemple?'<span class="pill p-warn">Exemple</span>':""}</div>
+    ${st==="retard"?`<div class="callout bad"><b>${late} jour(s) de retard.</b> Contact : ${esc([c&&c.telephone,c&&c.email].filter(Boolean).join(" · ")||"—")}</div>`:""}
+    ${resaBloquee(l).length?`<div class="callout bad">Attention : ${esc(resaBloquee(l).join(", "))} n'${resaBloquee(l).length>1?"ont":"a"} toujours pas été rendu${resaBloquee(l).length>1?"s":""} par le client précédent (en retard). Relancez-le ou prévenez ce client.</div>`:""}
+    ${cautionEncaissable(l)?`<div class="callout bad"><b>${lateDays(l)} jours de retard</b> (délai de ${esc(S().delaiEncaissement)} jours dépassé). Après une relance écrite restée sans réponse, vous pouvez considérer le jeu comme non rendu et encaisser la caution de ${eur(l.caution)}.<div class="toolbar" style="margin:8px 0 0"><button class="btn danger" id="encaisser" type="button">Jeu non rendu : encaisser la caution</button></div></div>`:""}
+    ${st==="nonrendu"?`<div class="callout bad">Déclaré non rendu le ${fd(l.dateNonRendu)} : caution de ${eur(l.cautionRetenue)} encaissée.</div>`:""}
+    ${st==="resa_passee"?`<div class="callout bad">La date de retrait est passée : démarrez la location ou annulez la réservation.</div>`:""}
+    <dl class="dl">
+      <dt>Locataire</dt><dd><a href="#" id="toCli">${esc(clientName(c))}</a>${c&&c.telephone?" · "+esc(c.telephone):""}</dd>
+      <dt>${isR?"Réservé":"Location"}</dt><dd class="num">du ${fd(l.dateDepart)} au ${fd(l.dateRetourPrevue)} (${diffDays(l.dateDepart,l.dateRetourPrevue)} j)</dd>
+      ${l.dateRetour?`<dt>Rendu le</dt><dd class="num">${fd(l.dateRetour)}${late?` · ${late} j de retard`:""}</dd>`:""}
+      <dt class="pay">Prix</dt><dd class="num pay">${eur(l.tarif)}${l.paiementMode?" · "+esc(l.paiementMode):""}</dd>
+      ${isR?`<dt class="pay">Caution prévue</dt><dd class="num pay">${eur(l.caution)}</dd>`:`<dt class="pay">Caution</dt><dd class="num pay">${eur(l.caution)}${l.cautionMode?" · "+esc(l.cautionMode):""}${l.cautionRef?" ("+esc(l.cautionRef)+")":""} · <b>${CAUTION_STATUT[l.cautionStatut]||""}</b>${num(l.cautionRetenue)?` · retenue ${eur(l.cautionRetenue)}`:""}</dd>`}
+      ${l.notes?`<dt>Remarques</dt><dd>${esc(l.notes)}</dd>`:""}${l.notesRetour?`<dt>Remarques au retour</dt><dd>${esc(l.notesRetour)}</dd>`:""}
+      ${l.rappels.length?`<dt>Rappels envoyés</dt><dd>${l.rappels.map(r=>esc(r.canal)+" le "+fd(r.date)).join(", ")}</dd>`:""}
+    </dl>
+    <fieldset><legend>Jeux (${l.items.length})</legend><div class="list">${l.items.map(it=>{const j=Store.get("jeux",it.jeuId);const md=(it.piecesDepart||[]).filter(p=>!p.present),mr=(it.piecesRetour||[]).filter(p=>p.manquant>0);
+      return`<div class="row" ${j?`data-jeu="${j.id}"`:""}><div class="main"><div class="t">${esc(j?j.nom:"Jeu supprimé")} ${j?`<span class="code">${esc(j.code)}</span>`:""}</div><div class="s" style="white-space:normal">${isR?(G()?"Réservé":eur(it.tarif)):`État : ${esc(it.etatDepart||"—")}${it.etatRetour?" → "+esc(it.etatRetour):""} · ${md.length?`<span style="color:var(--warn)">absentes au départ : ${md.map(p=>esc(p.nom)).join(", ")}</span>`:"complet au départ"}${it.piecesRetour?` · ${mr.length?`<span style="color:var(--bad)">manquantes au retour : ${mr.map(p=>p.manquant+" × "+esc(p.nom)).join(", ")}</span>`:"complet au retour"}`:""}`}</div></div></div>`}).join("")}</div></fieldset>
+    ${!isR&&l.statut!=="annulee"?`<fieldset><legend>Photos</legend><div class="lbl" style="margin-bottom:6px">Au départ</div>${photoStrip(l.photosDepart)}${l.statut==="rendue"?`<div class="lbl" style="margin:10px 0 6px">Au retour</div>${photoStrip(l.photosRetour)}`:""}</fieldset>`:""}
+    ${l.signature?`<div><div class="lbl" style="margin-bottom:4px">Signature</div><img src="${esc(l.signature)}" alt="Signature du locataire" style="max-width:260px;border:1px solid var(--line);border-radius:6px;background:#fff"></div>`:""}
+    ${isOpen(l)?`<fieldset><legend>${isR?"Changer les dates":"Prolonger"}</legend><div class="toolbar" style="margin:0">${isR?`<input type="date" id="newDep" value="${esc(l.dateDepart)}" class="search" style="flex:0 1 180px" aria-label="Date de retrait">`:""}<input type="date" id="newRet" value="${esc(l.dateRetourPrevue)}" class="search" style="flex:0 1 180px" aria-label="Date de retour"><button class="btn" id="doExt" type="button">Enregistrer les dates</button></div></fieldset>`:""}
+    ${(!isR&&l.statut!=="annulee"&&!l.paye)||(l.cautionStatut==="detenue"&&l.statut==="rendue")?`<div class="toolbar pay" style="margin:0">${!isR&&!l.paye?'<button class="btn" id="markPaid" type="button">Marquer comme payée</button>':""}${l.cautionStatut==="detenue"&&l.statut==="rendue"?'<button class="btn" id="giveBack" type="button">Caution restituée</button>':""}</div>`:""}`,
+  `<button class="btn danger" id="delL" type="button">${isR?"Annuler la réservation":"Supprimer"}</button><span style="flex:1"></span>${c&&isOpen(l)?'<button class="btn" id="rapBtn" type="button">Rappel</button>':""}${!isR&&l.statut!=="annulee"?'<button class="btn" id="bon" type="button">Bon de location</button>':""}${isR?'<button class="btn primary" id="doStart" type="button">Démarrer la location</button>':""}${l.statut==="en_cours"?'<button class="btn primary" id="doRet" type="button">Enregistrer le retour</button>':""}${l.statut==="nonrendu"?'<button class="btn primary" id="doRet" type="button">Le jeu a finalement été rendu</button>':""}`,
+  m=>{
+    $$("[data-jeu]",m).forEach(e=>e.onclick=()=>openJeu(e.dataset.jeu));
+    bindPhotoStrip(m);
+    $("#toCli").onclick=e=>{e.preventDefault();if(c)openClient(c.id)};
+    if($("#rapBtn"))$("#rapBtn").onclick=()=>openRappel(id);
+    if($("#doRet"))$("#doRet").onclick=()=>openRetourForm(id);
+    if($("#encaisser"))confirmBtn($("#encaisser"),"Confirmer : jeu non rendu, caution encaissée",()=>{Object.assign(l,{statut:"nonrendu",dateNonRendu:today(),cautionStatut:"encaissee",cautionRetenue:num(l.caution)});Store.put("locations",l);
+      l.items.forEach(i=>{const j=Store.get("jeux",i.jeuId);if(j){j.indisponible=true;j.manques=(j.manques?j.manques+" ; ":"")+"Non rendu par "+clientName(c)+" ("+l.numero+")";Store.put("jeux",j)}});toast("Caution encaissée, jeu marqué non rendu");render();openLoc(id)});
+    if($("#doStart"))$("#doStart").onclick=()=>openLocForm({resaId:id});
+    if($("#doExt"))$("#doExt").onclick=()=>{const nd=isR?$("#newDep").value:l.dateDepart,nr=$("#newRet").value;if(!nr||!nd||nr<nd){toast("Dates invalides");return}
+      const cf=l.items.map(i=>conflict(i.jeuId,nd,nr,l.id)).find(Boolean);if(cf){toast("Impossible : "+conflictText(cf));return}
+      l.dateDepart=nd;l.dateRetourPrevue=nr;Store.put("locations",l);toast("Dates enregistrées");render();openLoc(id)};
+    if($("#markPaid"))$("#markPaid").onclick=()=>{l.paye=true;Store.put("locations",l);render();openLoc(id)};
+    if($("#giveBack"))$("#giveBack").onclick=()=>{l.cautionStatut="restituee";Store.put("locations",l);toast("Caution restituée");render();openLoc(id)};
+    if($("#bon"))$("#bon").onclick=()=>bonLocation(l);
+    if(isR)confirmBtn($("#delL"),"Confirmer l'annulation",()=>{l.statut="annulee";Store.put("locations",l);toast("Réservation annulée");render();openLoc(id)});
+    else confirmBtn($("#delL"),"Confirmer la suppression",()=>{[...l.photosDepart,...l.photosRetour].forEach(p=>Store.delPhoto(p));Store.del("locations",id);closeModal();toast("Location supprimée");render()});
+  });
+}
+function bonLocation(l){
+  const s=S(),c=Store.get("clients",l.clientId)||{};
+  const html=`<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Bon ${esc(l.numero)}</title><style>body{font-family:Arial,sans-serif;color:#111;max-width:760px;margin:30px auto;padding:0 20px;font-size:14px}h1{font-size:22px;margin:0}h3{margin:18px 0 6px}table{width:100%;border-collapse:collapse;margin:8px 0}td,th{border:1px solid #ccc;padding:6px 8px;text-align:left}th{background:#f2f2f2}.hd{display:flex;justify-content:space-between;gap:20px;border-bottom:3px solid ${esc(s.couleur)};padding-bottom:12px;margin-bottom:16px}.cond{white-space:pre-line;font-size:12px;color:#444}img.sig{max-width:240px;border:1px solid #ccc}</style></head><body>
+  <div class="hd"><div>${s.logo?`<img src="${esc(s.logo)}" style="height:60px;float:left;margin-right:12px">`:""}<h1>${esc(s.nom)}</h1><div>${esc(s.adresse)}</div><div>${esc([s.telephone,s.email].filter(Boolean).join(" · "))}</div>${s.siret?`<div>SIRET ${esc(s.siret)}</div>`:""}</div><div style="text-align:right"><b>Bon de location</b><br>${esc(l.numero)}<br>${fd(l.dateDepart)}</div></div>
+  <table><tr><th>Locataire</th><td>${esc(clientName(c))}<br>${esc([c.adresse,[c.cp,c.ville].filter(Boolean).join(" ")].filter(Boolean).join(", "))}<br>${esc([c.telephone,c.email].filter(Boolean).join(" · "))}${c.pieceType?`<br>${esc(c.pieceType)} n° ${esc(c.pieceNum)}`:""}</td></tr>
+  <tr><th>Période</th><td>Du ${fd(l.dateDepart)} au ${fd(l.dateRetourPrevue)}${l.dateRetour?` · rendu le ${fd(l.dateRetour)}`:""}</td></tr>
+  ${G()?"":`<tr><th>Prix</th><td>${eur(l.tarif)} (${esc(l.paiementMode||"")}${l.paye?", payé":", à payer"})</td></tr>
+  <tr><th>Caution</th><td>${eur(l.caution)} · ${esc(l.cautionMode||"")} ${esc(l.cautionRef||"")} · ${CAUTION_STATUT[l.cautionStatut]||""}${num(l.cautionRetenue)?` · retenue ${eur(l.cautionRetenue)}`:""}</td></tr>`}</table>
+  ${l.items.map(it=>{const j=Store.get("jeux",it.jeuId)||{};return`<h3>${esc(j.nom||"Jeu")} (${esc(j.code||"")}) · état au départ : ${esc(it.etatDepart||"")}${it.etatRetour?" · au retour : "+esc(it.etatRetour):""}</h3><table><tr><th>Pièce</th><th>Qté</th><th>Départ</th>${it.piecesRetour?"<th>Retour</th>":""}</tr>${(it.piecesDepart||[]).map((p,i)=>{const r=(it.piecesRetour||[])[i];return`<tr><td>${esc(p.nom)}</td><td>${p.qte}</td><td>${p.present?"OK":"Absente"}</td>${it.piecesRetour?`<td>${r&&r.manquant>0?r.manquant+" manquante(s)":"OK"}</td>`:""}</tr>`}).join("")}</table>`}).join("")}
+  ${l.notes?`<p><b>Remarques :</b> ${esc(l.notes)}</p>`:""}
+  <h3>Conditions</h3><div class="cond">${esc(condTxt())}</div>
+  <p>Signature du locataire (conditions acceptées) :</p>${l.signature?`<img class="sig" src="${l.signature}">`:""}
+  </body></html>`;
+  if(!framed){const w=window.open("","_blank");if(w){w.document.write(html);w.document.close();setTimeout(()=>w.print(),400);return}}
+  saveFile(`bon-${l.numero}.html`,html,"text/html");
+}
+
+/* ================= Retour ================= */
+function openRetourForm(id){
+  const l=norm(Store.get("locations",id)),s=S();
+  const items=l.items.map(it=>{const j=Store.get("jeux",it.jeuId)||{nom:"Jeu supprimé",pieces:[]};return{it,j,pieces:it.piecesDepart&&it.piecesDepart.length?it.piecesDepart:(j.pieces||[]).map(p=>({nom:p.nom,qte:num(p.qte),present:true}))}});
+  openModal("Retour : "+locTitle(l),`<form id="rf" style="display:flex;flex-direction:column;gap:16px">
+    <div class="form"><div class="f"><label for="r_date">Date de retour</label><input id="r_date" type="date" required value="${today()}"></div></div>
+    ${items.map(({it,j,pieces},k)=>`<fieldset><legend>${esc(j.nom)}</legend>
+      <div class="itemhead"><span class="small muted" style="flex:1">Nombre rendu pour chaque pièce</span><label class="small muted" for="r_etat${k}">État</label><select id="r_etat${k}">${ETATS.map(e=>`<option ${e===(it.etatDepart||j.etat||"Très bon")?"selected":""}>${e}</option>`).join("")}</select></div>
+      ${pieces.length?pieces.map((p,i)=>`<div class="pcheck"><span class="num muted small">${p.present?"":"absente au départ"}</span><span class="pn">${esc(p.nom)}</span><span><input type="number" min="0" max="${p.qte}" value="${p.present?p.qte:0}" data-rq="${k}-${i}" aria-label="Quantité rendue : ${esc(p.nom)}"> / ${p.qte}</span></div>`).join(""):'<div class="small muted">Aucune liste de pièces.</div>'}
+    </fieldset>`).join("")}
+    <div id="rSum"></div>
+    <fieldset><legend>Photos de l'état au retour</legend><div id="phRet"></div>${l.photosDepart.length?`<div class="lbl" style="margin:10px 0 6px">Pour comparer : photos du départ</div>${photoStrip(l.photosDepart)}`:""}</fieldset>
+    <div class="form">
+      <div class="f pay"><label for="r_pen">Pénalité de retard (€)</label><input id="r_pen" type="number" step="0.5" min="0"></div>
+      <div class="f pay"><label for="r_frais">Pièces manquantes / dégâts (€)</label><input id="r_frais" type="number" step="0.5" min="0" value="0"></div>
+      <div class="f pay"><label for="r_ret">Retenue sur la caution (€)</label><input id="r_ret" type="number" step="0.5" min="0"></div>
+      <div class="f pay"><label for="r_cstat">Caution</label><select id="r_cstat">${Object.entries(CAUTION_STATUT).map(([k,v])=>`<option value="${k}">${v}</option>`).join("")}</select></div>
+      <div class="f full"><label for="r_notes">Remarques</label><textarea id="r_notes" rows="2"></textarea></div>
+      <label class="check f full"><input type="checkbox" id="r_indispo"><span>Mettre de côté (indisponibles) les jeux incomplets</span></label>
+    </div></form>`,`<button class="btn" type="button" id="cancel">Annuler</button><button class="btn primary" type="submit" form="rf">Valider le retour</button>`,
+  m=>{
+    bindPhotoStrip(m);
+    const photos=photoField($("#phRet"));
+    let touchedPen=false,touchedSt=false,touchedFrais=false;
+    const prixDe=(it,j,p)=>num(p.prix)||num(((j.pieces||[]).find(x=>x.nom===p.nom)||{}).prix);
+    const cstat=ret=>num(l.caution)<=0?"aucune":ret<=0?"restituee":ret>=num(l.caution)?"encaissee":"partielle";
+    const setRet=()=>{const ret=Math.min(num(l.caution),num($("#r_pen").value)+num($("#r_frais").value));$("#r_ret").value=ret.toFixed(2);if(!touchedSt)$("#r_cstat").value=cstat(ret)};
+    const calc=()=>{const late=Math.max(0,diffDays(l.dateRetourPrevue,$("#r_date").value));
+      const miss=items.map(({pieces},k)=>pieces.map((p,i)=>{const r=$(`[data-rq="${k}-${i}"]`);const exp=p.present?p.qte:0;const mm=r?Math.max(0,exp-num(r.value)):0;if(r)r.closest(".pcheck").classList.toggle("miss",mm>0);return mm}));
+      const nMiss=miss.flat().reduce((a,b)=>a+b,0);
+      if(!touchedPen)$("#r_pen").value=(G()?0:late*num(s.penaliteJour)*l.items.length).toFixed(2);
+      let frais=0;const sansPrix=[],detail=[];items.forEach(({it,j,pieces},k)=>pieces.forEach((p,i)=>{if(miss[k][i]>0){const px=prixDe(it,j,p);if(px){frais+=px*miss[k][i];detail.push(miss[k][i]+" × "+p.nom+" à "+eur(px))}else sansPrix.push(p.nom)}}));
+      if(!touchedFrais)$("#r_frais").value=(G()?0:frais).toFixed(2);
+      setRet();$("#r_indispo").checked=nMiss>0;
+      $("#rSum").innerHTML=`<div class="callout ${late||nMiss?"warn":"ok"}">${late?`${late} jour(s) de retard. `:"Rendu à temps. "}${nMiss?`${nMiss} élément(s) manquant(s).`:"Tout est complet."}<span class="pay"> Caution déposée : ${eur(l.caution)}.${detail.length?`<br>Pièces : ${esc(detail.join(", "))} = ${eur(frais)}.`:""}${sansPrix.length?`<br>Prix de remplacement non renseigné pour : ${esc(sansPrix.join(", "))} (à saisir à la main ou dans la fiche du jeu).`:""}</span></div>`;return miss};
+    $$("[data-rq]").forEach(i=>i.oninput=calc);$("#r_date").onchange=calc;
+    $("#r_pen").oninput=()=>{touchedPen=true;setRet()};$("#r_frais").oninput=()=>{touchedFrais=true;setRet()};$("#r_cstat").onchange=()=>touchedSt=true;
+    calc();
+    $("#cancel").onclick=()=>openLoc(id);
+    $("#rf").onsubmit=async e=>{e.preventDefault();const miss=calc();
+      if($("#r_date").value<l.dateDepart){toast("La date de retour est avant la date de location.");return}
+      const etaitNonRendu=l.statut==="nonrendu";
+      l.items=items.map(({it,pieces},k)=>Object.assign(it,{piecesDepart:pieces,etatRetour:$("#r_etat"+k).value,piecesRetour:pieces.map((p,i)=>({nom:p.nom,qte:p.qte,prix:p.prix,manquant:miss[k][i]}))}));
+      Object.assign(l,{statut:"rendue",dateRetour:$("#r_date").value,penalite:num($("#r_pen").value),fraisPieces:num($("#r_frais").value),cautionRetenue:num($("#r_ret").value),cautionStatut:$("#r_cstat").value,notesRetour:$("#r_notes").value.trim(),photosRetour:await photos.save()});
+      Store.put("locations",l);
+      items.forEach(({j,pieces},k)=>{if(!j.id)return;j.etat=$("#r_etat"+k).value;if(etaitNonRendu){j.manques=String(j.manques||"").split(" ; ").filter(x=>!x.startsWith("Non rendu par")).join(" ; ");j.indisponible=false}const lst=pieces.map((p,i)=>miss[k][i]>0?miss[k][i]+" × "+p.nom:"").filter(Boolean);
+        if(lst.length){j.manques=(j.manques?j.manques+" ; ":"")+lst.join(", ")+" (retour "+l.numero+")";if($("#r_indispo").checked)j.indisponible=true}
+        Store.put("jeux",j)});
+      toast("Retour enregistré");render();openLoc(id)};
+  });
+}
+
+/* ================= Exemples ================= */
+function loadExamples(){
+  const t=today(),E={exemple:true};
+  const P=arr=>arr.map(([q,n])=>({nom:n,qte:q}));
+  const g=[
+    {nom:"Catan",editeur:"Kosmos",categorie:"Stratégie",joueursMin:3,joueursMax:4,age:10,dureePartie:75,tarif:6,caution:60,valeur:45,etat:"Très bon",pieces:P([[19,"Tuiles terrain"],[6,"Cadres de mer"],[18,"Jetons numérotés"],[95,"Cartes ressources"],[25,"Cartes développement"],[4,"Cartes aide de jeu"],[2,"Cartes bonus (route, armée)"],[2,"Dés"],[1,"Voleur"],[20,"Colonies"],[16,"Villes"],[60,"Routes"],[1,"Livret de règles"]])},
+    {nom:"Dixit",editeur:"Libellud",categorie:"Ambiance",joueursMin:3,joueursMax:8,age:8,dureePartie:30,tarif:5,caution:40,valeur:35,etat:"Bon",pieces:P([[84,"Cartes illustrées"],[1,"Plateau de score"],[8,"Lapins en bois"],[48,"Jetons de vote"],[1,"Livret de règles"]])},
+    {nom:"Skyjo",editeur:"Magilano",categorie:"Cartes",joueursMin:2,joueursMax:8,age:8,dureePartie:30,tarif:3,caution:20,valeur:15,etat:"Très bon",pieces:P([[150,"Cartes"],[1,"Livret de règles"]])},
+    {nom:"Les Aventuriers du Rail",editeur:"Days of Wonder",categorie:"Famille",joueursMin:2,joueursMax:5,age:8,dureePartie:45,tarif:6,caution:60,valeur:45,etat:"Bon",pieces:P([[1,"Plateau"],[240,"Wagons (5 couleurs)"],[110,"Cartes wagon"],[30,"Cartes destination"],[5,"Marqueurs de score"],[1,"Carte bonus chemin le plus long"],[1,"Livret de règles"]])},
+    {nom:"Just One",editeur:"Repos Production",categorie:"Ambiance",joueursMin:3,joueursMax:7,age:8,dureePartie:20,tarif:4,caution:30,valeur:22,etat:"Très bon",pieces:P([[110,"Cartes mots"],[7,"Chevalets"],[7,"Feutres"],[1,"Livret de règles"]])},
+  ].map(x=>Object.assign({id:uid(),code:"",creeLe:Date.now()},E,x));
+  g.forEach(x=>{x.code=nextCode();Store.put("jeux",x)});
+  const c1=Store.put("clients",Object.assign({id:uid(),type:"part",nom:"Martin",prenom:"Julie",telephone:"06 12 34 56 78",email:"julie.martin@exemple.fr",adresse:"8 rue d'Isle",cp:"02100",ville:"Saint-Quentin",pieceType:"Carte d'identité",pieceNum:"X4RT12345",creeLe:Date.now()},E));
+  const c2=Store.put("clients",Object.assign({id:uid(),type:"pro",societe:"Comité d'entreprise Exemple",nom:"Lefèvre",prenom:"Marc",telephone:"03 23 00 00 00",email:"ce@exemple.fr",ville:"Saint-Quentin",siret:"000 000 000 00000",creeLe:Date.now()},E));
+  const item=j=>({jeuId:j.id,tarif:j.tarif,caution:j.caution,piecesDepart:j.pieces.map(p=>({nom:p.nom,qte:p.qte,present:true})),etatDepart:j.etat});
+  const base=(js,c,dep,ret)=>({id:uid(),numero:nextLocNum(),clientId:c.id,dateDepart:dep,dateRetourPrevue:ret,dateRetour:"",items:js.map(item),tarif:js.reduce((a,j)=>a+j.tarif,0),paiementMode:"Carte bancaire",paye:true,caution:js.reduce((a,j)=>a+j.caution,0),cautionMode:"Chèque (non encaissé)",cautionRef:"",cautionStatut:"detenue",cautionRetenue:0,notes:"",signature:"",statut:"en_cours",photosDepart:[],photosRetour:[],rappels:[],creeLe:Date.now(),exemple:true});
+  const put=l=>Store.put("locations",l);
+  put(base([g[0]],c1,addDays(t,-6),addDays(t,1)));
+  put(Object.assign(base([g[1],g[4]],c2,addDays(t,-10),addDays(t,-2)),{notes:"Soirée jeux du CE"}));
+  const r=base([g[2]],c1,addDays(t,-20),addDays(t,-13));r.items[0].piecesRetour=r.items[0].piecesDepart.map(p=>({nom:p.nom,qte:p.qte,manquant:p.nom==="Cartes"?2:0}));r.items[0].etatRetour="Très bon";
+  Object.assign(r,{statut:"rendue",dateRetour:addDays(t,-12),penalite:1,fraisPieces:2,cautionRetenue:3,cautionStatut:"partielle"});put(r);
+  const rs=base([g[3],g[2]],c2,addDays(t,3),addDays(t,6));rs.items.forEach(i=>{i.piecesDepart=[];i.etatDepart=""});Object.assign(rs,{statut:"reservee",cautionStatut:"aucune",paye:false,paiementMode:"",cautionMode:"",acompte:5,notes:"Séminaire d'équipe"});put(rs);
+}
+
+/* ================= Démarrage ================= */
+(async()=>{
+  await Store.init();
+  const cfg=window.APP_CONFIG;
+  if(cfg&&!Store.get("reglages","general")){
+    saveS(Object.assign({},cfg.reglages||{}));
+    (cfg.jeux||[]).forEach(j=>{if(j&&j.id&&!Store.get("jeux",j.id))Store.put("jeux",j)});
+  }
+  applyBrand();
+  render();
+  try{if(window.claude&&claude.use)downloadsCap=await claude.use("downloads")}catch(e){}
+  const p=new URLSearchParams(location.search).get("jeu");if(p){const j=findByCode(p);if(j)openJeu(j.id)}
+  if(window.APP_SW&&"serviceWorker"in navigator&&!framed&&/^https?:/.test(location.protocol))navigator.serviceWorker.register("sw.js").catch(()=>{});
+})();
+</script>
+
+</body></html>
