@@ -6,6 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<script>window.APP_VERSION="11/11/2026 20:13";</script>
 </head><body>
 <title>Le Temple du Carton · Location de jeux</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -724,6 +725,7 @@ function vReglages(){
     <div id="importBox"></div>
   </div>
   ${!framed&&window.APP_SW?`<div class="panel" style="display:flex;flex-direction:column;gap:12px"><h2>Application</h2><p class="small muted" style="margin:0">${isInstalled()?"L'application est installée sur cet appareil.":"Installez l'application pour l'ouvrir depuis l'écran d'accueil, en plein écran et même sans internet."}</p>${canInstall()?'<div><button class="btn primary" data-act="install">Installer l\'application</button></div>':""}</div>`:""}
+  ${!framed&&window.APP_SW?`<div class="panel" style="display:flex;flex-direction:column;gap:12px"><h2>Version de l'appli</h2><p class="small muted" style="margin:0">Version du <b>${esc(window.APP_VERSION||"—")}</b>. L'appli se met à jour toute seule quand elle est ouverte avec internet. Si une nouveauté n'apparaît pas, forcez la mise à jour (vos données ne sont pas touchées).</p><div><button class="btn" type="button" id="forceMaj">Mettre à jour maintenant</button></div></div>`:""}
   <div class="panel" style="display:flex;flex-direction:column;gap:12px">
     <h2>Exemples</h2>
     <p class="small muted" style="margin:0">Quelques jeux, clients, locations et réservations fictifs pour essayer l'application.</p>
@@ -738,6 +740,7 @@ function vReglages(){
       dureeDefaut:num($("#s_duree").value)||7,tarifDefaut:num($("#s_tarif").value),cautionDefaut:num($("#s_caution").value),penaliteJour:num($("#s_pen").value),delaiEncaissement:num($("#s_delai").value)||20,gratuit:$("#s_gratuit").checked,prefixe:($("#s_prefixe").value.trim()||"JEU").toUpperCase(),rappelSauvegarde:num($("#s_bk").value)||7,conditions:$("#s_cond").value,
       msgVeille:$("#s_m1").value,msgRetard:$("#s_m2").value,msgResa:$("#s_m3").value});
     applyBrand();toast("Réglages enregistrés");vReglages()};
+  if($("#forceMaj"))$("#forceMaj").onclick=async()=>{toast("Mise à jour…");try{const ks=await caches.keys();await Promise.all(ks.filter(k=>k.startsWith("locjeux-")).map(k=>caches.delete(k)));const rs=await navigator.serviceWorker.getRegistrations();await Promise.all(rs.map(r=>r.unregister()))}catch(e){}location.replace(location.pathname+"?maj="+Date.now()+"#reglages")};
   $("#importFile").onchange=e=>{const f=e.target.files[0];e.target.value="";if(f)importBackup(f)};
   if($("#clearEx"))confirmBtn($("#clearEx"),"Confirmer l'effacement",()=>{["jeux","clients","locations"].forEach(c=>Store.all(c).filter(r=>r.exemple).forEach(r=>Store.del(c,r.id)));toast("Exemples effacés");vReglages()});
   bindCommon();
@@ -1400,7 +1403,13 @@ function loadExamples(){
   verifierCatalogue();
   try{if(window.claude&&claude.use)downloadsCap=await claude.use("downloads")}catch(e){}
   const p=new URLSearchParams(location.search).get("jeu");if(p){const j=findByCode(p);if(j)openJeu(j.id)}
-  if(window.APP_SW&&"serviceWorker"in navigator&&!framed&&/^https?:/.test(location.protocol))navigator.serviceWorker.register("sw.js").catch(()=>{});
+  if(window.APP_SW&&"serviceWorker"in navigator&&!framed&&/^https?:/.test(location.protocol)){
+    const avaitCtrl=!!navigator.serviceWorker.controller;let recharge=false;
+    /* une nouvelle version prend la main : on recharge une fois pour l'afficher */
+    navigator.serviceWorker.addEventListener("controllerchange",()=>{if(avaitCtrl&&!recharge){recharge=true;location.reload()}});
+    navigator.serviceWorker.register("sw.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{});
+    document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")navigator.serviceWorker.getRegistration().then(r=>r&&r.update()).catch(()=>{})});
+  }
 })();
 </script>
 
