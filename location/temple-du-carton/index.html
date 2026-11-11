@@ -813,7 +813,15 @@ function openJeu(id){
     });
 }
 /* ================= Étiquettes au style du Temple du Carton (90 × 55 mm à 300 dpi) ================= */
-const LAB={bg:"#07281C",gold:"#D9A21B",goldL:"#E8B547",cream:"#FBF3E2",W:1063,H:650};
+/* fond blanc (moins d'encre), textes vert profond, accents or de la charte */
+const LAB={bg:"#FFFFFF",ink:"#04271B",qr:"#04271B",gold:"#D49404",goldL:"#9A6A00",W:1063,H:650};
+/* QR code vert, coins arrondis, logo rond au centre (correction d'erreur maximale pour rester lisible) */
+function dessinerQR(x,code,qx,qy,qs,marge){let q;try{q=qrcode(0,"H");q.addData(code);q.make()}catch(e){return}
+  const n=q.getModuleCount(),cell=Math.floor((qs-2*marge)/n),o=Math.round((qs-cell*n)/2);x.fillStyle=LAB.qr;
+  const oeil=(r,k)=>(r<7&&k<7)||(r<7&&k>=n-7)||(r>=n-7&&k<7);
+  for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k)&&!oeil(r,k))x.fillRect(qx+o+k*cell,qy+o+r*cell,cell,cell);
+  [[0,0],[0,n-7],[n-7,0]].forEach(([r,k])=>{const X=qx+o+k*cell,Y=qy+o+r*cell;x.fillStyle=LAB.qr;rrect(x,X,Y,7*cell,7*cell,cell*1.6);x.fill();x.fillStyle="#FFFFFF";rrect(x,X+cell,Y+cell,5*cell,5*cell,cell*1.1);x.fill();x.fillStyle=LAB.qr;rrect(x,X+2*cell,Y+2*cell,3*cell,3*cell,cell*.8);x.fill()});
+  if(logoImg&&logoImg.complete&&logoImg.naturalWidth){const d=Math.round(cell*n*.24),cx=qx+o+cell*n/2,cy=qy+o+cell*n/2;x.fillStyle="#FFFFFF";x.beginPath();x.arc(cx,cy,d/2+cell*.9,0,Math.PI*2);x.fill();x.save();x.beginPath();x.arc(cx,cy,d/2,0,Math.PI*2);x.clip();x.drawImage(logoImg,cx-d/2,cy-d/2,d,d);x.restore()}}
 let logoImg=null;
 function chargerLogo(){const src=window.APP_LOGO||S().logo;if(!src)return Promise.resolve(null);if(logoImg&&logoImg._src===src)return logoImg.complete?Promise.resolve(logoImg):new Promise(r=>{logoImg.onload=()=>r(logoImg);logoImg.onerror=()=>r(null)});
   logoImg=new Image();logoImg._src=src;return new Promise(r=>{logoImg.onload=()=>r(logoImg);logoImg.onerror=()=>r(null);logoImg.src=src})}
@@ -825,14 +833,14 @@ function labelCanvas(j,echelle=1){
   const s=S(),{W,H}=LAB,c=document.createElement("canvas");c.width=Math.round(W*echelle);c.height=Math.round(H*echelle);const x=c.getContext("2d");x.scale(echelle,echelle);
   x.fillStyle=LAB.bg;x.fillRect(0,0,W,H);
   x.strokeStyle=LAB.gold;x.lineWidth=5;rrect(x,18,18,W-36,H-36,26);x.stroke();
-  x.lineWidth=1.5;x.globalAlpha=.55;rrect(x,32,32,W-64,H-64,18);x.stroke();x.globalAlpha=1;
+  x.lineWidth=1.5;x.globalAlpha=.35;x.strokeStyle=LAB.ink;rrect(x,32,32,W-64,H-64,18);x.stroke();x.globalAlpha=1;
   // logo + nom de la boutique
   if(logoImg&&logoImg.complete&&logoImg.naturalWidth){x.save();x.beginPath();x.arc(60+78,58+78,78,0,Math.PI*2);x.clip();x.drawImage(logoImg,60,58,156,156);x.restore()}
   x.textBaseline="alphabetic";x.fillStyle=LAB.goldL;x.font="600 34px Oswald, 'Arial Narrow', sans-serif";
   x.letterSpacing="3px";x.fillText((s.nom||"").toUpperCase().slice(0,26),236,118);
-  x.fillStyle=LAB.cream;x.globalAlpha=.8;x.font="500 22px Oswald, 'Arial Narrow', sans-serif";x.fillText(G()?"PRÊT DE JEUX DE SOCIÉTÉ":"LOCATION DE JEUX DE SOCIÉTÉ",236,156);x.globalAlpha=1;x.letterSpacing="0px";
+  x.fillStyle=LAB.ink;x.globalAlpha=.8;x.font="500 22px Oswald, 'Arial Narrow', sans-serif";x.fillText(G()?"PRÊT DE JEUX DE SOCIÉTÉ":"LOCATION DE JEUX DE SOCIÉTÉ",236,156);x.globalAlpha=1;x.letterSpacing="0px";
   // nom du jeu (taille adaptée, 2 lignes maximum)
-  x.fillStyle=LAB.cream;let taille=66,ls=null;const wTxt=610;
+  x.fillStyle=LAB.ink;let taille=66,ls=null;const wTxt=610;
   while(taille>=34){x.font=`600 ${taille}px Oswald, 'Arial Narrow', sans-serif`;ls=lignes(x,j.nom.toUpperCase(),wTxt,2);if(ls)break;taille-=4}
   if(!ls){x.font="600 34px Oswald, 'Arial Narrow', sans-serif";ls=[j.nom.toUpperCase().slice(0,32)]}
   let y=ls.length===1?300:270;ls.forEach((l,i)=>x.fillText(l,60,y+i*taille*1.02));y+=(ls.length-1)*taille*1.02;
@@ -843,17 +851,17 @@ function labelCanvas(j,echelle=1){
   const by=H-62-118;
   if(!G()){
     x.fillStyle=LAB.gold;rrect(x,60,by,290,118,16);x.fill();
-    x.fillStyle=LAB.bg;x.font="500 22px Oswald, sans-serif";x.letterSpacing="4px";x.fillText("LOCATION",84,by+38);x.letterSpacing="0px";x.font="600 58px Oswald, sans-serif";x.fillText(prixCourt(j.tarif),84,by+98);
+    x.fillStyle=LAB.ink;x.font="500 22px Oswald, sans-serif";x.letterSpacing="4px";x.fillText("LOCATION",84,by+38);x.letterSpacing="0px";x.font="600 58px Oswald, sans-serif";x.fillText(prixCourt(j.tarif),84,by+98);
     x.strokeStyle=LAB.gold;x.lineWidth=3;rrect(x,370,by,290,118,16);x.stroke();
-    x.fillStyle=LAB.goldL;x.font="500 22px Oswald, sans-serif";x.letterSpacing="4px";x.fillText("CAUTION",394,by+38);x.letterSpacing="0px";x.fillStyle=LAB.cream;x.font="600 58px Oswald, sans-serif";x.fillText(prixCourt(j.caution),394,by+98);
+    x.fillStyle=LAB.goldL;x.font="500 22px Oswald, sans-serif";x.letterSpacing="4px";x.fillText("CAUTION",394,by+38);x.letterSpacing="0px";x.fillStyle=LAB.ink;x.font="600 58px Oswald, sans-serif";x.fillText(prixCourt(j.caution),394,by+98);
   }else{
     x.strokeStyle=LAB.gold;x.lineWidth=3;rrect(x,60,by,600,118,16);x.stroke();x.fillStyle=LAB.goldL;x.font="600 46px Oswald, sans-serif";x.letterSpacing="4px";x.fillText("PRÊT GRATUIT",92,by+77);x.letterSpacing="0px";
   }
   // QR code sur fond crème
-  const qx=708,qy=58,qw=297;x.fillStyle=LAB.cream;rrect(x,qx,qy,qw,qw,22);x.fill();
-  try{const q=qrcode(0,"M");q.addData(j.code);q.make();const n=q.getModuleCount(),cell=Math.floor((qw-36)/n),o=Math.round((qw-cell*n)/2);x.fillStyle=LAB.bg;for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))x.fillRect(qx+o+k*cell,qy+o+r*cell,cell,cell)}catch(e){}
+  const qx=708,qy=58,qw=297;x.strokeStyle=LAB.gold;x.lineWidth=3;rrect(x,qx,qy,qw,qw,22);x.stroke();
+  dessinerQR(x,j.code,qx,qy,qw,16);
   x.textAlign="center";x.fillStyle=LAB.goldL;x.font="600 40px ui-monospace, Menlo, Consolas, monospace";x.fillText(j.code,qx+qw/2,qy+qw+58);
-  x.fillStyle=LAB.cream;x.globalAlpha=.75;x.font="400 19px 'Work Sans', system-ui, sans-serif";
+  x.fillStyle=LAB.ink;x.globalAlpha=.75;x.font="400 19px 'Work Sans', system-ui, sans-serif";
   const np=(j.pieces||[]).length;if(np)x.fillText(`${np} type${np>1?"s":""} de pièces · ${piecesTotal(j)} élément${piecesTotal(j)>1?"s":""}`,qx+qw/2,qy+qw+98);
   const adr=String(s.adresse||"").split(",");if(adr[0])x.fillText(adr[0].trim(),qx+qw/2,H-92);if(adr[1])x.fillText(adr.slice(1).join(",").trim(),qx+qw/2,H-64);
   x.globalAlpha=1;x.textAlign="left";
@@ -869,15 +877,15 @@ function labelPetit(j,echelle=1){
   x.fillStyle=LAB.bg;x.fillRect(0,0,W,H);
   x.strokeStyle=LAB.gold;x.lineWidth=4;rrect(x,22,22,W-44,H-44,18);x.stroke();
   // QR à gauche
-  const qs=H-80,qx=40,qy=40;x.fillStyle=LAB.cream;rrect(x,qx,qy,qs,qs,14);x.fill();
-  try{const q=qrcode(0,"M");q.addData(j.code);q.make();const n=q.getModuleCount(),cell=Math.floor((qs-24)/n),o=Math.round((qs-cell*n)/2);x.fillStyle=LAB.bg;for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))x.fillRect(qx+o+k*cell,qy+o+r*cell,cell,cell)}catch(e){}
+  const qs=H-80,qx=40,qy=40;x.strokeStyle=LAB.gold;x.lineWidth=2.5;rrect(x,qx,qy,qs,qs,14);x.stroke();
+  dessinerQR(x,j.code,qx,qy,qs,12);
   const X=qx+qs+26,wTxt=W-X-40;
   // logo + nom de la boutique + code
   if(logoImg&&logoImg.complete&&logoImg.naturalWidth){x.save();x.beginPath();x.arc(X+27,68,27,0,Math.PI*2);x.clip();x.drawImage(logoImg,X,41,54,54);x.restore()}
   x.fillStyle=LAB.goldL;x.font="600 19px Oswald, 'Arial Narrow', sans-serif";x.letterSpacing="1.5px";x.fillText((s.nom||"").toUpperCase().replace(/^LE\s+/,"").slice(0,20),X+64,64);x.letterSpacing="0px";
   x.font="600 22px ui-monospace, Menlo, Consolas, monospace";x.fillText(j.code,X+64,90);
   // nom du jeu
-  x.fillStyle=LAB.cream;let t=40,ls=null;while(t>=22){x.font=`600 ${t}px Oswald, 'Arial Narrow', sans-serif`;ls=lignes(x,j.nom.toUpperCase(),wTxt,2);if(ls)break;t-=2}
+  x.fillStyle=LAB.ink;let t=40,ls=null;while(t>=22){x.font=`600 ${t}px Oswald, 'Arial Narrow', sans-serif`;ls=lignes(x,j.nom.toUpperCase(),wTxt,2);if(ls)break;t-=2}
   if(!ls){x.font="600 22px Oswald, sans-serif";ls=[j.nom.toUpperCase().slice(0,24)]}
   let y=ls.length===1?160:146;ls.forEach((l,i)=>x.fillText(l,X,y+i*t));y+=(ls.length-1)*t;
   const infos=[j.joueursMin||j.joueursMax?`${j.joueursMin||"?"}${j.joueursMax&&j.joueursMax!=j.joueursMin?"–"+j.joueursMax:""} j.`:"",j.age?`${j.age} ans+`:"",j.dureePartie?`${j.dureePartie} min`:""].filter(Boolean).join(" · ");
@@ -886,15 +894,15 @@ function labelPetit(j,echelle=1){
   const by=H-40-82,bw=(wTxt-10)/2;
   if(!G()){
     x.fillStyle=LAB.gold;rrect(x,X,by,bw,82,10);x.fill();
-    x.fillStyle=LAB.bg;x.font="500 15px Oswald, sans-serif";x.letterSpacing="2px";x.fillText("LOCATION",X+12,by+24);x.letterSpacing="0px";x.font="600 40px Oswald, sans-serif";x.fillText(prixCourt(j.tarif),X+12,by+68);
+    x.fillStyle=LAB.ink;x.font="500 15px Oswald, sans-serif";x.letterSpacing="2px";x.fillText("LOCATION",X+12,by+24);x.letterSpacing="0px";x.font="600 40px Oswald, sans-serif";x.fillText(prixCourt(j.tarif),X+12,by+68);
     x.strokeStyle=LAB.gold;x.lineWidth=2.5;rrect(x,X+bw+10,by,bw,82,10);x.stroke();
-    x.fillStyle=LAB.goldL;x.font="500 15px Oswald, sans-serif";x.letterSpacing="2px";x.fillText("CAUTION",X+bw+22,by+24);x.letterSpacing="0px";x.fillStyle=LAB.cream;x.font="600 40px Oswald, sans-serif";x.fillText(prixCourt(j.caution),X+bw+22,by+68);
+    x.fillStyle=LAB.goldL;x.font="500 15px Oswald, sans-serif";x.letterSpacing="2px";x.fillText("CAUTION",X+bw+22,by+24);x.letterSpacing="0px";x.fillStyle=LAB.ink;x.font="600 40px Oswald, sans-serif";x.fillText(prixCourt(j.caution),X+bw+22,by+68);
   }else{x.strokeStyle=LAB.gold;x.lineWidth=2.5;rrect(x,X,by,wTxt,82,10);x.stroke();x.fillStyle=LAB.goldL;x.font="600 32px Oswald, sans-serif";x.letterSpacing="3px";x.fillText("PRÊT GRATUIT",X+18,by+54);x.letterSpacing="0px"}
   return c;
 }
 function dessinEtiquette(j,fmt,e=1){if(fmt==="grand")return labelCanvas(j,e);const c=labelPetit(j,e);if(fmt!=="niceday")return c;
   const F=FMT.niceday,o=document.createElement("canvas");o.width=Math.round(F.w*e);o.height=Math.round(F.h*e);o.getContext("2d").drawImage(c,0,0,o.width,o.height);return o}
-const fmtChoisi=()=>{const f=lsGet(NS+":fmtEtiq");return FMT[f]?f:"niceday"};
+const fmtChoisi=()=>{const f=lsGet(NS+":fmtEtiq2");return FMT[f]?f:"niceday"};
 const reglageNum=(k,d)=>{const v=parseFloat(lsGet(NS+":"+k));return isNaN(v)?d:v};
 async function etiquettePNG(j){await pretEtiquettes();return canvasBlob(dessinEtiquette(j,fmtChoisi()))}
 async function planchesA4(jeux,onProgress,fmt="grand",premiere=1){await pretEtiquettes();const F=FMT[fmt],per=F.cols*F.rows,PW=2480,PH=3508;
@@ -904,8 +912,7 @@ async function planchesA4(jeux,onProgress,fmt="grand",premiere=1){await pretEtiq
   const cases=[...Array(Math.max(0,Math.min(per,premiere)-1)).fill(null),...jeux];
   for(let p=0;p*per<cases.length;p++){const page=document.createElement("canvas");page.width=PW;page.height=PH;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
     cases.slice(p*per,p*per+per).forEach((j,i)=>{if(!j)return;const [X,Y]=pos(i);
-      if(F.autocollant){const b=MM(1.2);x.fillStyle=LAB.bg;x.fillRect(X-b,Y-b,F.w+2*b,F.h+2*b)}
-      x.drawImage(dessinEtiquette(j,fmt),X,Y);
+            x.drawImage(dessinEtiquette(j,fmt),X,Y);
       if(!sansEspace&&!F.autocollant){x.strokeStyle="#bbb";x.setLineDash([12,10]);x.lineWidth=2;x.strokeRect(X-8,Y-8,F.w+16,F.h+16);x.setLineDash([])}});
     if(sansEspace){x.strokeStyle="#9a9a9a";x.lineWidth=2;x.setLineDash([10,8]);x.beginPath();for(let c=0;c<=F.cols;c++){x.moveTo(mx+c*F.w,0);x.lineTo(mx+c*F.w,my-6);x.moveTo(mx+c*F.w,PH-my+6);x.lineTo(mx+c*F.w,PH)}for(let r=0;r<=F.rows;r++){x.moveTo(0,my+r*F.h);x.lineTo(mx-6,my+r*F.h);x.moveTo(PW-mx+6,my+r*F.h);x.lineTo(PW,my+r*F.h)}x.stroke();x.setLineDash([])}
     if(onProgress)onProgress(p+1,Math.ceil(cases.length/per));
@@ -931,7 +938,7 @@ function openLabels(){
         $("#labList").style.gridTemplateColumns=`repeat(auto-fill,minmax(${fmt==="grand"?230:190}px,1fr))`;
         $("#labList").innerHTML=liste.slice(0,60).map(j=>`<img alt="Étiquette ${esc(j.nom)}" style="width:100%;border-radius:6px;display:block" src="${dessinEtiquette(j,fmt,fmt==="grand"?.32:.4).toDataURL("image/jpeg",.85)}">`).join("")+(liste.length>60?`<div class="small muted">… et ${liste.length-60} autres</div>`:"")};
       draw();if($("#labQ"))$("#labQ").oninput=draw;
-      $$("[data-fmt]").forEach(b=>b.onclick=()=>{fmt=b.dataset.fmt;lsSet(NS+":fmtEtiq",fmt);$$("[data-fmt]").forEach(x=>x.classList.toggle("on",x===b));$("#optAuto").hidden=fmt!=="niceday";draw()});
+      $$("[data-fmt]").forEach(b=>b.onclick=()=>{fmt=b.dataset.fmt;lsSet(NS+":fmtEtiq2",fmt);$$("[data-fmt]").forEach(x=>x.classList.toggle("on",x===b));$("#optAuto").hidden=fmt!=="niceday";draw()});
       ["decX","decY"].forEach(k=>$("#"+k).onchange=()=>lsSet(NS+":"+k,String(num($("#"+k).value))));
       $("#essai").onclick=pageEssai;
       $("#dlLab").onclick=async()=>{if(!liste.length)return;$("#dlLab").disabled=true;await planchesA4(liste,(a,b)=>{$("#dlLab").textContent=`Planche ${a}/${b}…`},fmt,fmt==="niceday"?Math.max(1,Math.min(24,parseInt($("#prem").value)||1)):1);$("#dlLab").disabled=false;$("#dlLab").textContent="Télécharger les planches A4"}});
