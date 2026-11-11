@@ -859,28 +859,67 @@ function labelCanvas(j,echelle=1){
   x.globalAlpha=1;x.textAlign="left";
   return c;
 }
-async function etiquettePNG(j){await pretEtiquettes();return canvasBlob(labelCanvas(j))}
-async function planchesA4(jeux,onProgress){await pretEtiquettes();const per=10,PW=2480,PH=3508,mx=(PW-2*LAB.W)/3,my=(PH-5*LAB.H)/6;
+/* Petit format 65 × 35 mm (24 par planche A4 : 3 colonnes × 8 rangées, sans espace) */
+const MM=v=>Math.round(v/25.4*300);
+const FMT={grand:{nom:"Grand · 90 × 55 mm · 10 par planche",w:LAB.W,h:LAB.H,cols:2,rows:5},petit:{nom:"Petit · 65 × 35 mm · 24 par planche",w:MM(65),h:MM(35),cols:3,rows:8}};
+function labelPetit(j,echelle=1){
+  const s=S(),W=FMT.petit.w,H=FMT.petit.h,c=document.createElement("canvas");c.width=Math.round(W*echelle);c.height=Math.round(H*echelle);const x=c.getContext("2d");x.scale(echelle,echelle);
+  x.fillStyle=LAB.bg;x.fillRect(0,0,W,H);
+  x.strokeStyle=LAB.gold;x.lineWidth=4;rrect(x,22,22,W-44,H-44,18);x.stroke();
+  // QR à gauche
+  const qs=H-80,qx=40,qy=40;x.fillStyle=LAB.cream;rrect(x,qx,qy,qs,qs,14);x.fill();
+  try{const q=qrcode(0,"M");q.addData(j.code);q.make();const n=q.getModuleCount(),cell=Math.floor((qs-24)/n),o=Math.round((qs-cell*n)/2);x.fillStyle=LAB.bg;for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))x.fillRect(qx+o+k*cell,qy+o+r*cell,cell,cell)}catch(e){}
+  const X=qx+qs+26,wTxt=W-X-40;
+  // logo + nom de la boutique + code
+  if(logoImg&&logoImg.complete&&logoImg.naturalWidth){x.save();x.beginPath();x.arc(X+27,68,27,0,Math.PI*2);x.clip();x.drawImage(logoImg,X,41,54,54);x.restore()}
+  x.fillStyle=LAB.goldL;x.font="600 19px Oswald, 'Arial Narrow', sans-serif";x.letterSpacing="1.5px";x.fillText((s.nom||"").toUpperCase().replace(/^LE\s+/,"").slice(0,20),X+64,64);x.letterSpacing="0px";
+  x.font="600 22px ui-monospace, Menlo, Consolas, monospace";x.fillText(j.code,X+64,90);
+  // nom du jeu
+  x.fillStyle=LAB.cream;let t=40,ls=null;while(t>=22){x.font=`600 ${t}px Oswald, 'Arial Narrow', sans-serif`;ls=lignes(x,j.nom.toUpperCase(),wTxt,2);if(ls)break;t-=2}
+  if(!ls){x.font="600 22px Oswald, sans-serif";ls=[j.nom.toUpperCase().slice(0,24)]}
+  let y=ls.length===1?160:146;ls.forEach((l,i)=>x.fillText(l,X,y+i*t));y+=(ls.length-1)*t;
+  const infos=[j.joueursMin||j.joueursMax?`${j.joueursMin||"?"}${j.joueursMax&&j.joueursMax!=j.joueursMin?"–"+j.joueursMax:""} j.`:"",j.age?`${j.age} ans+`:"",j.dureePartie?`${j.dureePartie} min`:""].filter(Boolean).join(" · ");
+  x.font="400 19px 'Work Sans', system-ui, sans-serif";x.globalAlpha=.85;if(infos)x.fillText(infos,X,y+30);x.globalAlpha=1;
+  // prix
+  const by=H-40-82,bw=(wTxt-10)/2;
+  if(!G()){
+    x.fillStyle=LAB.gold;rrect(x,X,by,bw,82,10);x.fill();
+    x.fillStyle=LAB.bg;x.font="500 15px Oswald, sans-serif";x.letterSpacing="2px";x.fillText("LOCATION",X+12,by+24);x.letterSpacing="0px";x.font="600 40px Oswald, sans-serif";x.fillText(prixCourt(j.tarif),X+12,by+68);
+    x.strokeStyle=LAB.gold;x.lineWidth=2.5;rrect(x,X+bw+10,by,bw,82,10);x.stroke();
+    x.fillStyle=LAB.goldL;x.font="500 15px Oswald, sans-serif";x.letterSpacing="2px";x.fillText("CAUTION",X+bw+22,by+24);x.letterSpacing="0px";x.fillStyle=LAB.cream;x.font="600 40px Oswald, sans-serif";x.fillText(prixCourt(j.caution),X+bw+22,by+68);
+  }else{x.strokeStyle=LAB.gold;x.lineWidth=2.5;rrect(x,X,by,wTxt,82,10);x.stroke();x.fillStyle=LAB.goldL;x.font="600 32px Oswald, sans-serif";x.letterSpacing="3px";x.fillText("PRÊT GRATUIT",X+18,by+54);x.letterSpacing="0px"}
+  return c;
+}
+const dessinEtiquette=(j,fmt,e)=>fmt==="petit"?labelPetit(j,e):labelCanvas(j,e);
+const fmtChoisi=()=>lsGet(NS+":fmtEtiq")==="petit"?"petit":"grand";
+async function etiquettePNG(j){await pretEtiquettes();return canvasBlob(dessinEtiquette(j,fmtChoisi()))}
+async function planchesA4(jeux,onProgress,fmt="grand"){await pretEtiquettes();const F=FMT[fmt],per=F.cols*F.rows,PW=2480,PH=3508;
+  const sansEspace=fmt==="petit",mx=sansEspace?(PW-F.cols*F.w)/2:(PW-F.cols*F.w)/(F.cols+1),my=sansEspace?(PH-F.rows*F.h)/2:(PH-F.rows*F.h)/(F.rows+1);
+  const pos=i=>{const c=i%F.cols,r=Math.floor(i/F.cols);return sansEspace?[mx+c*F.w,my+r*F.h]:[mx+c*(F.w+mx),my+r*(F.h+my)]};
   for(let p=0;p*per<jeux.length;p++){const page=document.createElement("canvas");page.width=PW;page.height=PH;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
-    jeux.slice(p*per,p*per+per).forEach((j,i)=>{const X=mx+(i%2)*(LAB.W+mx),Y=my+Math.floor(i/2)*(LAB.H+my);x.drawImage(labelCanvas(j),X,Y);x.strokeStyle="#bbb";x.setLineDash([12,10]);x.lineWidth=2;x.strokeRect(X-8,Y-8,LAB.W+16,LAB.H+16);x.setLineDash([])});
+    jeux.slice(p*per,p*per+per).forEach((j,i)=>{const [X,Y]=pos(i);x.drawImage(dessinEtiquette(j,fmt),X,Y);if(!sansEspace){x.strokeStyle="#bbb";x.setLineDash([12,10]);x.lineWidth=2;x.strokeRect(X-8,Y-8,F.w+16,F.h+16);x.setLineDash([])}});
+    if(sansEspace){x.strokeStyle="#9a9a9a";x.lineWidth=2;x.setLineDash([10,8]);x.beginPath();for(let c=0;c<=F.cols;c++){x.moveTo(mx+c*F.w,0);x.lineTo(mx+c*F.w,my-6);x.moveTo(mx+c*F.w,PH-my+6);x.lineTo(mx+c*F.w,PH)}for(let r=0;r<=F.rows;r++){x.moveTo(0,my+r*F.h);x.lineTo(mx-6,my+r*F.h);x.moveTo(PW-mx+6,my+r*F.h);x.lineTo(PW,my+r*F.h)}x.stroke();x.setLineDash([])}
     if(onProgress)onProgress(p+1,Math.ceil(jeux.length/per));
-    await saveFile(`etiquettes-page${p+1}.png`,await canvasBlob(page),"image/png")}}
+    await saveFile(`etiquettes-${fmt}-page${p+1}.png`,await canvasBlob(page),"image/png")}}
 function openLabels(){
-  const tous=Store.all("jeux").sort((a,b)=>a.code.localeCompare(b.code));
-  openModal("Étiquettes",`<p class="small muted" style="margin:0">Format carte de visite (90 × 55 mm), avec votre logo, le prix de location, la caution et le QR code. Planches A4 de 10 étiquettes, à imprimer à 100 % (taille réelle), puis à découper le long des pointillés.</p>
-    ${tous.length?`<div class="toolbar" style="margin:0"><input class="search" id="labQ" placeholder="Filtrer (nom ou code)…" aria-label="Filtrer"><span class="small muted" id="labN"></span></div><div class="labels" id="labList" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))"></div>`:'<div class="empty">Aucun jeu.</div>'}`,
+  const tous=Store.all("jeux").sort((a,b)=>a.code.localeCompare(b.code));let fmt=fmtChoisi();
+  openModal("Étiquettes",`<p class="small muted" style="margin:0">Votre logo, le prix de location, la caution et le QR code. Imprimez les planches A4 à 100 % (taille réelle, sans « ajuster à la page »), puis découpez le long des repères.</p>
+    <div class="chips">${Object.entries(FMT).map(([k,f])=>`<button type="button" class="chip ${k===fmt?"on":""}" data-fmt="${k}">${f.nom}</button>`).join("")}</div>
+    ${tous.length?`<div class="toolbar" style="margin:0"><input class="search" id="labQ" placeholder="Filtrer (nom ou code)…" aria-label="Filtrer"><span class="small muted" id="labN"></span></div><div class="labels" id="labList"></div>`:'<div class="empty">Aucun jeu.</div>'}`,
     `<button class="btn primary" id="dlLab" type="button" ${tous.length?"":"disabled"}>Télécharger les planches A4</button>`,
     async()=>{let liste=tous;await pretEtiquettes();
-      const draw=()=>{const q=($("#labQ")||{}).value||"";liste=tous.filter(j=>!q||(j.nom+" "+j.code).toLowerCase().includes(q.toLowerCase()));if(!$("#labList"))return;
-        $("#labN").textContent=`${liste.length} étiquette(s) · ${Math.ceil(liste.length/10)} planche(s)`;
-        $("#labList").innerHTML=liste.slice(0,60).map(j=>`<img alt="Étiquette ${esc(j.nom)}" style="width:100%;border-radius:6px;display:block" src="${labelCanvas(j,.32).toDataURL("image/jpeg",.85)}">`).join("")+(liste.length>60?`<div class="small muted">… et ${liste.length-60} autres</div>`:"")};
+      const draw=()=>{const q=($("#labQ")||{}).value||"",F=FMT[fmt];liste=tous.filter(j=>!q||(j.nom+" "+j.code).toLowerCase().includes(q.toLowerCase()));if(!$("#labList"))return;
+        $("#labN").textContent=`${liste.length} étiquette(s) · ${Math.ceil(liste.length/(F.cols*F.rows))} planche(s)`;
+        $("#labList").style.gridTemplateColumns=`repeat(auto-fill,minmax(${fmt==="petit"?190:230}px,1fr))`;
+        $("#labList").innerHTML=liste.slice(0,60).map(j=>`<img alt="Étiquette ${esc(j.nom)}" style="width:100%;border-radius:6px;display:block" src="${dessinEtiquette(j,fmt,fmt==="petit"?.4:.32).toDataURL("image/jpeg",.85)}">`).join("")+(liste.length>60?`<div class="small muted">… et ${liste.length-60} autres</div>`:"")};
       draw();if($("#labQ"))$("#labQ").oninput=draw;
-      $("#dlLab").onclick=async()=>{if(!liste.length)return;$("#dlLab").disabled=true;await planchesA4(liste,(a,b)=>{$("#dlLab").textContent=`Planche ${a}/${b}…`});$("#dlLab").disabled=false;$("#dlLab").textContent="Télécharger les planches A4"}});
+      $$("[data-fmt]").forEach(b=>b.onclick=()=>{fmt=b.dataset.fmt;lsSet(NS+":fmtEtiq",fmt);$$("[data-fmt]").forEach(x=>x.classList.toggle("on",x===b));draw()});
+      $("#dlLab").onclick=async()=>{if(!liste.length)return;$("#dlLab").disabled=true;await planchesA4(liste,(a,b)=>{$("#dlLab").textContent=`Planche ${a}/${b}…`},fmt);$("#dlLab").disabled=false;$("#dlLab").textContent="Télécharger les planches A4"}});
 }
 /* ================= Ajout rapide (liste collée) =================
    Une ligne = un jeu. Les lignes qui commencent par « - » sont les pièces du jeu au-dessus :
    « - 95 Cartes ressources », « - Dés x2 », « - 2 Dés (1,50 €) » (prix de remplacement facultatif). */
-const normNom=t=>String(t||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const normNom=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 function parsePiece(t){let q=1,n=t,mm=t.match(/^(\d+)\s*[x×]?\s+(.+)$/i);if(mm){q=+mm[1];n=mm[2]}else if((mm=t.match(/^(.+?)\s*[x×:]\s*(\d+)$/i))){n=mm[1];q=+mm[2]}
   let prix=0;const pm=n.match(/^(.*?)\s*[(\[]\s*(\d+(?:[.,]\d+)?)\s*€\s*[)\]]\s*$/);if(pm){n=pm[1];prix=num(pm[2])}
   n=n.trim();return n?{nom:n.charAt(0).toUpperCase()+n.slice(1),qte:q,prix}:null}
