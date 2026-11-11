@@ -606,7 +606,7 @@ function vJeux(){
     if(ui.jeuFilter!=="tous"&&!(ui.jeuFilter===st||(ui.jeuFilter==="loue"&&st==="retard")))return false;
     return!q||[j.nom,j.code,j.editeur,j.categorie].join(" ").toLowerCase().includes(q)});
   const F=[["tous","Tous"],["dispo","Disponibles"],["loue","Loués"],["indispo","Indisponibles"]];
-  $("#view").innerHTML=`<div class="head"><h1 class="grow">Jeux</h1><button class="btn" data-act="labels">Étiquettes QR</button>${window.APP_CATALOGUE?'<button class="btn" data-act="completer">Compléter avec le catalogue</button>':""}<button class="btn" data-act="rapide">Ajout rapide</button><button class="btn primary" data-act="newjeu">+ Ajouter un jeu</button></div>
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Jeux</h1><button class="btn" data-act="labels">Étiquettes</button>${window.APP_CATALOGUE?'<button class="btn" data-act="completer">Compléter avec le catalogue</button>':""}<button class="btn" data-act="rapide">Ajout rapide</button><button class="btn primary" data-act="newjeu">+ Ajouter un jeu</button></div>
   <div class="toolbar"><input class="search" id="jeuQ" placeholder="Rechercher un jeu, un code, un éditeur…" value="${esc(ui.jeuQ)}" aria-label="Rechercher"><div class="chips">${F.map(([k,t])=>`<button class="chip ${ui.jeuFilter===k?"on":""}" data-f="${k}">${t}</button>`).join("")}</div></div>
   ${jeux.length?`<div class="games">${jeux.map(j=>{const r=nextResa(j.id);return`<div class="game" data-jeu="${j.id}" tabindex="0"><div class="ph">${j.photo?`<img src="${esc(j.photo)}" alt="">`:esc((j.nom||"?")[0])}</div><div class="b"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="code">${esc(j.code)}</span>${pill(JEU_PILL[jeuState(j)])}</div><h3>${esc(j.nom)}</h3><div class="small muted">${(j.pieces||[]).length} types de pièces<span class="pay"> · ${eur(j.tarif)} · caution ${eur(j.caution)}</span></div>${r?`<div class="small" style="color:var(--warn)">Réservé à partir du ${fd(r.dateDepart)}</div>`:""}</div></div>`}).join("")}</div>`
   :'<div class="panel empty">Aucun jeu ici. Ajoutez votre premier jeu avec sa liste de pièces.</div>'}`;
@@ -807,30 +807,75 @@ function openJeu(id){
       $("#editJeu").onclick=()=>openJeuForm(j);
       $("#resaJeu").onclick=()=>openLocForm({mode:"reservation",jeuIds:[id]});
       if(l)$("#retJeu").onclick=()=>openRetourForm(l.id);else $("#locJeu").onclick=()=>openLocForm({jeuIds:[id]});
-      $("#dlQR").onclick=async()=>{saveFile(`etiquette-${j.code}.png`,await canvasBlob(labelCanvas(j)),"image/png")};
+      $("#dlQR").onclick=async()=>{saveFile(`etiquette-${j.code}.png`,await etiquettePNG(j),"image/png")};
       if(hist.some(isOpen))$("#delJeu").onclick=()=>toast("Ce jeu est loué ou réservé : impossible de le supprimer maintenant.");
       else confirmBtn($("#delJeu"),"Confirmer la suppression",()=>{Store.del("jeux",id);closeModal();toast("Jeu supprimé (l'historique est conservé)");render()});
     });
 }
-function labelCanvas(j){
-  const s=S(),W=600,H=300,c=document.createElement("canvas");c.width=W;c.height=H;const x=c.getContext("2d");
-  x.fillStyle="#fff";x.fillRect(0,0,W,H);x.strokeStyle="#bbb";x.setLineDash([8,6]);x.strokeRect(4,4,W-8,H-8);x.setLineDash([]);
-  try{x.drawImage(qrCanvas(j.code,250),25,25,250,250)}catch(e){}
-  x.fillStyle="#111";x.font="600 30px Oswald, Arial Narrow, sans-serif";wrapText(x,j.nom.toUpperCase(),295,70,280,34,3);
-  x.font="500 24px ui-monospace, Menlo, monospace";x.fillText(j.code,295,190);
-  x.font="16px Work Sans, sans-serif";x.fillStyle="#555";x.fillText(`${(j.pieces||[]).length} types de pièces · ${piecesTotal(j)} éléments`,295,222);
-  x.fillText((s.nom||"").slice(0,32),295,255);return c;
+/* ================= Étiquettes au style du Temple du Carton (90 × 55 mm à 300 dpi) ================= */
+const LAB={bg:"#07281C",gold:"#D9A21B",goldL:"#E8B547",cream:"#FBF3E2",W:1063,H:650};
+let logoImg=null;
+function chargerLogo(){const src=window.APP_LOGO||S().logo;if(!src)return Promise.resolve(null);if(logoImg&&logoImg._src===src)return logoImg.complete?Promise.resolve(logoImg):new Promise(r=>{logoImg.onload=()=>r(logoImg);logoImg.onerror=()=>r(null)});
+  logoImg=new Image();logoImg._src=src;return new Promise(r=>{logoImg.onload=()=>r(logoImg);logoImg.onerror=()=>r(null);logoImg.src=src})}
+async function pretEtiquettes(){try{await Promise.all(["600 40px Oswald","500 40px Oswald","400 30px 'Work Sans'","500 30px 'Work Sans'"].map(f=>document.fonts.load(f)))}catch(e){}return chargerLogo()}
+const prixCourt=n=>{n=num(n);return(Number.isInteger(n)?String(n):n.toFixed(2).replace(".",","))+" €"};
+function rrect(x,X,Y,w,h,r){x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+w,Y,X+w,Y+h,r);x.arcTo(X+w,Y+h,X,Y+h,r);x.arcTo(X,Y+h,X,Y,r);x.arcTo(X,Y,X+w,Y,r);x.closePath()}
+function lignes(x,t,w,max){const mots=String(t).split(/\s+/);const out=[];let l="";for(const m of mots){const test=l?l+" "+m:m;if(x.measureText(test).width>w&&l){out.push(l);l=m}else l=test}out.push(l);return out.length>max?null:out}
+function labelCanvas(j,echelle=1){
+  const s=S(),{W,H}=LAB,c=document.createElement("canvas");c.width=Math.round(W*echelle);c.height=Math.round(H*echelle);const x=c.getContext("2d");x.scale(echelle,echelle);
+  x.fillStyle=LAB.bg;x.fillRect(0,0,W,H);
+  x.strokeStyle=LAB.gold;x.lineWidth=5;rrect(x,18,18,W-36,H-36,26);x.stroke();
+  x.lineWidth=1.5;x.globalAlpha=.55;rrect(x,32,32,W-64,H-64,18);x.stroke();x.globalAlpha=1;
+  // logo + nom de la boutique
+  if(logoImg&&logoImg.complete&&logoImg.naturalWidth){x.save();x.beginPath();x.arc(60+78,58+78,78,0,Math.PI*2);x.clip();x.drawImage(logoImg,60,58,156,156);x.restore()}
+  x.textBaseline="alphabetic";x.fillStyle=LAB.goldL;x.font="600 34px Oswald, 'Arial Narrow', sans-serif";
+  x.letterSpacing="3px";x.fillText((s.nom||"").toUpperCase().slice(0,26),236,118);
+  x.fillStyle=LAB.cream;x.globalAlpha=.8;x.font="500 22px Oswald, 'Arial Narrow', sans-serif";x.fillText(G()?"PRÊT DE JEUX DE SOCIÉTÉ":"LOCATION DE JEUX DE SOCIÉTÉ",236,156);x.globalAlpha=1;x.letterSpacing="0px";
+  // nom du jeu (taille adaptée, 2 lignes maximum)
+  x.fillStyle=LAB.cream;let taille=66,ls=null;const wTxt=610;
+  while(taille>=34){x.font=`600 ${taille}px Oswald, 'Arial Narrow', sans-serif`;ls=lignes(x,j.nom.toUpperCase(),wTxt,2);if(ls)break;taille-=4}
+  if(!ls){x.font="600 34px Oswald, 'Arial Narrow', sans-serif";ls=[j.nom.toUpperCase().slice(0,32)]}
+  let y=ls.length===1?300:270;ls.forEach((l,i)=>x.fillText(l,60,y+i*taille*1.02));y+=(ls.length-1)*taille*1.02;
+  // infos
+  const infos=[j.joueursMin||j.joueursMax?`${j.joueursMin||"?"}${j.joueursMax&&j.joueursMax!=j.joueursMin?"–"+j.joueursMax:""} joueurs`:"",j.age?`${j.age} ans +`:"",j.dureePartie?`${j.dureePartie} min`:""].filter(Boolean).join("  ·  ");
+  x.font="400 27px 'Work Sans', system-ui, sans-serif";x.globalAlpha=.85;if(infos)x.fillText(infos,60,y+50);x.globalAlpha=1;
+  // prix
+  const by=H-62-118;
+  if(!G()){
+    x.fillStyle=LAB.gold;rrect(x,60,by,290,118,16);x.fill();
+    x.fillStyle=LAB.bg;x.font="500 22px Oswald, sans-serif";x.letterSpacing="4px";x.fillText("LOCATION",84,by+38);x.letterSpacing="0px";x.font="600 58px Oswald, sans-serif";x.fillText(prixCourt(j.tarif),84,by+98);
+    x.strokeStyle=LAB.gold;x.lineWidth=3;rrect(x,370,by,290,118,16);x.stroke();
+    x.fillStyle=LAB.goldL;x.font="500 22px Oswald, sans-serif";x.letterSpacing="4px";x.fillText("CAUTION",394,by+38);x.letterSpacing="0px";x.fillStyle=LAB.cream;x.font="600 58px Oswald, sans-serif";x.fillText(prixCourt(j.caution),394,by+98);
+  }else{
+    x.strokeStyle=LAB.gold;x.lineWidth=3;rrect(x,60,by,600,118,16);x.stroke();x.fillStyle=LAB.goldL;x.font="600 46px Oswald, sans-serif";x.letterSpacing="4px";x.fillText("PRÊT GRATUIT",92,by+77);x.letterSpacing="0px";
+  }
+  // QR code sur fond crème
+  const qx=708,qy=58,qw=297;x.fillStyle=LAB.cream;rrect(x,qx,qy,qw,qw,22);x.fill();
+  try{const q=qrcode(0,"M");q.addData(j.code);q.make();const n=q.getModuleCount(),cell=Math.floor((qw-36)/n),o=Math.round((qw-cell*n)/2);x.fillStyle=LAB.bg;for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))x.fillRect(qx+o+k*cell,qy+o+r*cell,cell,cell)}catch(e){}
+  x.textAlign="center";x.fillStyle=LAB.goldL;x.font="600 40px ui-monospace, Menlo, Consolas, monospace";x.fillText(j.code,qx+qw/2,qy+qw+58);
+  x.fillStyle=LAB.cream;x.globalAlpha=.75;x.font="400 19px 'Work Sans', system-ui, sans-serif";
+  const np=(j.pieces||[]).length;if(np)x.fillText(`${np} type${np>1?"s":""} de pièces · ${piecesTotal(j)} élément${piecesTotal(j)>1?"s":""}`,qx+qw/2,qy+qw+98);
+  const adr=String(s.adresse||"").split(",");if(adr[0])x.fillText(adr[0].trim(),qx+qw/2,H-92);if(adr[1])x.fillText(adr.slice(1).join(",").trim(),qx+qw/2,H-64);
+  x.globalAlpha=1;x.textAlign="left";
+  return c;
 }
-function wrapText(x,t,X,Y,w,lh,max){const words=t.split(" ");let line="",n=0;for(const wd of words){const test=line?line+" "+wd:wd;if(x.measureText(test).width>w&&line){x.fillText(line,X,Y+n*lh);n++;line=wd;if(n>=max-1)break}else line=test}if(n<max)x.fillText(line,X,Y+n*lh)}
+async function etiquettePNG(j){await pretEtiquettes();return canvasBlob(labelCanvas(j))}
+async function planchesA4(jeux,onProgress){await pretEtiquettes();const per=10,PW=2480,PH=3508,mx=(PW-2*LAB.W)/3,my=(PH-5*LAB.H)/6;
+  for(let p=0;p*per<jeux.length;p++){const page=document.createElement("canvas");page.width=PW;page.height=PH;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
+    jeux.slice(p*per,p*per+per).forEach((j,i)=>{const X=mx+(i%2)*(LAB.W+mx),Y=my+Math.floor(i/2)*(LAB.H+my);x.drawImage(labelCanvas(j),X,Y);x.strokeStyle="#bbb";x.setLineDash([12,10]);x.lineWidth=2;x.strokeRect(X-8,Y-8,LAB.W+16,LAB.H+16);x.setLineDash([])});
+    if(onProgress)onProgress(p+1,Math.ceil(jeux.length/per));
+    await saveFile(`etiquettes-page${p+1}.png`,await canvasBlob(page),"image/png")}}
 function openLabels(){
-  const jeux=Store.all("jeux").sort((a,b)=>a.code.localeCompare(b.code));
-  openModal("Étiquettes QR",`<p class="small muted" style="margin:0">Collez une étiquette sur chaque boîte (de préférence sous plastique). Chaque étiquette se télécharge en image, ou toutes d'un coup en planche A4.</p>
-    ${jeux.length?`<div class="labels">${jeux.map(j=>`<div class="label">${qrSvg(j.code)}<b>${esc(j.nom)}</b><span class="code">${esc(j.code)}</span></div>`).join("")}</div>`:'<div class="empty">Aucun jeu.</div>'}`,
-    `${framed?"":'<button class="btn" id="prLab" type="button">Imprimer</button>'}<button class="btn primary" id="dlLab" type="button" ${jeux.length?"":"disabled"}>Télécharger la planche A4 (PNG)</button>`,
-    ()=>{if($("#prLab"))$("#prLab").onclick=()=>window.print();
-      $("#dlLab").onclick=async()=>{const per=10;for(let p=0;p*per<jeux.length;p++){const page=document.createElement("canvas");page.width=1240;page.height=1754;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,1240,1754);
-        jeux.slice(p*per,p*per+per).forEach((j,i)=>{x.drawImage(labelCanvas(j),20+(i%2)*610,27+Math.floor(i/2)*340)});
-        await saveFile(`etiquettes-qr-page${p+1}.png`,await canvasBlob(page),"image/png")}}});
+  const tous=Store.all("jeux").sort((a,b)=>a.code.localeCompare(b.code));
+  openModal("Étiquettes",`<p class="small muted" style="margin:0">Format carte de visite (90 × 55 mm), avec votre logo, le prix de location, la caution et le QR code. Planches A4 de 10 étiquettes, à imprimer à 100 % (taille réelle), puis à découper le long des pointillés.</p>
+    ${tous.length?`<div class="toolbar" style="margin:0"><input class="search" id="labQ" placeholder="Filtrer (nom ou code)…" aria-label="Filtrer"><span class="small muted" id="labN"></span></div><div class="labels" id="labList" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))"></div>`:'<div class="empty">Aucun jeu.</div>'}`,
+    `<button class="btn primary" id="dlLab" type="button" ${tous.length?"":"disabled"}>Télécharger les planches A4</button>`,
+    async()=>{let liste=tous;await pretEtiquettes();
+      const draw=()=>{const q=($("#labQ")||{}).value||"";liste=tous.filter(j=>!q||(j.nom+" "+j.code).toLowerCase().includes(q.toLowerCase()));if(!$("#labList"))return;
+        $("#labN").textContent=`${liste.length} étiquette(s) · ${Math.ceil(liste.length/10)} planche(s)`;
+        $("#labList").innerHTML=liste.slice(0,60).map(j=>`<img alt="Étiquette ${esc(j.nom)}" style="width:100%;border-radius:6px;display:block" src="${labelCanvas(j,.32).toDataURL("image/jpeg",.85)}">`).join("")+(liste.length>60?`<div class="small muted">… et ${liste.length-60} autres</div>`:"")};
+      draw();if($("#labQ"))$("#labQ").oninput=draw;
+      $("#dlLab").onclick=async()=>{if(!liste.length)return;$("#dlLab").disabled=true;await planchesA4(liste,(a,b)=>{$("#dlLab").textContent=`Planche ${a}/${b}…`});$("#dlLab").disabled=false;$("#dlLab").textContent="Télécharger les planches A4"}});
 }
 /* ================= Ajout rapide (liste collée) =================
    Une ligne = un jeu. Les lignes qui commencent par « - » sont les pièces du jeu au-dessus :
