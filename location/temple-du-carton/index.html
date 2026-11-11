@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script>window.APP_VERSION="11/11/2026 20:13";</script>
+<script>window.APP_VERSION="11/11/2026 20:20";</script>
 </head><body>
 <title>Le Temple du Carton · Location de jeux</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -924,6 +924,9 @@ async function planchesA4(jeux,onProgress,fmt="grand",premiere=1){await pretEtiq
 async function pageEssai(){const F=FMT.niceday,PW=2480,PH=3508,c=document.createElement("canvas");c.width=PW;c.height=PH;const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
   const dx=reglageNum("decX",0),dy=reglageNum("decY",0);x.strokeStyle="#000";x.lineWidth=3;x.font="40px sans-serif";x.fillStyle="#000";
   for(let i=0;i<24;i++){const X=MM(F.gauche+dx+(i%3)*F.pasX),Y=MM(F.haut+dy+Math.floor(i/3)*F.pasY);rrect(x,X,Y,F.w,F.h,MM(2));x.stroke();x.fillText(String(i+1),X+F.w/2-12,Y+F.h/2+14)}
+  /* règle de contrôle : ce trait doit mesurer exactement 10 cm une fois imprimé */
+  const rx=MM(55),ry=MM(6);x.lineWidth=3;x.beginPath();x.moveTo(rx,ry);x.lineTo(rx+MM(100),ry);for(let i=0;i<=100;i++){const h=i%10===0?MM(3):i%5===0?MM(2):MM(1);x.moveTo(rx+MM(i),ry);x.lineTo(rx+MM(i),ry+h)}x.stroke();
+  x.font="32px sans-serif";x.fillText("0",rx-8,ry+MM(6.5));x.fillText("10 cm",rx+MM(100)-40,ry+MM(6.5));x.fillText("Ce trait doit mesurer exactement 10 cm",rx+MM(18),ry+MM(6.5));
   await saveFile("essai-planche-niceday.png",await canvasBlob(c),"image/png")}
 function openLabels(){
   const tous=Store.all("jeux").sort((a,b)=>a.code.localeCompare(b.code));let fmt=fmtChoisi();

@@ -1,5 +1,5 @@
 /* Fonctionnement hors ligne : page toujours à jour si internet, sinon copie en cache */
-const C = "locjeux-temple-du-carton-e9eb490936";
+const C = "locjeux-temple-du-carton-d312e3ca78";
 const FICHIERS = ["./", "catalogue.json", "config.js", "icons/apple-touch-icon.png", "icons/icon-192.png", "icons/icon-512.png", "icons/logo.png", "icons/maskable-512.png", "index.html", "lib/fonts/Oswald-400.ttf", "lib/fonts/Oswald-600.ttf", "lib/fonts/WorkSans-400.ttf", "lib/fonts/WorkSans-500.ttf", "lib/jsQR.js", "lib/qrcode.js", "manifest.webmanifest"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(FICHIERS.map(f => new Request(f, { cache: "reload" })))).then(() => self.skipWaiting()));
