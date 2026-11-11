@@ -520,7 +520,7 @@ function vAccueil(){
   const ca=locs.filter(l=>(l.statut==="en_cours"||l.statut==="rendue")&&(l.dateDepart||"").startsWith(t.slice(0,7))).reduce((a,l)=>a+num(l.tarif)+num(l.cautionRetenue),0);
   const aVerifier=jeux.filter(j=>j.indisponible);
   const encaiss=act.filter(cautionEncaissable),todo=rappelsDuJour();
-  $("#view").innerHTML=`${storageBanner()}${installBanner()}${backupBanner()}
+  $("#view").innerHTML=`${storageBanner()}${installBanner()}${catalogueBanner()}${backupBanner()}
   ${todo.length?`<div class="panel" style="margin-bottom:20px;border-color:var(--gold)"><h2>Rappels à envoyer aujourd'hui (${todo.length})</h2><div class="list">${todo.map(l=>locRow(l,{rappel:true})).join("")}</div></div>`:""}
   <div class="head"><h1 class="grow">Tableau de bord</h1>
     <button class="btn" data-act="newresa">+ Réservation</button>
@@ -772,7 +772,7 @@ function bindCommon(){
   $$("[data-jeu]").forEach(e=>{e.onclick=()=>openJeu(e.dataset.jeu);e.onkeydown=k=>{if(k.key==="Enter")openJeu(e.dataset.jeu)}});
   $$("[data-cli]").forEach(e=>e.onclick=()=>openClient(e.dataset.cli));
   $$("[data-act]").forEach(b=>b.onclick=()=>{const a=b.dataset.act;
-    if(a==="newloc")openLocForm({});if(a==="newresa")openLocForm({mode:"reservation"});if(a==="newjeu")openJeuForm();if(a==="newcli")openClientForm();if(a==="labels")openLabels();if(a==="rapide")openAjoutRapide();if(a==="completer")openCompleter();
+    if(a==="newloc")openLocForm({});if(a==="newresa")openLocForm({mode:"reservation"});if(a==="newjeu")openJeuForm();if(a==="newcli")openClientForm();if(a==="labels")openLabels();if(a==="rapide")openAjoutRapide();if(a==="completer")openCompleter();if(a==="catmaj")appliquerMajCatalogue();
     if(a==="exemples"){loadExamples();toast("Exemples chargés");render()}
     if(a==="csv")exportCSV();if(a==="backup")openBackup();if(a==="exportCat")exportCatalog();
     if(a==="install")doInstall();if(a==="installHide"){lsSet(NS+":installHide","1");render()}});
@@ -871,9 +871,32 @@ function openAjoutRapide(){
   });
 }
 /* ================= Compléter avec le catalogue (fichier catalogue.json publié avec l'appli) ================= */
+const CAT_CHAMPS=["editeur","categorie","joueursMin","joueursMax","age","dureePartie","tarif","caution","valeur"];
+const sigCat=c=>JSON.stringify([CAT_CHAMPS.map(k=>c[k]??null),c.pieces||[]]);
+/* Synchronisation avec le catalogue Excel : quand une fiche change dans l'Excel, le jeu lié est mis à jour (codes, photos, état, notes et historique ne bougent pas) */
+let catMaj=null;
+async function verifierCatalogue(){
+  if(!window.APP_CATALOGUE||!navigator.onLine)return;
+  let d;try{d=await (await fetch(window.APP_CATALOGUE,{cache:"no-store"})).json()}catch(e){return}
+  const byNom={};(d.jeux||[]).forEach(c=>byNom[c.nom]=c);
+  const changes=Store.all("jeux").filter(j=>j.catalogueNom&&byNom[j.catalogueNom]&&sigCat(byNom[j.catalogueNom])!==j.catalogueSig).map(j=>({j,c:byNom[j.catalogueNom]}));
+  const lies=new Set(Store.all("jeux").map(j=>j.catalogueNom).filter(Boolean));
+  const nonLies=Store.all("jeux").filter(j=>!j.catalogueNom).length;
+  catMaj={majLe:d.majLe,changes,nouveaux:(d.jeux||[]).filter(c=>!lies.has(c.nom)).length,nonLies};
+  if(current()==="accueil"&&!$("#ov"))render();
+}
+function appliquerMajCatalogue(){if(!catMaj)return;
+  catMaj.changes.forEach(({j,c})=>{CAT_CHAMPS.forEach(k=>{if(c[k]!==undefined&&c[k]!==null&&c[k]!=="")j[k]=c[k]});if(c.pieces&&c.pieces.length)j.pieces=c.pieces.map(p=>Object.assign({},p));j.catalogueSig=sigCat(c);Store.put("jeux",j)});
+  toast(catMaj.changes.length+" jeu(x) mis à jour depuis le catalogue");catMaj.changes=[];render()}
+function catalogueBanner(){if(!catMaj)return"";
+  if(catMaj.changes.length)return`<div class="banner warn"><span class="grow"><b>Catalogue Excel mis à jour${catMaj.majLe?" le "+fd(catMaj.majLe):""}</b> : ${catMaj.changes.length} jeu(x) concerné(s) (${esc(catMaj.changes.slice(0,4).map(x=>x.j.nom).join(", "))}${catMaj.changes.length>4?"…":""}).</span><button class="btn sm" data-act="catmaj">Appliquer</button></div>`;
+  const nonLies=Store.all("jeux").filter(j=>!j.catalogueNom).length;
+  if(nonLies)return`<div class="banner"><span class="grow">${nonLies} jeu(x) pas encore relié(s) au catalogue Excel.</span><button class="btn sm" data-act="completer">Relier</button></div>`;
+  return""}
 const baseNom=t=>normNom(String(t||"").split(/\s[–—-]\s|\s:\s/)[0]);
 function matcher(cat){const idx={},base={};cat.forEach(c=>{idx[normNom(c.nom)]=c;const b=baseNom(c.nom);(base[b]=base[b]||[]).push(c)});
-  return j=>{const k=normNom(j.nom);if(idx[k])return idx[k];if(base[k]&&base[k].length===1)return base[k][0];const b=baseNom(j.nom);if(base[b]&&base[b].length===1)return base[b][0];
+  const parNom={};cat.forEach(c=>parNom[c.nom]=c);
+  return j=>{if(j.catalogueNom&&parNom[j.catalogueNom])return parNom[j.catalogueNom];const k=normNom(j.nom);if(idx[k])return idx[k];if(base[k]&&base[k].length===1)return base[k][0];const b=baseNom(j.nom);if(base[b]&&base[b].length===1)return base[b][0];
     const pre=cat.filter(c=>{const n=normNom(c.nom);return n.startsWith(k+" ")||k.startsWith(n+" ")});if(pre.length===1)return pre[0];
     /* mots du nom (sans les petits mots) tous présents dans la fiche du catalogue */
     const STOP=new Set(["le","la","les","l","de","des","du","d","un","une","the","a","jeu","et"]);const mots=t=>normNom(t).split(" ").filter(w=>w&&!STOP.has(w));
@@ -899,10 +922,10 @@ async function openCompleter(){
     $("#cpCancel").onclick=closeModal;
     $("#cpGo").onclick=()=>{const byNom={};cat.forEach(c=>byNom[c.nom]=c);const repl=$("#cpPieces").checked,s=S();let maj=0,nv=0;const utilises=new Set();
       const appliquer=(j,c)=>{["editeur","categorie","joueursMin","joueursMax","age","dureePartie","tarif","caution","valeur"].forEach(k=>{if(c[k]!==undefined&&c[k]!==null&&c[k]!=="")j[k]=c[k]});
-        if(c.pieces&&c.pieces.length&&(repl||!(j.pieces||[]).length))j.pieces=c.pieces.map(p=>Object.assign({},p))};
+        if(c.pieces&&c.pieces.length&&(repl||!(j.pieces||[]).length))j.pieces=c.pieces.map(p=>Object.assign({},p));j.catalogueNom=c.nom;j.catalogueSig=sigCat(c)};
       $$("[data-cj]").forEach(x=>{const c=byNom[x.value];if(!c)return;const j=Store.get("jeux",x.dataset.cj);if(!j)return;appliquer(j,c);Store.put("jeux",j);utilises.add(c.nom);maj++});
       if($("#cpAjout").checked)cat.forEach(c=>{if(utilises.has(c.nom)||dejaPris.has(c.nom))return;const j={id:uid(),code:nextCode(),nom:c.nom,pieces:[],tarif:s.tarifDefaut,caution:s.cautionDefaut,etat:"Très bon",creeLe:Date.now()};appliquer(j,c);Store.put("jeux",j);nv++});
-      closeModal();toast(`${maj} jeu(x) complété(s)${nv?`, ${nv} ajouté(s)`:""}`);location.hash="jeux";render()};
+      closeModal();toast(`${maj} jeu(x) complété(s)${nv?`, ${nv} ajouté(s)`:""}`);location.hash="jeux";render();verifierCatalogue()};
   });
 }
 function openJeuForm(j,code){
@@ -1263,6 +1286,7 @@ function loadExamples(){
   }
   applyBrand();
   render();
+  verifierCatalogue();
   try{if(window.claude&&claude.use)downloadsCap=await claude.use("downloads")}catch(e){}
   const p=new URLSearchParams(location.search).get("jeu");if(p){const j=findByCode(p);if(j)openJeu(j.id)}
   if(window.APP_SW&&"serviceWorker"in navigator&&!framed&&/^https?:/.test(location.protocol))navigator.serviceWorker.register("sw.js").catch(()=>{});
