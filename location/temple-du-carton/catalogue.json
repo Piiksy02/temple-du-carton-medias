@@ -1,0 +1,8260 @@
+{
+"source": "Catalogue Excel du Temple du Carton",
+"jeux": [
+{
+"nom": "Bellevue",
+"editeur": "Gigamic",
+"categorie": "Cartes / construction",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes Boutique",
+"qte": 30
+},
+{
+"nom": "Cartes Fenêtre",
+"qte": 52
+},
+{
+"nom": "Cartes Toit",
+"qte": 27
+},
+{
+"nom": "Carte Bonus Couleur",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Qwixx",
+"editeur": "Gigamic",
+"categorie": "Dés / roll & write",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Dés blancs",
+"qte": 2
+},
+{
+"nom": "Dé rouge",
+"qte": 1
+},
+{
+"nom": "Dé jaune",
+"qte": 1
+},
+{
+"nom": "Dé vert",
+"qte": 1
+},
+{
+"nom": "Dé bleu",
+"qte": 1
+},
+{
+"nom": "Bloc de feuilles de score",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Tic Tac Boum",
+"editeur": "Goliath",
+"categorie": "Ambiance / vocabulaire",
+"joueursMin": 2,
+"joueursMax": 12,
+"age": 8,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 27.5,
+"caution": 33.0,
+"pieces": [
+{
+"nom": "Cartes Son",
+"qte": 110
+},
+{
+"nom": "Dé spécial",
+"qte": 1
+},
+{
+"nom": "Bombe électronique",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Les Cinq Rois",
+"editeur": "Gigamic",
+"categorie": "Cartes / combinaisons",
+"joueursMin": 1,
+"joueursMax": 7,
+"age": 8,
+"dureePartie": 45,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 116
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "6 qui prend !",
+"editeur": "Gigamic",
+"categorie": "Cartes / ambiance",
+"joueursMin": 2,
+"joueursMax": 10,
+"age": 10,
+"dureePartie": 45,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 104
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dékal – Classique",
+"editeur": "Gigamic",
+"categorie": "Cartes / placement",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 7,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes Dékal",
+"qte": 100
+},
+{
+"nom": "Pion Premier joueur",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Le Baron",
+"editeur": "Gigamic",
+"categorie": "Cartes / tactique",
+"joueursMin": 2,
+"joueursMax": 10,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 110
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Méouté",
+"editeur": "Drei Magier Spiele",
+"categorie": "Observation / rapidité",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 6,
+"dureePartie": 10,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 108
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "L’Attaque des Concombres",
+"editeur": "Gigamic",
+"categorie": "Cartes / plis",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 60
+},
+{
+"nom": "Jeton +/−",
+"qte": 1
+},
+{
+"nom": "Bloc de scores",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dragon Bomb",
+"editeur": "Oka Luda",
+"categorie": "Cartes / ambiance",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes Dragon",
+"qte": 21
+},
+{
+"nom": "Cartes Pétard",
+"qte": 45
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Saboteur",
+"editeur": "Gigamic",
+"categorie": "Cartes / bluff",
+"joueursMin": 3,
+"joueursMax": 10,
+"age": 8,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes Chemin",
+"qte": 44
+},
+{
+"nom": "Cartes Action",
+"qte": 27
+},
+{
+"nom": "Cartes Pépite",
+"qte": 28
+},
+{
+"nom": "Cartes Nain",
+"qte": 11
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Papayoo",
+"editeur": "Gigamic",
+"categorie": "Cartes / plis",
+"joueursMin": 3,
+"joueursMax": 8,
+"age": 7,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 60
+},
+{
+"nom": "Dé à 8 faces",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Kluster",
+"editeur": "Borderline Editions",
+"categorie": "Adresse",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 14,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Aimants",
+"qte": 24
+},
+{
+"nom": "Cordelette",
+"qte": 1
+},
+{
+"nom": "Sac de rangement",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Terres de Yokai",
+"editeur": "Devir / Gigamic",
+"categorie": "Stratégie / majorité",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes Yokai",
+"qte": 20
+},
+{
+"nom": "Cartes Esquisse",
+"qte": 36
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Focus",
+"editeur": "OldChap Games",
+"categorie": "Coopératif / association d’idées",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 12.5,
+"caution": 18.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 100
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Château Combo",
+"editeur": "Catch Up Games",
+"categorie": "Cartes / stratégie",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 10,
+"dureePartie": 25,
+"tarif": 3.0,
+"valeur": 17.95,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Cartes Château",
+"qte": 39
+},
+{
+"nom": "Cartes Village",
+"qte": 39
+},
+{
+"nom": "Jetons Or",
+"qte": 52
+},
+{
+"nom": "Jetons Clé",
+"qte": 44
+},
+{
+"nom": "Pion Messager",
+"qte": 1
+},
+{
+"nom": "Aide de jeu",
+"qte": 1
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Cabanga",
+"editeur": "Gigamic",
+"categorie": "Cartes / ambiance",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 84
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Aurum",
+"editeur": "Gigamic",
+"categorie": "Cartes / plis",
+"joueursMin": 3,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 15.9,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 69
+},
+{
+"nom": "Pépites d’or",
+"qte": 3
+},
+{
+"nom": "Pion Premier joueur",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Pass Pass",
+"editeur": "Funnyfox",
+"categorie": "Cartes / plis",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 14.95,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 48
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "À la lettre !",
+"editeur": "Don't Panic Games",
+"categorie": "Mots",
+"joueursMin": 2,
+"joueursMax": 99,
+"age": 8,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 22.5,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 104
+},
+{
+"nom": "Bloc-notes",
+"qte": 1
+},
+{
+"nom": "Crayons-gomme",
+"qte": 5
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Déblok !",
+"editeur": "FoxMind",
+"categorie": "Observation / rapidité",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 6,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Blocs de couleur",
+"qte": 20
+},
+{
+"nom": "Cartes Défi",
+"qte": 60
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Minikin City",
+"editeur": "Gigamic",
+"categorie": "Cartes / stratégie",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 19.5,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes Ville",
+"qte": 61
+},
+{
+"nom": "Cartes Récompense",
+"qte": 18
+},
+{
+"nom": "Pions Minikin",
+"qte": 75
+},
+{
+"nom": "Pions Récompense",
+"qte": 45
+},
+{
+"nom": "Tuiles Fin de partie",
+"qte": 2
+},
+{
+"nom": "Jetons Bonus",
+"qte": 10
+},
+{
+"nom": "Bloc de score",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Symbiose",
+"editeur": "Subverti",
+"categorie": "Collection / stratégie",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 10.9,
+"caution": 16.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 36
+},
+{
+"nom": "Feuille de score",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Monumental – Jeu de base",
+"editeur": "Funforge",
+"categorie": "Civilisation / deck-building",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 59.9,
+"caution": 65.0,
+"pieces": [
+{
+"nom": "Cartes Civilisation",
+"qte": 105
+},
+{
+"nom": "Cartes Développement",
+"qte": 54
+},
+{
+"nom": "Cartes Bâtiment de base",
+"qte": 30
+},
+{
+"nom": "Cartes Automa",
+"qte": 20
+},
+{
+"nom": "Cartes Héros et Monstres",
+"qte": 24
+},
+{
+"nom": "Tuiles Terrain",
+"qte": 40
+},
+{
+"nom": "Jetons de Civilisation",
+"qte": 70
+},
+{
+"nom": "Autres jetons",
+"qte": 226
+},
+{
+"nom": "Pions",
+"qte": 44
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+},
+{
+"nom": "Livret des plateaux de jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Monumental – Lost Kingdoms",
+"editeur": "Funforge",
+"categorie": "Extension / civilisation",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 40.9,
+"caution": 46.0,
+"pieces": [
+{
+"nom": "Cartes Civilisation",
+"qte": 84
+},
+{
+"nom": "Cartes Développement",
+"qte": 12
+},
+{
+"nom": "Cartes Automa",
+"qte": 8
+},
+{
+"nom": "Tuiles Terrain",
+"qte": 13
+},
+{
+"nom": "Jetons de Civilisation",
+"qte": 50
+},
+{
+"nom": "Autres jetons",
+"qte": 43
+},
+{
+"nom": "Livret de règles avec plateaux de jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Monumental – African Empires",
+"editeur": "Funforge",
+"categorie": "Extension / civilisation",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 40.9,
+"caution": 46.0,
+"pieces": [
+{
+"nom": "Cartes Civilisation",
+"qte": 63
+},
+{
+"nom": "Cartes Développement",
+"qte": 32
+},
+{
+"nom": "Cartes Automa",
+"qte": 16
+},
+{
+"nom": "Autres cartes",
+"qte": 51
+},
+{
+"nom": "Tuiles Province",
+"qte": 15
+},
+{
+"nom": "Jetons de Civilisation",
+"qte": 60
+},
+{
+"nom": "Autres jetons",
+"qte": 161
+},
+{
+"nom": "Pions",
+"qte": 76
+},
+{
+"nom": "Plateau Piste commerciale",
+"qte": 1
+},
+{
+"nom": "Plateau Réserve",
+"qte": 1
+},
+{
+"nom": "Sac",
+"qte": 1
+},
+{
+"nom": "Dé",
+"qte": 1
+},
+{
+"nom": "Livret de règles avec plateaux de jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Cat-Tapultes",
+"editeur": "Exploding Kittens",
+"categorie": "Adresse / dextérité",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 7,
+"dureePartie": 15,
+"tarif": 5.0,
+"valeur": 24.9,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Plateau-boîte pliant",
+"qte": 1
+},
+{
+"nom": "Pattes de chat aimantées",
+"qte": 2
+},
+{
+"nom": "Balles en plastique",
+"qte": 17
+},
+{
+"nom": "Tête de chat",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Ganymede – 2e édition",
+"editeur": "Sorry We Are French",
+"categorie": "Stratégie / cartes",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 14,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 29.95,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Meeples Colon",
+"qte": 52
+},
+{
+"nom": "Cartes Navette et Vaisseau de Colons",
+"qte": 90
+},
+{
+"nom": "Tuiles Colon",
+"qte": 30
+},
+{
+"nom": "Plateaux individuels",
+"qte": 4
+},
+{
+"nom": "Marqueurs de Réputation",
+"qte": 4
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Magnastorm",
+"editeur": "Super Meeple",
+"categorie": "Stratégie / gestion",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 59.9,
+"caution": 65.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Tuile Centrale",
+"qte": 1
+},
+{
+"nom": "Plateau Action",
+"qte": 1
+},
+{
+"nom": "Plateau Recherche",
+"qte": 1
+},
+{
+"nom": "Plateaux Tableaux d’action",
+"qte": 2
+},
+{
+"nom": "Jeton Premier joueur",
+"qte": 1
+},
+{
+"nom": "Tuiles Commandant",
+"qte": 16
+},
+{
+"nom": "Cartes Objectif",
+"qte": 8
+},
+{
+"nom": "Cartes Commandant",
+"qte": 16
+},
+{
+"nom": "Cartes Artefact",
+"qte": 120
+},
+{
+"nom": "Membres d’équipage jaunes",
+"qte": 15
+},
+{
+"nom": "Membres d’équipage aux couleurs des joueurs",
+"qte": 20
+},
+{
+"nom": "Cubes Crédit jaunes et noirs",
+"qte": 50
+},
+{
+"nom": "Cubes Crédit aux couleurs des joueurs",
+"qte": 100
+},
+{
+"nom": "Tuiles Dissimulation",
+"qte": 4
+},
+{
+"nom": "Sac en tissu",
+"qte": 1
+},
+{
+"nom": "Plateaux Joueur",
+"qte": 4
+},
+{
+"nom": "Stations de téléportation",
+"qte": 12
+},
+{
+"nom": "Laboratoires Tortue",
+"qte": 40
+},
+{
+"nom": "Scout Runners",
+"qte": 4
+},
+{
+"nom": "Marqueurs",
+"qte": 56
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Skymines",
+"editeur": "Deep Print Games",
+"categorie": "Stratégie / gestion",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 58.9,
+"caution": 64.0,
+"pieces": [
+{
+"nom": "Plateau de jeu recto verso",
+"qte": 1
+},
+{
+"nom": "Plateaux individuels",
+"qte": 4
+},
+{
+"nom": "Pistes de compagnie recto verso",
+"qte": 5
+},
+{
+"nom": "Cartes Action",
+"qte": 44
+},
+{
+"nom": "Cartes Piste",
+"qte": 5
+},
+{
+"nom": "Cartes Action de départ",
+"qte": 36
+},
+{
+"nom": "Cartes Énergie",
+"qte": 4
+},
+{
+"nom": "Tuiles Bonus",
+"qte": 4
+},
+{
+"nom": "Tuiles Recherche de départ",
+"qte": 10
+},
+{
+"nom": "Marqueurs ON/OFF",
+"qte": 8
+},
+{
+"nom": "Jetons Recherche",
+"qte": 72
+},
+{
+"nom": "Jetons Recherche spéciaux",
+"qte": 6
+},
+{
+"nom": "CrypCoins",
+"qte": 60
+},
+{
+"nom": "Pions Joueur",
+"qte": 4
+},
+{
+"nom": "Pions Bonus",
+"qte": 20
+},
+{
+"nom": "Pions Investissement",
+"qte": 16
+},
+{
+"nom": "Marqueur Premier joueur",
+"qte": 1
+},
+{
+"nom": "Succursales",
+"qte": 60
+},
+{
+"nom": "Pions Hélium-3",
+"qte": 4
+},
+{
+"nom": "Pions Transmission",
+"qte": 4
+},
+{
+"nom": "Aides de jeu",
+"qte": 4
+},
+{
+"nom": "Bloc-notes",
+"qte": 1
+},
+{
+"nom": "Jetons Luna",
+"qte": 4
+},
+{
+"nom": "Pions Bonus à usage unique",
+"qte": 12
+},
+{
+"nom": "Navettes",
+"qte": 20
+},
+{
+"nom": "Cartes Luna",
+"qte": 19
+},
+{
+"nom": "Cartes Mission",
+"qte": 6
+},
+{
+"nom": "Cartes Menace",
+"qte": 6
+},
+{
+"nom": "Boîtes de rangement",
+"qte": 6
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+},
+{
+"nom": "Livret Luna",
+"qte": 1
+}
+]
+},
+{
+"nom": "Galerapagos",
+"editeur": "Gigamic",
+"categorie": "Ambiance / survie",
+"joueursMin": 3,
+"joueursMax": 12,
+"age": 10,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 22.0,
+"caution": 27.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes Radeau",
+"qte": 12
+},
+{
+"nom": "Cartes État du naufragé",
+"qte": 12
+},
+{
+"nom": "Cartes Météo",
+"qte": 12
+},
+{
+"nom": "Carte Premier joueur",
+"qte": 1
+},
+{
+"nom": "Cartes Épave",
+"qte": 54
+},
+{
+"nom": "Pion Nourriture rouge",
+"qte": 1
+},
+{
+"nom": "Pion Eau bleu",
+"qte": 1
+},
+{
+"nom": "Disque en bois",
+"qte": 1
+},
+{
+"nom": "Billes en bois",
+"qte": 5
+},
+{
+"nom": "Bille noire",
+"qte": 1
+},
+{
+"nom": "Sac en jute",
+"qte": 1
+},
+{
+"nom": "Boîtes porte-cartes",
+"qte": 2
+},
+{
+"nom": "Porte-cartes Bateau",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "De Facto",
+"editeur": "Explor8",
+"categorie": "Quiz / connaissances",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes Mot",
+"qte": 135
+},
+{
+"nom": "Cartes Fait",
+"qte": 100
+},
+{
+"nom": "Plateaux Frise historique",
+"qte": 5
+},
+{
+"nom": "Plateaux Draft",
+"qte": 8
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Lacuna",
+"editeur": "CMYK",
+"categorie": "Abstrait / stratégie",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 8,
+"dureePartie": 15,
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Fleurs",
+"qte": 49
+},
+{
+"nom": "Pions dorés",
+"qte": 6
+},
+{
+"nom": "Pions argentés",
+"qte": 6
+},
+{
+"nom": "Tapis de jeu en tissu",
+"qte": 1
+},
+{
+"nom": "Règle graduée",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "TreeTopia",
+"editeur": "Gigamic",
+"categorie": "Cartes / collection",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes Arbre",
+"qte": 48
+},
+{
+"nom": "Jetons Enchantement",
+"qte": 12
+},
+{
+"nom": "Cartes Symbiose",
+"qte": 6
+},
+{
+"nom": "Graines d’espoir",
+"qte": 90
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Sea Salt & Paper",
+"editeur": "Bombyx",
+"categorie": "Cartes / collection",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 10.95,
+"caution": 16.0,
+"pieces": [
+{
+"nom": "Cartes de jeu",
+"qte": 58
+},
+{
+"nom": "Aides de jeu",
+"qte": 6
+},
+{
+"nom": "Dépliant de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Mysterium Park",
+"editeur": "Libellud",
+"categorie": "Coopératif / déduction",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 26.95,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Cartes Vision",
+"qte": 84
+},
+{
+"nom": "Cartes Intrigue",
+"qte": 60
+},
+{
+"nom": "Cartes Personnage",
+"qte": 20
+},
+{
+"nom": "Cartes Lieu",
+"qte": 20
+},
+{
+"nom": "Support pour les cartes Intrigue",
+"qte": 1
+},
+{
+"nom": "Jetons Ticket",
+"qte": 3
+},
+{
+"nom": "Plateau",
+"qte": 1
+},
+{
+"nom": "Jeton Compte-tour",
+"qte": 1
+},
+{
+"nom": "Jetons Innocent",
+"qte": 5
+},
+{
+"nom": "Pions Intuition",
+"qte": 5
+},
+{
+"nom": "Jeton Témoin",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Akropolis : Panthéon",
+"editeur": "Gigamic",
+"categorie": "Extension / stratégie",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 45,
+"tarif": 3.0,
+"valeur": 11.9,
+"caution": 17.0,
+"pieces": [
+{
+"nom": "Tuiles de Départ",
+"qte": 5
+},
+{
+"nom": "Tuiles Scénario",
+"qte": 3
+},
+{
+"nom": "Tuiles Défi Architectural",
+"qte": 20
+},
+{
+"nom": "Pions Autel Divin",
+"qte": 20
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Akropolis",
+"editeur": "Gigamic",
+"categorie": "Placement de tuiles / stratégie",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 25,
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Tuiles de départ",
+"qte": 4
+},
+{
+"nom": "Tuiles Cité",
+"qte": 61
+},
+{
+"nom": "Aides de jeu",
+"qte": 4
+},
+{
+"nom": "Cubes Pierre",
+"qte": 40
+},
+{
+"nom": "Pion Architecte en chef",
+"qte": 1
+},
+{
+"nom": "Bloc de score",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Cluedo",
+"editeur": "Hasbro",
+"categorie": "Enquête / déduction",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 29.99,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Pions Personnage",
+"qte": 6
+},
+{
+"nom": "Pions Arme",
+"qte": 6
+},
+{
+"nom": "Cartes Personnage",
+"qte": 6
+},
+{
+"nom": "Cartes Arme",
+"qte": 6
+},
+{
+"nom": "Cartes Pièce",
+"qte": 9
+},
+{
+"nom": "Cartes Indice",
+"qte": 29
+},
+{
+"nom": "Étui confidentiel",
+"qte": 1
+},
+{
+"nom": "Carnet de détective",
+"qte": 1
+},
+{
+"nom": "Dés",
+"qte": 2
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "5 Minutes Mystère",
+"editeur": "Asmodee",
+"categorie": "Coopératif / enquête",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 5,
+"tarif": 5.0,
+"valeur": 29.9,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Codex",
+"qte": 1
+},
+{
+"nom": "Cartes Suspect",
+"qte": 36
+},
+{
+"nom": "Tuiles Coupable",
+"qte": 36
+},
+{
+"nom": "Tuiles Indice",
+"qte": 16
+},
+{
+"nom": "Cartes Scène",
+"qte": 40
+},
+{
+"nom": "Cartes Référence",
+"qte": 6
+},
+{
+"nom": "Cartes Affaire",
+"qte": 19
+},
+{
+"nom": "Feuillet de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "5 Minutes One Piece – Aventures sur Grand Line",
+"editeur": "Wiggles 3D",
+"categorie": "Coopératif / rapidité",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 5,
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Plateau Vogue Merry en 2 parties",
+"qte": 1
+},
+{
+"nom": "Cartes Personnage",
+"qte": 6
+},
+{
+"nom": "Cartes Joueur (6 paquets de 25)",
+"qte": 150
+},
+{
+"nom": "Cartes Aventure (5 paquets)",
+"qte": 42
+},
+{
+"nom": "Cartes Défi",
+"qte": 40
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Donuts",
+"editeur": "Funforge",
+"categorie": "Abstrait / stratégie",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Donuts en bois",
+"qte": 30
+},
+{
+"nom": "Plateaux recto verso",
+"qte": 4
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Namiji",
+"editeur": "Funforge",
+"categorie": "Parcours / familial",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 8,
+"dureePartie": 40,
+"tarif": 5.0,
+"valeur": 33.9,
+"caution": 39.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Plateaux Bateau",
+"qte": 5
+},
+{
+"nom": "Jetons Bateau",
+"qte": 5
+},
+{
+"nom": "Pions Score",
+"qte": 5
+},
+{
+"nom": "Cartes Panorama",
+"qte": 60
+},
+{
+"nom": "Cartes Bonus Panorama",
+"qte": 3
+},
+{
+"nom": "Cartes Ponton",
+"qte": 20
+},
+{
+"nom": "Cartes Rocher sacré",
+"qte": 20
+},
+{
+"nom": "Jetons Offrande",
+"qte": 20
+},
+{
+"nom": "Jetons Crustacé (20 crabes et 30 crevettes)",
+"qte": 50
+},
+{
+"nom": "Jetons Poisson",
+"qte": 48
+},
+{
+"nom": "Jetons Filet",
+"qte": 12
+},
+{
+"nom": "Jetons Arrivée",
+"qte": 5
+},
+{
+"nom": "Sac en toile",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "7 Wonders Dice",
+"editeur": "Repos Production",
+"categorie": "Dés / roll & write",
+"joueursMin": 2,
+"joueursMax": 7,
+"age": 10,
+"dureePartie": 25,
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Dés gris",
+"qte": 3
+},
+{
+"nom": "Dé bleu",
+"qte": 1
+},
+{
+"nom": "Dé vert",
+"qte": 1
+},
+{
+"nom": "Dé rouge",
+"qte": 1
+},
+{
+"nom": "Dé jaune",
+"qte": 1
+},
+{
+"nom": "Dé blanc",
+"qte": 1
+},
+{
+"nom": "Dé noir",
+"qte": 1
+},
+{
+"nom": "Dé violet",
+"qte": 1
+},
+{
+"nom": "Plateaux Cité effaçables",
+"qte": 7
+},
+{
+"nom": "Crayons",
+"qte": 7
+},
+{
+"nom": "Chiffons",
+"qte": 7
+},
+{
+"nom": "Boîte Forum en 2 parties",
+"qte": 1
+},
+{
+"nom": "Plateau de score",
+"qte": 1
+},
+{
+"nom": "Aides de jeu",
+"qte": 3
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Matchy Matchy",
+"editeur": "Cocktail Games",
+"categorie": "Ambiance / association",
+"joueursMin": 3,
+"joueursMax": 8,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes Image (8 paquets de 42)",
+"qte": 336
+},
+{
+"nom": "Cartes Thèmes",
+"qte": 24
+},
+{
+"nom": "Pions Fourchette",
+"qte": 8
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Inori",
+"editeur": "Space Cowboys",
+"categorie": "Placement / stratégie",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 40,
+"tarif": 5.0,
+"valeur": 32.9,
+"caution": 38.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Jetons Faveur",
+"qte": 90
+},
+{
+"nom": "Tuiles Rune",
+"qte": 15
+},
+{
+"nom": "Tuiles Autel recto verso",
+"qte": 6
+},
+{
+"nom": "Cartes Départ",
+"qte": 12
+},
+{
+"nom": "Cartes Nouveau Départ",
+"qte": 6
+},
+{
+"nom": "Cartes Voyage",
+"qte": 36
+},
+{
+"nom": "Pions Offrande neutres",
+"qte": 2
+},
+{
+"nom": "Marqueurs de score",
+"qte": 4
+},
+{
+"nom": "Pions Offrande",
+"qte": 28
+},
+{
+"nom": "Tuiles Joueur",
+"qte": 4
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Take Time",
+"editeur": "Libellud",
+"categorie": "Coopératif / déduction",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 22.5,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Livret de règles",
+"qte": 1
+},
+{
+"nom": "Cartes Solaires",
+"qte": 12
+},
+{
+"nom": "Cartes Lunaires",
+"qte": 12
+},
+{
+"nom": "Jetons Rappel",
+"qte": 3
+},
+{
+"nom": "Jetons Bonus",
+"qte": 3
+},
+{
+"nom": "Pochettes Chapitre",
+"qte": 10
+},
+{
+"nom": "Horloges (4 par pochette)",
+"qte": 40
+},
+{
+"nom": "Feuillets de règles des chapitres",
+"qte": 10
+},
+{
+"nom": "Aiguille d’horloge",
+"qte": 1
+},
+{
+"nom": "Pochette Regrets",
+"qte": 1
+},
+{
+"nom": "Pochette Renaissance",
+"qte": 1
+},
+{
+"nom": "Horloge Renaissance",
+"qte": 1
+},
+{
+"nom": "Aiguille des secondes",
+"qte": 1
+},
+{
+"nom": "Jetons Renaissance",
+"qte": 6
+}
+]
+},
+{
+"nom": "Dékal Géant – XL",
+"editeur": "Gigamic",
+"categorie": "Tuiles / placement",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 7,
+"dureePartie": 15,
+"tarif": 5.0,
+"valeur": 35.5,
+"caution": 41.0,
+"pieces": [
+{
+"nom": "Tuiles Dékal (80 × 80 mm)",
+"qte": 100
+},
+{
+"nom": "Pion Premier joueur",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Les Aventuriers du Rail – Europe",
+"editeur": "Days of Wonder",
+"categorie": "Stratégie / trains",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 8,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 42.95,
+"caution": 48.0,
+"pieces": [
+{
+"nom": "Plateau de jeu Europe",
+"qte": 1
+},
+{
+"nom": "Wagons en plastique (48 par couleur)",
+"qte": 240
+},
+{
+"nom": "Gares (3 par couleur)",
+"qte": 15
+},
+{
+"nom": "Cartes Wagon",
+"qte": 110
+},
+{
+"nom": "Cartes Destination",
+"qte": 46
+},
+{
+"nom": "Marqueurs de score",
+"qte": 5
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Les Aventuriers du Rail – Aurores Boréales",
+"editeur": "Days of Wonder",
+"categorie": "Stratégie / trains",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 8,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 43.5,
+"caution": 49.0,
+"pieces": [
+{
+"nom": "Plateau de jeu Europe du Nord",
+"qte": 1
+},
+{
+"nom": "Wagons de couleur",
+"qte": 200
+},
+{
+"nom": "Cartes Wagon",
+"qte": 114
+},
+{
+"nom": "Cartes Destination",
+"qte": 55
+},
+{
+"nom": "Cartes Objectif",
+"qte": 11
+},
+{
+"nom": "Marqueurs de score en bois",
+"qte": 5
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Social Couples",
+"editeur": "Savana",
+"categorie": "Discussion / convivialité",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 16,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 15.5,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Cartes (120 questions et 30 activités)",
+"qte": 46
+},
+{
+"nom": "Carte Règles",
+"qte": 1
+},
+{
+"nom": "Enveloppe",
+"qte": 1
+}
+]
+},
+{
+"nom": "Social Familles",
+"editeur": "Savana",
+"categorie": "Discussion / convivialité",
+"joueursMin": 2,
+"joueursMax": 12,
+"age": 6,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 15.5,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Cartes (120 questions et 30 activités)",
+"qte": 46
+},
+{
+"nom": "Carte Règles",
+"qte": 1
+},
+{
+"nom": "Enveloppe",
+"qte": 1
+}
+]
+},
+{
+"nom": "Social Grands-Parents",
+"editeur": "Savana",
+"categorie": "Discussion / convivialité",
+"joueursMin": 2,
+"joueursMax": 12,
+"age": 6,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 15.5,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Cartes (120 questions et 30 activités)",
+"qte": 46
+},
+{
+"nom": "Carte Règles",
+"qte": 1
+},
+{
+"nom": "Enveloppe",
+"qte": 1
+}
+]
+},
+{
+"nom": "Carcassonne – Jeu de base",
+"editeur": "Hans im Glück",
+"categorie": "Tuiles / stratégie",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 7,
+"dureePartie": 35,
+"tarif": 5.0,
+"valeur": 31.5,
+"caution": 37.0,
+"pieces": [
+{
+"nom": "Tuiles Terrain",
+"qte": 72
+},
+{
+"nom": "Tuiles Rivière",
+"qte": 12
+},
+{
+"nom": "Pions Partisan (8 par couleur)",
+"qte": 40
+},
+{
+"nom": "Plateau de score",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Carcassonne – Extension 2 : Marchands & Bâtisseurs",
+"editeur": "Hans im Glück",
+"categorie": "Extension",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 7,
+"dureePartie": 35,
+"tarif": 3.0,
+"valeur": 15.9,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Tuiles Terrain",
+"qte": 24
+},
+{
+"nom": "Tuile Rivière avec symbole Marchandise",
+"qte": 1
+},
+{
+"nom": "Pions Cochon",
+"qte": 6
+},
+{
+"nom": "Pions Bâtisseur",
+"qte": 6
+},
+{
+"nom": "Jetons Marchandise Volaille",
+"qte": 9
+},
+{
+"nom": "Jetons Marchandise Blé",
+"qte": 6
+},
+{
+"nom": "Jetons Marchandise Tissu",
+"qte": 5
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Carcassonne – Extension 3 : Dragon & Fée",
+"editeur": "Hans im Glück",
+"categorie": "Extension",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 7,
+"dureePartie": 35,
+"tarif": 3.0,
+"valeur": 15.9,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Tuiles Terrain",
+"qte": 26
+},
+{
+"nom": "Double tuile Source",
+"qte": 1
+},
+{
+"nom": "Double tuile Lac",
+"qte": 1
+},
+{
+"nom": "Pion Dragon en bois",
+"qte": 1
+},
+{
+"nom": "Pion Fée en bois",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Carcassonne – Extension 6 : Joutes & Armoiries",
+"editeur": "Hans im Glück",
+"categorie": "Extension",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 7,
+"dureePartie": 35,
+"tarif": 3.0,
+"valeur": 15.9,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Tuiles Terrain",
+"qte": 9
+},
+{
+"nom": "Tuiles Prix",
+"qte": 12
+},
+{
+"nom": "Tuile Tournoi",
+"qte": 1
+},
+{
+"nom": "Jetons Écusson",
+"qte": 30
+},
+{
+"nom": "Couronne",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Rubik's Cage",
+"editeur": "Rubik's",
+"categorie": "Logique / puzzle",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 7,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 18.9,
+"caution": 24.0,
+"pieces": [
+{
+"nom": "Cubes colorés",
+"qte": 24
+},
+{
+"nom": "Cage de jeu",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Rank King",
+"editeur": "ATM Gaming",
+"categorie": "Ambiance / classement",
+"joueursMin": 3,
+"joueursMax": 10,
+"age": 14,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 13.5,
+"caution": 19.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 110
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Cortex Challenge – Original",
+"editeur": "Captain Macaque / Zygomatic",
+"categorie": "Observation / défis",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 14.95,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes Épreuve",
+"qte": 74
+},
+{
+"nom": "Cartes Challenge tactile",
+"qte": 6
+},
+{
+"nom": "Cartes tactiles en relief",
+"qte": 10
+},
+{
+"nom": "Pièces de cerveau-puzzle",
+"qte": 24
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Romi Rami",
+"editeur": "À confirmer",
+"categorie": "Cartes / contrats",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"tarif": 3.0,
+"valeur": 14.95,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes Jeu",
+"qte": 55
+},
+{
+"nom": "Cartes Contrat",
+"qte": 44
+},
+{
+"nom": "Bloc de score",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Biques à Bord",
+"editeur": "Exploding Kittens",
+"categorie": "Cartes / ambiance",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 7,
+"dureePartie": 10,
+"tarif": 3.0,
+"valeur": 13.5,
+"caution": 19.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 60
+},
+{
+"nom": "Bouées de sauvetage",
+"qte": 5
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Speed Bac – Drôle & Rapide",
+"editeur": "ATM Gaming",
+"categorie": "Ambiance / mots",
+"joueursMin": 2,
+"joueursMax": 7,
+"age": 10,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 18.9,
+"caution": 24.0,
+"pieces": [
+{
+"nom": "Cartes recto verso",
+"qte": 224
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Cromania",
+"editeur": "Monolith",
+"categorie": "Cartes / stratégie",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 16.9,
+"caution": 22.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 105
+},
+{
+"nom": "Ressources en bois",
+"qte": 105
+},
+{
+"nom": "Meeples en bois",
+"qte": 7
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Time Bomb",
+"editeur": "IELLO",
+"categorie": "Bluff / rôles cachés",
+"joueursMin": 4,
+"joueursMax": 8,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 14.0,
+"caution": 19.0,
+"pieces": [
+{
+"nom": "Cartes Rôle",
+"qte": 8
+},
+{
+"nom": "Cartes Câble",
+"qte": 40
+},
+{
+"nom": "Jeton Pince coupante articulée",
+"qte": 1
+},
+{
+"nom": "Carte Pince coupante",
+"qte": 1
+},
+{
+"nom": "Jetons Compte-tours",
+"qte": 8
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Imagine",
+"editeur": "Cocktail Games",
+"categorie": "Créativité / devinettes",
+"joueursMin": 3,
+"joueursMax": 8,
+"age": 12,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes transparentes",
+"qte": 61
+},
+{
+"nom": "Cartes Énigme",
+"qte": 65
+},
+{
+"nom": "Jetons de score",
+"qte": 35
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Machu Pichu",
+"editeur": "Spike Games",
+"categorie": "Cartes / ambiance",
+"joueursMin": 2,
+"joueursMax": 10,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 13.5,
+"caution": 19.0,
+"pieces": [
+{
+"nom": "Cartes Lama",
+"qte": 63
+},
+{
+"nom": "Cartes Multi-lama",
+"qte": 6
+},
+{
+"nom": "Carte Piñata",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Nut Rush ! – Le P’tit Bac qui vaut de l’Or",
+"editeur": "À confirmer",
+"categorie": "Ambiance / mots",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Cartes Thème",
+"qte": 120
+},
+{
+"nom": "Cartes Lettre",
+"qte": 120
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Pop Com",
+"editeur": "À confirmer",
+"categorie": "Ambiance / défis",
+"joueursMin": 4,
+"joueursMax": 14,
+"age": 13,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Cartes Projet recto verso",
+"qte": 96
+},
+{
+"nom": "Cartes Pause café",
+"qte": 14
+},
+{
+"nom": "Carnet de notes",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Twin It !",
+"editeur": "Cocktail Games",
+"categorie": "Observation / rapidité",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 6,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 13.95,
+"caution": 19.0,
+"pieces": [
+{
+"nom": "Cartes recto verso",
+"qte": 135
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "L’Imposteur",
+"editeur": "Gigamic",
+"categorie": "Ambiance / bluff",
+"joueursMin": 4,
+"joueursMax": 6,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 110
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Opération Zèbre",
+"editeur": "Big Moustache Games",
+"categorie": "Ambiance / culture générale",
+"joueursMin": 2,
+"joueursMax": 12,
+"age": 14,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 264
+},
+{
+"nom": "Feutres effaçables",
+"qte": 8
+},
+{
+"nom": "Lavettes",
+"qte": 5
+},
+{
+"nom": "Étui de transport",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Mes amis sont…",
+"editeur": "Le Droit de Perdre",
+"categorie": "Ambiance / devinettes",
+"joueursMin": 3,
+"age": 16,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 23.5,
+"caution": 29.0,
+"pieces": [
+{
+"nom": "Cartes Recherche",
+"qte": 300
+},
+{
+"nom": "Pion Équipe rouge",
+"qte": 1
+},
+{
+"nom": "Pion Équipe bleu",
+"qte": 1
+},
+{
+"nom": "Sablier de 40 secondes",
+"qte": 1
+},
+{
+"nom": "Jetons",
+"qte": 6
+}
+]
+},
+{
+"nom": "Skyjo",
+"editeur": "Magilano",
+"categorie": "Cartes / collection",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 8,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes numérotées",
+"qte": 150
+},
+{
+"nom": "Bloc de score",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Skyjo Action",
+"editeur": "Magilano",
+"categorie": "Cartes / action",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 8,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes numérotées",
+"qte": 105
+},
+{
+"nom": "Cartes Étoile",
+"qte": 15
+},
+{
+"nom": "Cartes Action",
+"qte": 27
+},
+{
+"nom": "Cartes vierges",
+"qte": 3
+},
+{
+"nom": "Bloc de score",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dobble – Classique",
+"editeur": "Zygomatic / Asmodee",
+"categorie": "Observation / rapidité",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 6,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 9.95,
+"caution": 15.0,
+"pieces": [
+{
+"nom": "Cartes rondes",
+"qte": 55
+},
+{
+"nom": "Boîte métallique",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dobble – One Piece",
+"editeur": "Zygomatic / Asmodee",
+"categorie": "Observation / rapidité",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 6,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 15.95,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Cartes rondes illustrées One Piece",
+"qte": 55
+},
+{
+"nom": "Boîte métallique",
+"qte": 1
+}
+]
+},
+{
+"nom": "Trait Cool",
+"editeur": "Bankiiiz Éditions",
+"categorie": "Ambiance / dessin",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 22.5,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 240
+},
+{
+"nom": "Ardoises",
+"qte": 8
+},
+{
+"nom": "Feutres effaçables",
+"qte": 8
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Moustache",
+"editeur": "À confirmer",
+"categorie": "Ambiance / cartes",
+"tarif": 3.0,
+"valeur": 15.5,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Cartes Animaux numérotées",
+"qte": 44
+},
+{
+"nom": "Cartes Joker",
+"qte": 3
+},
+{
+"nom": "Cartes Équipe",
+"qte": 6
+},
+{
+"nom": "Aides de jeu",
+"qte": 6
+},
+{
+"nom": "Cartes Règle blanches",
+"qte": 8
+},
+{
+"nom": "Cartes Règle noires",
+"qte": 8
+},
+{
+"nom": "Jetons Coupe",
+"qte": 12
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Cancre",
+"editeur": "Platonia Games",
+"categorie": "Ambiance / quiz",
+"joueursMin": 3,
+"joueursMax": 8,
+"age": 10,
+"dureePartie": 25,
+"tarif": 3.0,
+"valeur": 15.9,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Cartes Question",
+"qte": 400
+},
+{
+"nom": "Ardoises",
+"qte": 8
+},
+{
+"nom": "Feutres effaçables",
+"qte": 8
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Audimat",
+"editeur": "Bragelonne Games / For the Story",
+"categorie": "Ambiance / narration",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 14,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 16.0,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Carte Exemple de partie / Tour de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes Programme TV",
+"qte": 10
+},
+{
+"nom": "Cartes Sous l’œil de la caméra",
+"qte": 53
+},
+{
+"nom": "Carte X",
+"qte": 1
+},
+{
+"nom": "Cartes Lieu de tournage",
+"qte": 4
+}
+]
+},
+{
+"nom": "Mamie Moule Maki",
+"editeur": "Tailemi",
+"categorie": "Ambiance / mots",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 16,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 29.9,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 90
+},
+{
+"nom": "Ardoises",
+"qte": 8
+},
+{
+"nom": "Feutres avec gomme",
+"qte": 8
+},
+{
+"nom": "Dé à 20 faces",
+"qte": 1
+},
+{
+"nom": "Sablier",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Popopop",
+"editeur": "Act In Games",
+"categorie": "Dés / rapidité",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 14.5,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Dés (3 de chaque couleur)",
+"qte": 12
+},
+{
+"nom": "Palets en bois",
+"qte": 4
+},
+{
+"nom": "Disques",
+"qte": 13
+},
+{
+"nom": "Jeton Premier joueur",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Trio",
+"editeur": "Cocktail Games",
+"categorie": "Cartes / déduction",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 7,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 11.9,
+"caution": 17.0,
+"pieces": [
+{
+"nom": "Cartes numérotées (3 exemplaires de 1 à 12)",
+"qte": 36
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Staraoké",
+"editeur": "À confirmer",
+"categorie": "Ambiance / musique",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 8,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 24.9,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 200
+},
+{
+"nom": "Totem en forme de micro",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Blanc-Manger Coco – édition à confirmer",
+"editeur": "Blanc-Manger Coco",
+"categorie": "Ambiance / humour",
+"age": 16,
+"tarif": 5.0,
+"valeur": 27.9,
+"caution": 33.0,
+"pieces": [
+{
+"nom": "Cartes Question",
+"qte": 132
+},
+{
+"nom": "Cartes Réponse",
+"qte": 468
+}
+]
+},
+{
+"nom": "DJ Set",
+"editeur": "Olémains Games",
+"categorie": "Musique / ambiance",
+"joueursMin": 3,
+"joueursMax": 16,
+"age": 12,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Cartes Thème",
+"qte": 80
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Nitro Nitro",
+"editeur": "À confirmer",
+"categorie": "Ambiance / questions",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 21.9,
+"caution": 27.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 100
+},
+{
+"nom": "Ardoises",
+"qte": 6
+},
+{
+"nom": "Stylos",
+"qte": 6
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Ta Pire Soirée",
+"editeur": "À confirmer",
+"categorie": "Ambiance",
+"joueursMin": 3,
+"joueursMax": 8,
+"age": 18,
+"dureePartie": 25,
+"tarif": 3.0,
+"valeur": 19.95,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes Soirée",
+"qte": 224
+},
+{
+"nom": "Jetons (8 couleurs, 5 par couleur)",
+"qte": 40
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "La Fabrique à Rêves",
+"editeur": "Funnyfox",
+"categorie": "Créativité / imagination",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 12,
+"dureePartie": 25,
+"tarif": 5.0,
+"valeur": 21.9,
+"caution": 27.0,
+"pieces": [
+{
+"nom": "Cartes Pensée recto verso",
+"qte": 200
+},
+{
+"nom": "Cartes Thème de nuit",
+"qte": 50
+},
+{
+"nom": "Tuiles Fiole",
+"qte": 5
+},
+{
+"nom": "Plateau de score",
+"qte": 1
+},
+{
+"nom": "Pion Fiole",
+"qte": 1
+},
+{
+"nom": "Jetons Outil",
+"qte": 6
+},
+{
+"nom": "Tuile Pensée vierge effaçable",
+"qte": 1
+},
+{
+"nom": "Tuiles Décompte recto verso",
+"qte": 2
+},
+{
+"nom": "Tablettes de création effaçables",
+"qte": 5
+},
+{
+"nom": "Feutres",
+"qte": 5
+},
+{
+"nom": "Chiffonnettes",
+"qte": 5
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dixit",
+"editeur": "Libellud",
+"categorie": "Imagination / association d'idées",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 28.95,
+"caution": 34.0,
+"pieces": [
+{
+"nom": "Cartes illustrées",
+"qte": 84
+},
+{
+"nom": "Pions Lapin",
+"qte": 6
+},
+{
+"nom": "Jetons Vote",
+"qte": 36
+},
+{
+"nom": "Plateau de score intégré à la boîte",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Bango",
+"editeur": "Funnyfox",
+"categorie": "Cartes / ambiance",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 14.9,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Cartes de couleur",
+"qte": 88
+},
+{
+"nom": "Cartes noires",
+"qte": 11
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Loco Pingo",
+"editeur": "Spike Games",
+"categorie": "Cartes / rapidité",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 13.5,
+"caution": 19.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 77
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Gagne ta Maman !",
+"editeur": "Gigamic",
+"categorie": "Logique / casse-tête",
+"joueursMin": 1,
+"joueursMax": 2,
+"age": 4,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 36.0,
+"caution": 41.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Réglettes en bois",
+"qte": 2
+},
+{
+"nom": "Pièces en bois",
+"qte": 18
+},
+{
+"nom": "Cartes Penta",
+"qte": 18
+},
+{
+"nom": "Planches d'exemples",
+"qte": 21
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Gagne ton Papa !",
+"editeur": "Gigamic",
+"categorie": "Logique / casse-tête",
+"joueursMin": 1,
+"joueursMax": 2,
+"age": 3,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 36.0,
+"caution": 41.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Réglettes en bois",
+"qte": 2
+},
+{
+"nom": "Pièces en bois",
+"qte": 18
+},
+{
+"nom": "Cartes Penta",
+"qte": 18
+},
+{
+"nom": "Planches d'exemples",
+"qte": 21
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Concept",
+"editeur": "Repos Production",
+"categorie": "Association d'idées / coopératif",
+"joueursMin": 4,
+"joueursMax": 12,
+"age": 10,
+"dureePartie": 40,
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Cartes Concept",
+"qte": 110
+},
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Pions en plastique",
+"qte": 5
+},
+{
+"nom": "Cubes en plastique",
+"qte": 42
+},
+{
+"nom": "Jetons de score",
+"qte": 39
+},
+{
+"nom": "Aides de jeu",
+"qte": 4
+},
+{
+"nom": "Bol de rangement",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "MicroMacro : Crime City – Showdown",
+"editeur": "Spielwiese",
+"categorie": "Enquête / observation",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 24.5,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Plan de ville",
+"qte": 1
+},
+{
+"nom": "Cartes Enquête",
+"qte": 120
+},
+{
+"nom": "Enveloppes",
+"qte": 16
+},
+{
+"nom": "Loupe",
+"qte": 1
+},
+{
+"nom": "Autocollant pour la loupe",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Perudo",
+"editeur": "Asmodee",
+"categorie": "Dés / bluff",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 17.95,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Dés de couleur",
+"qte": 30
+},
+{
+"nom": "Gobelets",
+"qte": 6
+}
+]
+},
+{
+"nom": "Bermuda Pirates",
+"editeur": "FoxMind Games",
+"categorie": "Adresse / mémoire",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 7,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 29.95,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Bateaux magnétiques",
+"qte": 4
+},
+{
+"nom": "Drapeaux",
+"qte": 4
+},
+{
+"nom": "Bouées",
+"qte": 12
+},
+{
+"nom": "Trésors",
+"qte": 24
+},
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Pièce centrale",
+"qte": 1
+},
+{
+"nom": "Sous-plateaux",
+"qte": 4
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Jour de pêche",
+"editeur": "Happy Baobab",
+"categorie": "Adresse / enfants",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 6,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 25.0,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Poissons",
+"qte": 60
+},
+{
+"nom": "Jetons Poisson",
+"qte": 20
+},
+{
+"nom": "Filets",
+"qte": 4
+},
+{
+"nom": "Bateaux",
+"qte": 4
+},
+{
+"nom": "Jetons Ancre",
+"qte": 4
+},
+{
+"nom": "Canne à pêche",
+"qte": 1
+},
+{
+"nom": "Plateau Marché",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "La Légende des Trois Pièces",
+"editeur": "Gigamic",
+"categorie": "Coopératif / narration",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 6,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 25.9,
+"caution": 31.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes Histoire",
+"qte": 72
+},
+{
+"nom": "Encrier",
+"qte": 1
+},
+{
+"nom": "Dés Éléments",
+"qte": 5
+},
+{
+"nom": "Pièces magiques",
+"qte": 3
+},
+{
+"nom": "Porte-carte",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Pouss' Ta Poule",
+"editeur": "The Flying Games",
+"categorie": "Adresse / stop ou encore / enfants",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 5,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Boîte de jeu Poulailler",
+"qte": 1
+},
+{
+"nom": "Structure bleue du poulailler",
+"qte": 1
+},
+{
+"nom": "Jetons Œuf/Poussin recto verso",
+"qte": 60
+},
+{
+"nom": "Figurines Poule",
+"qte": 4
+},
+{
+"nom": "Plateau Basse-Cour (3 cases)",
+"qte": 1
+},
+{
+"nom": "Plateau Promenade (3 parties)",
+"qte": 1
+}
+]
+},
+{
+"nom": "Secret Identity",
+"editeur": "Funnyfox",
+"categorie": "Déduction / ambiance",
+"joueursMin": 3,
+"joueursMax": 8,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Plateau central",
+"qte": 1
+},
+{
+"nom": "Coffres-forts personnels",
+"qte": 8
+},
+{
+"nom": "Clés Vote",
+"qte": 64
+},
+{
+"nom": "Clés Mystère",
+"qte": 8
+},
+{
+"nom": "Cartes Picto recto verso",
+"qte": 90
+},
+{
+"nom": "Cartes Personnage recto verso",
+"qte": 150
+},
+{
+"nom": "Pions de couleur",
+"qte": 8
+},
+{
+"nom": "Marqueurs de score",
+"qte": 8
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "T’as quoi en tête ?",
+"editeur": "À confirmer",
+"categorie": "Ambiance / mots",
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Tuiles Lettre",
+"qte": 36
+},
+{
+"nom": "Cartes",
+"qte": 100
+},
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Révélations",
+"editeur": "À confirmer",
+"categorie": "Ambiance / émotions",
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes Situation",
+"qte": 106
+},
+{
+"nom": "Cartes Vote",
+"qte": 48
+},
+{
+"nom": "Cartes Émotion",
+"qte": 18
+},
+{
+"nom": "Cartes Score",
+"qte": 4
+},
+{
+"nom": "Jetons Supposition",
+"qte": 72
+},
+{
+"nom": "Jetons Joker",
+"qte": 8
+},
+{
+"nom": "Dés",
+"qte": 2
+},
+{
+"nom": "Coffret Révélation",
+"qte": 1
+},
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Marqueur empathie",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Kumata",
+"editeur": "À confirmer",
+"categorie": "Dominos / stratégie",
+"tarif": 3.0,
+"valeur": 19.5,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Dominos",
+"qte": 40
+},
+{
+"nom": "Tuiles Plateau",
+"qte": 9
+},
+{
+"nom": "Jetons Totem",
+"qte": 4
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Flip 7",
+"editeur": "The Op Games",
+"categorie": "Cartes / stop ou encore",
+"joueursMin": 3,
+"joueursMax": 18,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 13.5,
+"caution": 19.0,
+"pieces": [
+{
+"nom": "Cartes Numéro",
+"qte": 79
+},
+{
+"nom": "Cartes Bonus",
+"qte": 6
+},
+{
+"nom": "Cartes Spéciales",
+"qte": 9
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dnup",
+"editeur": "À confirmer",
+"categorie": "Cartes",
+"tarif": 3.0,
+"valeur": 11.9,
+"caution": 17.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 40
+},
+{
+"nom": "Aides de jeu",
+"qte": 5
+},
+{
+"nom": "Jetons Lettre",
+"qte": 16
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "First Giants",
+"editeur": "À confirmer",
+"categorie": "Collection / stratégie",
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 65
+},
+{
+"nom": "Plateaux Site de fouille",
+"qte": 4
+},
+{
+"nom": "Plateaux Musée",
+"qte": 5
+},
+{
+"nom": "Pions",
+"qte": 20
+},
+{
+"nom": "Jetons Collection",
+"qte": 33
+},
+{
+"nom": "Jetons Journal",
+"qte": 8
+},
+{
+"nom": "Jetons Ambre",
+"qte": 80
+},
+{
+"nom": "Jeton Premier joueur",
+"qte": 1
+},
+{
+"nom": "Jetons Points de victoire",
+"qte": 84
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+},
+{
+"nom": "Annexe",
+"qte": 1
+}
+]
+},
+{
+"nom": "Explodino",
+"editeur": "Gigamic",
+"categorie": "Cartes / enfants",
+"tarif": 3.0,
+"valeur": 16.9,
+"caution": 22.0,
+"pieces": [
+{
+"nom": "Cartes Dino",
+"qte": 48
+},
+{
+"nom": "Carte Lexique",
+"qte": 1
+},
+{
+"nom": "Carte Plateau",
+"qte": 1
+},
+{
+"nom": "Pion",
+"qte": 1
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Complices",
+"editeur": "À confirmer",
+"categorie": "Coopératif / communication",
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Feuilles Salle recto verso",
+"qte": 8
+},
+{
+"nom": "Masques (rouge et bleu)",
+"qte": 2
+},
+{
+"nom": "Feutre",
+"qte": 1
+},
+{
+"nom": "Sabliers",
+"qte": 2
+},
+{
+"nom": "Cartes Trésor",
+"qte": 4
+},
+{
+"nom": "Cartes Police",
+"qte": 3
+},
+{
+"nom": "Feuille Planque",
+"qte": 1
+},
+{
+"nom": "Dé Casino",
+"qte": 1
+},
+{
+"nom": "Cartes Relique",
+"qte": 4
+},
+{
+"nom": "Feuilles Astéroïdes",
+"qte": 4
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Limite Limite",
+"editeur": "Limite Limite",
+"categorie": "Ambiance / humour",
+"joueursMin": 3,
+"joueursMax": 10,
+"age": 18,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 27.95,
+"caution": 33.0,
+"pieces": [
+{
+"nom": "Cartes Question",
+"qte": 100
+},
+{
+"nom": "Cartes Réponse",
+"qte": 300
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Bloops",
+"editeur": "À confirmer",
+"categorie": "Cartes / ambiance",
+"tarif": 3.0,
+"valeur": 10.9,
+"caution": 16.0,
+"pieces": [
+{
+"nom": "Cartes numérotées",
+"qte": 55
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Miller Zoo",
+"editeur": "Randolph",
+"categorie": "Coopératif / famille",
+"tarif": 5.0,
+"valeur": 29.9,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Plateau double face",
+"qte": 1
+},
+{
+"nom": "Cartes Animal",
+"qte": 7
+},
+{
+"nom": "Cartes Ressource",
+"qte": 80
+},
+{
+"nom": "Cartes Besoin",
+"qte": 30
+},
+{
+"nom": "Cartes Coéquipier",
+"qte": 6
+},
+{
+"nom": "Cartes Outil",
+"qte": 6
+},
+{
+"nom": "Jetons Problème",
+"qte": 60
+},
+{
+"nom": "Aides de jeu",
+"qte": 6
+},
+{
+"nom": "Pions",
+"qte": 6
+},
+{
+"nom": "Enveloppes scellées",
+"qte": 6
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Marrakech",
+"editeur": "Gigamic",
+"categorie": "Stratégie / famille",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 6,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 36.0,
+"caution": 41.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Tapis en tissu",
+"qte": 60
+},
+{
+"nom": "Pièces de 1 dirham",
+"qte": 21
+},
+{
+"nom": "Pièces de 5 dirhams",
+"qte": 21
+},
+{
+"nom": "Pion marchand Assam",
+"qte": 1
+},
+{
+"nom": "Dé en bois",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Zombie Burrito",
+"editeur": "Exploding Kittens",
+"categorie": "Ambiance / adresse",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 7,
+"dureePartie": 15,
+"tarif": 5.0,
+"valeur": 22.9,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 116
+},
+{
+"nom": "Marqueurs d’équipe",
+"qte": 6
+},
+{
+"nom": "Burritos en mousse",
+"qte": 2
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Chromino",
+"editeur": "Zygomatic",
+"categorie": "Dominos / couleurs",
+"joueursMin": 1,
+"joueursMax": 8,
+"age": 6,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 21.95,
+"caution": 27.0,
+"pieces": [
+{
+"nom": "Tuiles classiques",
+"qte": 75
+},
+{
+"nom": "Tuiles Joker",
+"qte": 5
+},
+{
+"nom": "Chevalets",
+"qte": 6
+},
+{
+"nom": "Sac en coton",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Avant Après",
+"editeur": "À confirmer",
+"categorie": "Observation / enquête",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Grandes feuilles illustrées (6 Avant, 6 Après)",
+"qte": 12
+},
+{
+"nom": "Livrets Questions/Réponses",
+"qte": 6
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Cocoons – La boîte mystérieuse",
+"editeur": "Bankiiiz Editions",
+"categorie": "Coopératif / logique / mémoire",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 6,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 22.0,
+"caution": 27.0,
+"pieces": [
+{
+"nom": "Boîte servant de plateau",
+"qte": 1
+},
+{
+"nom": "Petites boîtes (cocons)",
+"qte": 9
+},
+{
+"nom": "Jetons Animal gardien",
+"qte": 8
+},
+{
+"nom": "Jeton Départ",
+"qte": 1
+},
+{
+"nom": "Tuiles Trappe",
+"qte": 25
+},
+{
+"nom": "Jetons Action",
+"qte": 25
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Concept Kids – Animaux",
+"editeur": "Repos Production",
+"categorie": "Coopératif / enfants",
+"joueursMin": 2,
+"joueursMax": 12,
+"age": 4,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 22.5,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes Animal",
+"qte": 110
+},
+{
+"nom": "Bagues de sélection",
+"qte": 16
+},
+{
+"nom": "Porte-carte",
+"qte": 1
+},
+{
+"nom": "Règle rapide",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+},
+{
+"nom": "Bestiaire illustré",
+"qte": 1
+}
+]
+},
+{
+"nom": "Ernest & Célestine – Le Jeu",
+"editeur": "Space Cow",
+"categorie": "Enfants / famille",
+"tarif": 3.0,
+"valeur": 15.95,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Figurines en carton",
+"qte": 2
+},
+{
+"nom": "Tuiles Ernest",
+"qte": 8
+},
+{
+"nom": "Tuiles Célestine",
+"qte": 8
+},
+{
+"nom": "Jetons Symbole",
+"qte": 8
+},
+{
+"nom": "Jetons Police",
+"qte": 5
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "UNO Spin – édition 2025",
+"editeur": "Mattel",
+"categorie": "Cartes / famille",
+"joueursMin": 2,
+"joueursMax": 10,
+"age": 7,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 19.99,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes UNO",
+"qte": 112
+},
+{
+"nom": "Roue UNO Spin avec flèche",
+"qte": 1
+},
+{
+"nom": "Notice de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Loco Momo",
+"editeur": "Blam !",
+"categorie": "Placement / animaux",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 16.9,
+"caution": 22.0,
+"pieces": [
+{
+"nom": "Plateau central Forêt",
+"qte": 1
+},
+{
+"nom": "Plateaux individuels Photo",
+"qte": 4
+},
+{
+"nom": "Jetons",
+"qte": 120
+},
+{
+"nom": "Sac",
+"qte": 1
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+}
+]
+},
+{
+"nom": "T.I.M.E Stories – Boîte de base (Asylum)",
+"editeur": "Space Cowboys",
+"categorie": "Enquête / narratif",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 45.95,
+"caution": 51.0,
+"pieces": [
+{
+"nom": "Cartes Scénario Asylum",
+"qte": 125
+},
+{
+"nom": "Matériel commun (plateaux, pions, dés et jetons) : quantités à vérifier",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "T.I.M.E Stories – The Marcy Case",
+"editeur": "Space Cowboys",
+"categorie": "Enquête / scénario",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Cartes (137 selon certaines éditions)",
+"qte": 135
+}
+]
+},
+{
+"nom": "T.I.M.E Stories – Expédition : Endurance",
+"editeur": "Space Cowboys",
+"categorie": "Enquête / scénario",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 151
+}
+]
+},
+{
+"nom": "T.I.M.E Stories – Sous le Masque",
+"editeur": "Space Cowboys",
+"categorie": "Enquête / scénario",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 138
+}
+]
+},
+{
+"nom": "T.I.M.E Stories – Frères de la Côte",
+"editeur": "Space Cowboys",
+"categorie": "Enquête / scénario",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 199
+}
+]
+},
+{
+"nom": "T.I.M.E Stories – La Prophétie des Dragons",
+"editeur": "Space Cowboys",
+"categorie": "Enquête / scénario",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Cartes standard",
+"qte": 149
+},
+{
+"nom": "Cartes Mysterium",
+"qte": 56
+}
+]
+},
+{
+"nom": "T.I.M.E Stories – Estrella Drive",
+"editeur": "Space Cowboys",
+"categorie": "Enquête / scénario",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 164
+}
+]
+},
+{
+"nom": "Behind – Édition classique",
+"editeur": "KYF Edition",
+"categorie": "Enquête / puzzle",
+"joueursMin": 1,
+"joueursMax": 99,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 20.9,
+"caution": 26.0,
+"pieces": [
+{
+"nom": "Tuiles recto verso",
+"qte": 180
+},
+{
+"nom": "Feuille de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Behind Purple",
+"editeur": "KYF Edition",
+"categorie": "Enquête / puzzle",
+"joueursMin": 1,
+"joueursMax": 99,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 20.9,
+"caution": 26.0,
+"pieces": [
+{
+"nom": "Tuiles La Machine infernale",
+"qte": 42
+},
+{
+"nom": "Tuiles Le Repas",
+"qte": 81
+},
+{
+"nom": "Tuiles Le Cahier",
+"qte": 87
+},
+{
+"nom": "Cartes Indice (6 par enquête)",
+"qte": 18
+},
+{
+"nom": "Feuille de règles",
+"qte": 1
+},
+{
+"nom": "Cale en carton",
+"qte": 1
+}
+]
+},
+{
+"nom": "Backstories – L’Embrasement",
+"editeur": "La Boîte de Jeu",
+"categorie": "Enquête / narratif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 14,
+"dureePartie": 60,
+"tarif": 3.0,
+"valeur": 18.0,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 158
+},
+{
+"nom": "Feuillet de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dossiers Criminels – Mystère dans la Vallée des Rois",
+"editeur": "À confirmer",
+"categorie": "Enquête",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 14,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 27.9,
+"caution": 33.0,
+"pieces": [
+{
+"nom": "Fiche de présentation du contenu et de l’interface en ligne",
+"qte": 1
+},
+{
+"nom": "Lettre de mission 55 Investigations",
+"qte": 1
+},
+{
+"nom": "Lettre de l’IEAEC",
+"qte": 1
+},
+{
+"nom": "Journal News du Caire",
+"qte": 1
+},
+{
+"nom": "Livre de fouilles",
+"qte": 1
+},
+{
+"nom": "Parchemin des dieux égyptiens",
+"qte": 1
+},
+{
+"nom": "Chronologie des pharaons",
+"qte": 1
+},
+{
+"nom": "Plan de la Vallée des Rois",
+"qte": 1
+},
+{
+"nom": "Transparent des tombeaux",
+"qte": 1
+},
+{
+"nom": "Flyer de location de véhicules",
+"qte": 1
+},
+{
+"nom": "Enveloppes A à D avec preuves",
+"qte": 4
+}
+]
+},
+{
+"nom": "Dossiers Criminels – Disparition aux Caraïbes",
+"editeur": "À confirmer",
+"categorie": "Enquête",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 14,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 27.9,
+"caution": 33.0,
+"pieces": [
+{
+"nom": "Dossier d’enquête",
+"qte": 1
+},
+{
+"nom": "Enveloppes de preuves",
+"qte": 4
+},
+{
+"nom": "Plus de 40 documents, dont 2 brochures de croisière, 1 plan XXL du navire, témoignages, avis de recherche et relevés bancaires",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dossiers Criminels – L’Ombre de Hawkins",
+"editeur": "À confirmer",
+"categorie": "Enquête",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 14,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 28.9,
+"caution": 34.0,
+"pieces": [
+{
+"nom": "Lettre de mission du Weekly Streak",
+"qte": 1
+},
+{
+"nom": "Journal de liaison du Weekly Streak",
+"qte": 1
+},
+{
+"nom": "Photo de téléphone brûlé",
+"qte": 1
+},
+{
+"nom": "Plan de Hawkins",
+"qte": 1
+},
+{
+"nom": "Relevé sismique",
+"qte": 1
+},
+{
+"nom": "Journal Weekly Streak",
+"qte": 1
+},
+{
+"nom": "Photographies de lieux abandonnés",
+"qte": 4
+},
+{
+"nom": "Fascicule du lycée de Hawkins",
+"qte": 1
+},
+{
+"nom": "Journal Weekly Watcher",
+"qte": 1
+},
+{
+"nom": "Enveloppes avec documents",
+"qte": 7
+}
+]
+},
+{
+"nom": "Heredity – Les Mioches",
+"editeur": "Darucat",
+"categorie": "Narratif / coopératif",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 14,
+"dureePartie": 120,
+"tarif": 3.0,
+"valeur": 10.9,
+"caution": 16.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 79
+},
+{
+"nom": "Personnages en carton",
+"qte": 13
+},
+{
+"nom": "Jetons en carton",
+"qte": 79
+},
+{
+"nom": "Règles du jeu (support à vérifier)",
+"qte": 1
+}
+]
+},
+{
+"nom": "Got Five!",
+"editeur": "Blue Orange",
+"categorie": "Déduction",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 15,
+"tarif": 5.0,
+"valeur": 22.9,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Tuiles numérotées",
+"qte": 60
+},
+{
+"nom": "Supports de tuiles",
+"qte": 4
+},
+{
+"nom": "Paravents",
+"qte": 4
+},
+{
+"nom": "Fiches de jeu",
+"qte": 4
+},
+{
+"nom": "Feutres effaçables",
+"qte": 4
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Athlètes de Compète",
+"editeur": "IELLO",
+"categorie": "Familial / course",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 6,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Plateau Piste recto verso",
+"qte": 1
+},
+{
+"nom": "Pions Athlète",
+"qte": 36
+},
+{
+"nom": "Cartes Athlète",
+"qte": 36
+},
+{
+"nom": "Dés",
+"qte": 6
+},
+{
+"nom": "Jetons Trophée Or",
+"qte": 4
+},
+{
+"nom": "Jetons Médaille d’Argent",
+"qte": 4
+},
+{
+"nom": "Jetons Bronze de 3 points",
+"qte": 9
+},
+{
+"nom": "Jetons Bronze de 1 point",
+"qte": 16
+}
+]
+},
+{
+"nom": "Suburbia",
+"editeur": "Lucky Duck Games",
+"categorie": "Gestion / construction",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 90,
+"tarif": 5.0,
+"valeur": 49.95,
+"caution": 55.0,
+"pieces": [
+{
+"nom": "Plateau Marché double face",
+"qte": 1
+},
+{
+"nom": "Plateau Population",
+"qte": 1
+},
+{
+"nom": "Plateaux Bourg",
+"qte": 4
+},
+{
+"nom": "Meeples Population",
+"qte": 4
+},
+{
+"nom": "Marqueurs Réputation",
+"qte": 4
+},
+{
+"nom": "Marqueurs Revenus",
+"qte": 4
+},
+{
+"nom": "Marqueur Premier joueur",
+"qte": 1
+},
+{
+"nom": "Marqueurs Investissement",
+"qte": 12
+},
+{
+"nom": "Tuile Un tour restant",
+"qte": 1
+},
+{
+"nom": "Tuiles Objectif",
+"qte": 20
+},
+{
+"nom": "Aides de jeu",
+"qte": 4
+},
+{
+"nom": "Jetons de 1",
+"qte": 30
+},
+{
+"nom": "Jetons de 5",
+"qte": 20
+},
+{
+"nom": "Jetons de 10",
+"qte": 20
+},
+{
+"nom": "Tuiles A",
+"qte": 32
+},
+{
+"nom": "Tuiles B",
+"qte": 36
+},
+{
+"nom": "Tuiles C",
+"qte": 32
+},
+{
+"nom": "Tuiles Faubourg",
+"qte": 8
+},
+{
+"nom": "Tuiles Parc municipal",
+"qte": 8
+},
+{
+"nom": "Tuiles Site industriel",
+"qte": 8
+},
+{
+"nom": "Guide de référence",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Leda",
+"editeur": "À confirmer",
+"categorie": "Stratégie / duel",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 21.9,
+"caution": 27.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 52
+},
+{
+"nom": "Tuiles basiques recto verso",
+"qte": 32
+},
+{
+"nom": "Tuiles Action",
+"qte": 5
+},
+{
+"nom": "Jetons Victoire militaire",
+"qte": 18
+},
+{
+"nom": "Pions Requin",
+"qte": 9
+},
+{
+"nom": "Pions Nourriture",
+"qte": 20
+},
+{
+"nom": "Fiches de clan",
+"qte": 4
+},
+{
+"nom": "Livrets de règles",
+"qte": 2
+}
+]
+},
+{
+"nom": "Galileo Project",
+"editeur": "Sorry We Are French",
+"categorie": "Stratégie / développement",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 55.0,
+"caution": 60.0,
+"pieces": [
+{
+"nom": "Plateau principal",
+"qte": 1
+},
+{
+"nom": "Plateaux personnels",
+"qte": 4
+},
+{
+"nom": "Cartes Robot",
+"qte": 48
+},
+{
+"nom": "Cartes Personnage",
+"qte": 48
+},
+{
+"nom": "Cartes Projet Robotique",
+"qte": 10
+},
+{
+"nom": "Tuiles Technologie",
+"qte": 12
+},
+{
+"nom": "Tuiles Objectif",
+"qte": 8
+},
+{
+"nom": "Tuiles Modificateur Robot",
+"qte": 16
+},
+{
+"nom": "Tuile Star-Z",
+"qte": 1
+},
+{
+"nom": "Jetons Niveau",
+"qte": 50
+},
+{
+"nom": "Jetons Mégacrédits",
+"qte": 24
+},
+{
+"nom": "Jetons Énergie",
+"qte": 20
+},
+{
+"nom": "Marqueurs Aménagement",
+"qte": 16
+},
+{
+"nom": "Marqueurs Objectif",
+"qte": 16
+},
+{
+"nom": "Pions Modificateur Affectation",
+"qte": 16
+},
+{
+"nom": "Marqueurs Influence",
+"qte": 4
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Livrets de règles",
+"qte": 2
+}
+]
+},
+{
+"nom": "Daruma",
+"editeur": "À confirmer",
+"categorie": "Dés / prise de risque",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 8,
+"dureePartie": 20,
+"tarif": 3.0,
+"valeur": 17.5,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Cartes Daruma",
+"qte": 60
+},
+{
+"nom": "Dés",
+"qte": 8
+},
+{
+"nom": "Carte Tanuki",
+"qte": 1
+},
+{
+"nom": "Compteur de manche",
+"qte": 1
+},
+{
+"nom": "Jetons Manche",
+"qte": 12
+},
+{
+"nom": "Cartes Objectif",
+"qte": 6
+},
+{
+"nom": "Jetons Pupille",
+"qte": 5
+},
+{
+"nom": "Règle du jeu",
+"qte": 1
+}
+]
+},
+{
+"nom": "Gwent – Le Jeu de Cartes Légendaire",
+"editeur": "À confirmer",
+"categorie": "Cartes / affrontement",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 12,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 34.9,
+"caution": 40.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 436
+},
+{
+"nom": "Aides de jeu",
+"qte": 10
+},
+{
+"nom": "Jetons Gemme",
+"qte": 4
+},
+{
+"nom": "Jeton Pièce",
+"qte": 1
+},
+{
+"nom": "Tableau de suivi des scores",
+"qte": 1
+},
+{
+"nom": "Jetons de score",
+"qte": 4
+},
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Livrets de règles",
+"qte": 2
+}
+]
+},
+{
+"nom": "Darwin's Journey",
+"editeur": "ThunderGryph Games",
+"categorie": "Expert / placement d'ouvriers",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 14,
+"dureePartie": 120,
+"tarif": 5.0,
+"valeur": 44.9,
+"caution": 50.0,
+"pieces": [
+{
+"nom": "Plateau principal",
+"qte": 1
+},
+{
+"nom": "Plateaux personnels",
+"qte": 4
+},
+{
+"nom": "Jetons Savoir temporaire",
+"qte": 16
+},
+{
+"nom": "Jetons Recherche",
+"qte": 30
+},
+{
+"nom": "Tuiles Action spéciale",
+"qte": 12
+},
+{
+"nom": "Tuiles Objectif de départ",
+"qte": 8
+},
+{
+"nom": "Cachets de cire spéciaux",
+"qte": 12
+},
+{
+"nom": "Jetons Lunette neutre",
+"qte": 2
+},
+{
+"nom": "Tuiles Correspondance",
+"qte": 8
+},
+{
+"nom": "Tuiles Objectif",
+"qte": 20
+},
+{
+"nom": "Cartes Équipage",
+"qte": 16
+},
+{
+"nom": "Tuiles Musée",
+"qte": 16
+},
+{
+"nom": "Pièces de monnaie",
+"qte": 40
+},
+{
+"nom": "Jeton HMS Beagle",
+"qte": 1
+},
+{
+"nom": "Cachets de cire standard",
+"qte": 56
+},
+{
+"nom": "Jetons Spécimen",
+"qte": 16
+},
+{
+"nom": "Tuiles Objectif Beagle",
+"qte": 12
+},
+{
+"nom": "Jeton Ordre du tour à 2 joueurs",
+"qte": 1
+},
+{
+"nom": "Aide de jeu",
+"qte": 1
+},
+{
+"nom": "Explorateurs",
+"qte": 12
+},
+{
+"nom": "Ouvriers",
+"qte": 20
+},
+{
+"nom": "Tentes",
+"qte": 20
+},
+{
+"nom": "Cubes",
+"qte": 16
+},
+{
+"nom": "Timbres",
+"qte": 48
+},
+{
+"nom": "Navires",
+"qte": 4
+},
+{
+"nom": "Jetons Lunette joueur",
+"qte": 24
+},
+{
+"nom": "Cartes Action Alfred",
+"qte": 8
+},
+{
+"nom": "Cartes Piste bonus Alfred",
+"qte": 8
+}
+]
+},
+{
+"nom": "D'Orge et de Blé",
+"editeur": "À confirmer",
+"categorie": "Gestion / cartes",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 28.5,
+"caution": 34.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes",
+"qte": 60
+},
+{
+"nom": "Jetons Ressource en bois",
+"qte": 84
+},
+{
+"nom": "Jeton Moulin à vent en bois",
+"qte": 1
+},
+{
+"nom": "Jeton Année en bois",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Gatsby",
+"editeur": "Catch Up Games",
+"categorie": "Stratégie / duel",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Dalles Cabaret",
+"qte": 4
+},
+{
+"nom": "Barrettes Course terminée",
+"qte": 4
+},
+{
+"nom": "Tuiles Personnage",
+"qte": 15
+},
+{
+"nom": "Tuiles Action spéciale",
+"qte": 11
+},
+{
+"nom": "Jetons Influence en bois",
+"qte": 40
+},
+{
+"nom": "Jetons Ascension en bois",
+"qte": 2
+},
+{
+"nom": "Jeton Action en bois",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Les Cités Rivales",
+"editeur": "Gigamic",
+"categorie": "Stratégie / duel",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 28.5,
+"caution": 34.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes",
+"qte": 78
+},
+{
+"nom": "Ressources en bois",
+"qte": 48
+},
+{
+"nom": "Pions et marqueurs en bois",
+"qte": 5
+},
+{
+"nom": "Jetons",
+"qte": 37
+},
+{
+"nom": "Boîtes de rangement",
+"qte": 4
+},
+{
+"nom": "Tuile Basse saison",
+"qte": 1
+},
+{
+"nom": "Tuile Aide de jeu",
+"qte": 1
+},
+{
+"nom": "Tuiles Procès",
+"qte": 3
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Littoral",
+"editeur": "À confirmer",
+"categorie": "Tuiles / placement",
+"joueursMin": 1,
+"joueursMax": 5,
+"age": 8,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 24.9,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Jetons en bois",
+"qte": 70
+},
+{
+"nom": "Sac en tissu",
+"qte": 1
+},
+{
+"nom": "Aide de jeu",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Hamlet",
+"editeur": "GRRRE Games",
+"categorie": "Construction / gestion",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 39.9,
+"caution": 45.0,
+"pieces": [
+{
+"nom": "Plateau de score",
+"qte": 1
+},
+{
+"nom": "Tuiles Village / Bâtiment",
+"qte": 32
+},
+{
+"nom": "Sac en tissu",
+"qte": 1
+},
+{
+"nom": "Tuiles Maîtrise et Distinction",
+"qte": 9
+},
+{
+"nom": "Villageois",
+"qte": 16
+},
+{
+"nom": "Ânes",
+"qte": 24
+},
+{
+"nom": "Routes",
+"qte": 20
+},
+{
+"nom": "Drapeaux",
+"qte": 24
+},
+{
+"nom": "Marqueurs de joueur",
+"qte": 24
+},
+{
+"nom": "Ressources transformées",
+"qte": 32
+},
+{
+"nom": "Matières premières",
+"qte": 18
+},
+{
+"nom": "Commandes du Marché",
+"qte": 12
+},
+{
+"nom": "Pièces d'or",
+"qte": 30
+},
+{
+"nom": "Parties de l'Église",
+"qte": 6
+},
+{
+"nom": "Jeton Premier joueur",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+},
+{
+"nom": "Scénario de départ",
+"qte": 1
+}
+]
+},
+{
+"nom": "Welcome to the Moon",
+"editeur": "Blue Cocker Games",
+"categorie": "Flip & write / campagne",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 35.9,
+"caution": 41.0,
+"pieces": [
+{
+"nom": "Cartes Vaisseau",
+"qte": 63
+},
+{
+"nom": "Cartes Mission",
+"qte": 48
+},
+{
+"nom": "Carte Capitaine",
+"qte": 1
+},
+{
+"nom": "Cartes Solo ASTRA",
+"qte": 11
+},
+{
+"nom": "Cartes Campagne",
+"qte": 97
+},
+{
+"nom": "Livrets de règles",
+"qte": 2
+},
+{
+"nom": "Livrets de campagne",
+"qte": 2
+},
+{
+"nom": "Feutres effaçables",
+"qte": 6
+},
+{
+"nom": "Feuilles Aventure effaçables recto verso",
+"qte": 24
+}
+]
+},
+{
+"nom": "Harmonies",
+"editeur": "Libellud",
+"categorie": "Placement / nature",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 32.5,
+"caution": 38.0,
+"pieces": [
+{
+"nom": "Sac",
+"qte": 1
+},
+{
+"nom": "Plateau central",
+"qte": 1
+},
+{
+"nom": "Plateaux personnels",
+"qte": 4
+},
+{
+"nom": "Cartes Aide de jeu",
+"qte": 4
+},
+{
+"nom": "Jetons Paysage en bois",
+"qte": 120
+},
+{
+"nom": "Cubes translucides",
+"qte": 70
+},
+{
+"nom": "Cartes Animal",
+"qte": 32
+},
+{
+"nom": "Cartes Esprit de la nature",
+"qte": 10
+},
+{
+"nom": "Bloc de score",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "7 Wonders Duel",
+"editeur": "Repos Production",
+"categorie": "Stratégie / duel",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes Âge I",
+"qte": 23
+},
+{
+"nom": "Cartes Âge II",
+"qte": 23
+},
+{
+"nom": "Cartes Âge III",
+"qte": 20
+},
+{
+"nom": "Cartes Guilde",
+"qte": 7
+},
+{
+"nom": "Cartes Merveille",
+"qte": 12
+},
+{
+"nom": "Jetons Militaire",
+"qte": 4
+},
+{
+"nom": "Jetons Progrès",
+"qte": 10
+},
+{
+"nom": "Pion Conflit",
+"qte": 1
+},
+{
+"nom": "Pièces de valeur 1",
+"qte": 14
+},
+{
+"nom": "Pièces de valeur 3",
+"qte": 10
+},
+{
+"nom": "Pièces de valeur 6",
+"qte": 7
+},
+{
+"nom": "Carnet de scores",
+"qte": 1
+},
+{
+"nom": "Aide de jeu",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Tree Society",
+"editeur": "Next Move Games",
+"categorie": "Cartes / collection",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 32.95,
+"caution": 38.0,
+"pieces": [
+{
+"nom": "Marché",
+"qte": 1
+},
+{
+"nom": "Jetons de pointage",
+"qte": 4
+},
+{
+"nom": "Plateaux Joueur",
+"qte": 4
+},
+{
+"nom": "Marqueurs Arbre",
+"qte": 12
+},
+{
+"nom": "Coffres",
+"qte": 4
+},
+{
+"nom": "Pièces",
+"qte": 35
+},
+{
+"nom": "Cartes Fruit",
+"qte": 75
+},
+{
+"nom": "Cartes Guilde",
+"qte": 73
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "7 Wonders – Cities (extension)",
+"editeur": "Repos Production",
+"categorie": "Extension / stratégie",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 10,
+"dureePartie": 40,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Plateaux Merveille",
+"qte": 2
+},
+{
+"nom": "Cartes Cities",
+"qte": 42
+},
+{
+"nom": "Jetons Diplomatie",
+"qte": 4
+},
+{
+"nom": "Jetons Dette",
+"qte": 26
+},
+{
+"nom": "Pièces de valeur 6",
+"qte": 6
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Feuillets Description des nouveaux effets",
+"qte": 3
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Palm Island",
+"editeur": "À confirmer",
+"categorie": "Cartes / solo",
+"joueursMin": 1,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 11.9,
+"caution": 17.0,
+"pieces": [
+{
+"nom": "Cartes de jeu",
+"qte": 34
+},
+{
+"nom": "Cartes Exploit",
+"qte": 9
+},
+{
+"nom": "Cartes Coopération",
+"qte": 6
+},
+{
+"nom": "Cartes Compétition",
+"qte": 14
+},
+{
+"nom": "Carte Résumé",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Faraway",
+"editeur": "Catch Up Games",
+"categorie": "Cartes / stratégie",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 25,
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Cartes Région",
+"qte": 68
+},
+{
+"nom": "Cartes Sanctuaire",
+"qte": 45
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Faraway – Sous un ciel d'étoiles (extension)",
+"editeur": "Catch Up Games",
+"categorie": "Extension / cartes",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 25,
+"tarif": 3.0,
+"valeur": 5.9,
+"caution": 11.0
+},
+{
+"nom": "D-Start Expert",
+"editeur": "À confirmer",
+"categorie": "Jeu de rôle / initiation",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 28.95,
+"caution": 34.0,
+"pieces": [
+{
+"nom": "Livret de règles",
+"qte": 1
+},
+{
+"nom": "Livrets de campagne",
+"qte": 4
+},
+{
+"nom": "Set de dés",
+"qte": 1
+},
+{
+"nom": "Fiches de personnage",
+"qte": 50
+},
+{
+"nom": "Plans de jeu imprimés",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dewan",
+"editeur": "Space Cowboys",
+"categorie": "Stratégie / placement",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 33.95,
+"caution": 39.0,
+"pieces": [
+{
+"nom": "Tuiles Territoire",
+"qte": 10
+},
+{
+"nom": "Plateaux Tribu",
+"qte": 4
+},
+{
+"nom": "Camps",
+"qte": 36
+},
+{
+"nom": "Tuile Scénario",
+"qte": 1
+},
+{
+"nom": "Jetons Baie",
+"qte": 15
+},
+{
+"nom": "Cartes Terrain",
+"qte": 55
+},
+{
+"nom": "Tuiles Histoire",
+"qte": 24
+},
+{
+"nom": "Jeton Premier joueur",
+"qte": 1
+},
+{
+"nom": "Bloc de score",
+"qte": 1
+}
+]
+},
+{
+"nom": "Magnum Opus – Le Grand Œuvre",
+"editeur": "Bragelonne Games / Gigamic",
+"categorie": "Stratégie / alchimie",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 12,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 29.95,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Plateaux",
+"qte": 2
+},
+{
+"nom": "Cartes Personnalité",
+"qte": 54
+},
+{
+"nom": "Cartes Composants en vue",
+"qte": 10
+},
+{
+"nom": "Cartes Grand Œuvre",
+"qte": 10
+},
+{
+"nom": "Médaillon métallique Ouroboros",
+"qte": 1
+},
+{
+"nom": "Jetons Monnaie",
+"qte": 30
+},
+{
+"nom": "Jetons Composants alchimiques",
+"qte": 30
+},
+{
+"nom": "Livrets de règles",
+"qte": 2
+}
+]
+},
+{
+"nom": "Eminent Domain",
+"editeur": "Tasty Minstrel Games",
+"categorie": "Deck-building / stratégie spatiale",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 31.5,
+"caution": 37.0,
+"pieces": [
+{
+"nom": "Plateau central",
+"qte": 1
+},
+{
+"nom": "Cartes Rôle Colonisation",
+"qte": 20
+},
+{
+"nom": "Cartes Rôle Recherche",
+"qte": 20
+},
+{
+"nom": "Cartes Rôle Exploration",
+"qte": 20
+},
+{
+"nom": "Cartes Rôle Production / Commerce",
+"qte": 16
+},
+{
+"nom": "Cartes Rôle Guerre",
+"qte": 16
+},
+{
+"nom": "Cartes Rôle Politique",
+"qte": 4
+},
+{
+"nom": "Cartes Planète Fertile",
+"qte": 9
+},
+{
+"nom": "Cartes Planète Avancée",
+"qte": 9
+},
+{
+"nom": "Cartes Planète Métallique",
+"qte": 9
+},
+{
+"nom": "Tuiles Planète de départ Fertile",
+"qte": 2
+},
+{
+"nom": "Tuiles Planète de départ Avancée",
+"qte": 2
+},
+{
+"nom": "Tuiles Planète de départ Métallique",
+"qte": 2
+},
+{
+"nom": "Cartes Technologie Fertile",
+"qte": 13
+},
+{
+"nom": "Cartes Technologie Avancée",
+"qte": 13
+},
+{
+"nom": "Cartes Technologie Métallique",
+"qte": 13
+},
+{
+"nom": "Petits pions Vaisseau",
+"qte": 20
+},
+{
+"nom": "Pions Vaisseau moyens",
+"qte": 10
+},
+{
+"nom": "Grands pions Vaisseau",
+"qte": 5
+},
+{
+"nom": "Pions Ressource Nourriture",
+"qte": 6
+},
+{
+"nom": "Pions Ressource Eau",
+"qte": 6
+},
+{
+"nom": "Pions Ressource Fer",
+"qte": 6
+},
+{
+"nom": "Pions Ressource Silicium",
+"qte": 6
+},
+{
+"nom": "Jetons Influence ordinaires",
+"qte": 24
+},
+{
+"nom": "Jetons Influence de fin de partie",
+"qte": 8
+},
+{
+"nom": "Tuiles Aide de jeu (dont 1 Premier joueur au verso)",
+"qte": 4
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Yro",
+"editeur": "Don't Panic Games",
+"categorie": "Cartes / stratégie",
+"joueursMin": 1,
+"joueursMax": 5,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 30.0,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 110
+},
+{
+"nom": "Marqueurs",
+"qte": 20
+},
+{
+"nom": "Pièces",
+"qte": 68
+},
+{
+"nom": "Plateaux individuels",
+"qte": 5
+},
+{
+"nom": "Plateau central",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Varuna",
+"editeur": "Sorry We Are French",
+"categorie": "Roll & write / exploration",
+"joueursMin": 1,
+"joueursMax": 100,
+"age": 14,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 27.99,
+"caution": 33.0,
+"pieces": [
+{
+"nom": "Bloc de 100 feuilles de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes Action",
+"qte": 75
+},
+{
+"nom": "Tuiles Espèce recto verso",
+"qte": 7
+},
+{
+"nom": "Tuiles Objectif recto verso",
+"qte": 12
+},
+{
+"nom": "Jetons Découverte",
+"qte": 8
+},
+{
+"nom": "Plateau d'objectifs recto verso",
+"qte": 1
+},
+{
+"nom": "Tuiles promotionnelles Demeter",
+"qte": 2
+},
+{
+"nom": "Livret de règles bilingue",
+"qte": 1
+}
+]
+},
+{
+"nom": "Ishtar – Les Jardins de Babylone",
+"editeur": "IELLO",
+"categorie": "Placement / stratégie",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 12,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 36.9,
+"caution": 42.0,
+"pieces": [
+{
+"nom": "Plateaux Joueur",
+"qte": 4
+},
+{
+"nom": "Plateaux Terrain",
+"qte": 6
+},
+{
+"nom": "Plateau Tapis",
+"qte": 1
+},
+{
+"nom": "Tuiles Végétation",
+"qte": 42
+},
+{
+"nom": "Tuiles Coupelle",
+"qte": 6
+},
+{
+"nom": "Jetons Floraison",
+"qte": 8
+},
+{
+"nom": "Cartes Arbre",
+"qte": 26
+},
+{
+"nom": "Pions Arbre",
+"qte": 20
+},
+{
+"nom": "Figurines Fontaine",
+"qte": 6
+},
+{
+"nom": "Gemmes",
+"qte": 114
+},
+{
+"nom": "Pions Assistant",
+"qte": 16
+},
+{
+"nom": "Pion Arrosoir",
+"qte": 1
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Feuillet de mise en place",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Azul",
+"editeur": "Next Move Games",
+"categorie": "Placement de tuiles",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 40.9,
+"caution": 46.0,
+"pieces": [
+{
+"nom": "Tuiles en résine",
+"qte": 100
+},
+{
+"nom": "Plateaux réversibles",
+"qte": 4
+},
+{
+"nom": "Cercles Fabrique",
+"qte": 9
+},
+{
+"nom": "Marqueurs de score",
+"qte": 4
+},
+{
+"nom": "Marqueur Premier joueur",
+"qte": 1
+},
+{
+"nom": "Sac en tissu",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Splendor Marvel",
+"editeur": "Space Cowboys",
+"categorie": "Développement / cartes",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 29.9,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Cartes Personnage",
+"qte": 90
+},
+{
+"nom": "Jetons Gemme de l'Infini",
+"qte": 39
+},
+{
+"nom": "Jetons S.H.I.E.L.D.",
+"qte": 5
+},
+{
+"nom": "Tuiles Lieu",
+"qte": 4
+},
+{
+"nom": "Tuile Avengers Rassemblement",
+"qte": 1
+},
+{
+"nom": "Tuile Gant de l'Infini",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Bomb Busters",
+"editeur": "Cocktail Games",
+"categorie": "Coopératif / déduction",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 12,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 31.5,
+"caution": 37.0,
+"pieces": [
+{
+"nom": "Tuiles Fil bleues",
+"qte": 48
+},
+{
+"nom": "Tuiles Fil jaunes",
+"qte": 11
+},
+{
+"nom": "Tuiles Fil rouges",
+"qte": 11
+},
+{
+"nom": "Plateau avec flèche",
+"qte": 1
+},
+{
+"nom": "Supports pour tuiles",
+"qte": 5
+},
+{
+"nom": "Cartes Équipement",
+"qte": 12
+},
+{
+"nom": "Cartes Personnage",
+"qte": 5
+},
+{
+"nom": "Grandes cartes Mission",
+"qte": 8
+},
+{
+"nom": "Jetons Info",
+"qte": 26
+},
+{
+"nom": "Jetons Validation",
+"qte": 12
+},
+{
+"nom": "Jeton =",
+"qte": 1
+},
+{
+"nom": "Jeton ≠",
+"qte": 1
+},
+{
+"nom": "Pions jaunes",
+"qte": 4
+},
+{
+"nom": "Pions rouges",
+"qte": 3
+},
+{
+"nom": "Pion Bomb Busters",
+"qte": 1
+},
+{
+"nom": "Sachets",
+"qte": 8
+},
+{
+"nom": "Boîtes Surprise",
+"qte": 5
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Sky Team",
+"editeur": "Scorpion Masqué",
+"categorie": "Coopératif / simulation",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 14,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 26.9,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Tableau de bord",
+"qte": 1
+},
+{
+"nom": "Rondelle Axe de l'avion",
+"qte": 1
+},
+{
+"nom": "Dés Pilote bleus",
+"qte": 4
+},
+{
+"nom": "Dés Copilote orange",
+"qte": 4
+},
+{
+"nom": "Écrans / aides de jeu",
+"qte": 2
+},
+{
+"nom": "Piste Altitude",
+"qte": 1
+},
+{
+"nom": "Piste Approche Montréal–YUL",
+"qte": 1
+},
+{
+"nom": "Jetons Avion",
+"qte": 12
+},
+{
+"nom": "Marqueurs Résistance au vent",
+"qte": 2
+},
+{
+"nom": "Marqueur Frein",
+"qte": 1
+},
+{
+"nom": "Marqueurs Concentration",
+"qte": 3
+},
+{
+"nom": "Modules",
+"qte": 4
+},
+{
+"nom": "Interrupteurs",
+"qte": 10
+},
+{
+"nom": "Dé Trafic",
+"qte": 1
+},
+{
+"nom": "Marqueurs Relance",
+"qte": 2
+},
+{
+"nom": "Livrets de règles",
+"qte": 2
+}
+]
+},
+{
+"nom": "Le Conseil des 12",
+"editeur": "À confirmer",
+"categorie": "Cartes / ambiance",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 17.9,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Cartes Personnage",
+"qte": 48
+},
+{
+"nom": "Cartes Aide de jeu",
+"qte": 4
+},
+{
+"nom": "Cartes Quémandeur",
+"qte": 12
+},
+{
+"nom": "Cartes Dilemme",
+"qte": 37
+},
+{
+"nom": "Carte Faveur",
+"qte": 1
+},
+{
+"nom": "Jeton Faveur",
+"qte": 1
+},
+{
+"nom": "Dé à 12 faces",
+"qte": 1
+},
+{
+"nom": "Carte Chef du Conseil",
+"qte": 1
+},
+{
+"nom": "Cartes Tutoriel",
+"qte": 8
+},
+{
+"nom": "Carnet Chronique",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "7 Wonders – Armada (extension)",
+"editeur": "Repos Production",
+"categorie": "Extension / stratégie",
+"joueursMin": 3,
+"joueursMax": 7,
+"age": 10,
+"dureePartie": 40,
+"tarif": 5.0,
+"valeur": 29.95,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Plateaux Chantier naval",
+"qte": 8
+},
+{
+"nom": "Figurines Navire",
+"qte": 32
+},
+{
+"nom": "Cartes Armada",
+"qte": 24
+},
+{
+"nom": "Jetons Débarquement",
+"qte": 2
+},
+{
+"nom": "Pièces",
+"qte": 6
+},
+{
+"nom": "Aides de jeu",
+"qte": 4
+},
+{
+"nom": "Carnet de scores",
+"qte": 1
+},
+{
+"nom": "Jetons Conflit maritime",
+"qte": 48
+},
+{
+"nom": "Jetons Conflit terrestre",
+"qte": 6
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "7 Wonders – Leaders (extension)",
+"editeur": "Repos Production",
+"categorie": "Extension / stratégie",
+"joueursMin": 3,
+"joueursMax": 7,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Plateaux Merveille",
+"qte": 2
+},
+{
+"nom": "Cartes Leader standard",
+"qte": 34
+},
+{
+"nom": "Cartes Leader expert",
+"qte": 15
+},
+{
+"nom": "Cartes Leader bonus Cities",
+"qte": 6
+},
+{
+"nom": "Pièces de valeur 6",
+"qte": 18
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Feuillets de description des effets",
+"qte": 3
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "7 Wonders – Architects",
+"editeur": "Repos Production",
+"categorie": "Familial / stratégie",
+"joueursMin": 2,
+"joueursMax": 7,
+"age": 8,
+"dureePartie": 25,
+"tarif": 5.0,
+"valeur": 35.9,
+"caution": 41.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 235
+},
+{
+"nom": "Éléments de Merveille",
+"qte": 35
+},
+{
+"nom": "Sabots de cartes",
+"qte": 7
+},
+{
+"nom": "Coffrets de rangement",
+"qte": 8
+},
+{
+"nom": "Jetons Progrès",
+"qte": 15
+},
+{
+"nom": "Jetons Conflit",
+"qte": 6
+},
+{
+"nom": "Jetons Victoire militaire",
+"qte": 28
+},
+{
+"nom": "Pion Chat avec socle",
+"qte": 1
+},
+{
+"nom": "Feuillet de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "7 Wonders Duel – Agora (extension)",
+"editeur": "Repos Production",
+"categorie": "Extension / stratégie",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Plateau Sénat",
+"qte": 1
+},
+{
+"nom": "Cubes Influence",
+"qte": 24
+},
+{
+"nom": "Cartes Sénateur",
+"qte": 13
+},
+{
+"nom": "Cartes Merveille",
+"qte": 2
+},
+{
+"nom": "Cartes Complot",
+"qte": 16
+},
+{
+"nom": "Jetons Décret",
+"qte": 16
+},
+{
+"nom": "Jetons Progrès",
+"qte": 2
+},
+{
+"nom": "Jetons Militaires",
+"qte": 4
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Carte Aide de jeu",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "7 Wonders Duel – Panthéon (extension)",
+"editeur": "Repos Production",
+"categorie": "Extension / stratégie",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Plateau Panthéon",
+"qte": 1
+},
+{
+"nom": "Cartes Divinité",
+"qte": 15
+},
+{
+"nom": "Carte Porte",
+"qte": 1
+},
+{
+"nom": "Cartes Grand Temple",
+"qte": 5
+},
+{
+"nom": "Cartes Merveille",
+"qte": 2
+},
+{
+"nom": "Jetons Mythologie",
+"qte": 10
+},
+{
+"nom": "Jetons Offrande",
+"qte": 3
+},
+{
+"nom": "Jeton Serpent",
+"qte": 1
+},
+{
+"nom": "Jetons Progrès",
+"qte": 3
+},
+{
+"nom": "Pion Minerve",
+"qte": 1
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+},
+{
+"nom": "Carte Aide de jeu",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Catan – Jeu de base",
+"editeur": "Kosmos",
+"categorie": "Stratégie / gestion",
+"joueursMin": 3,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 75,
+"tarif": 5.0,
+"valeur": 39.95,
+"caution": 45.0,
+"pieces": [
+{
+"nom": "Tuiles Terrain",
+"qte": 19
+},
+{
+"nom": "Pièces de cadre",
+"qte": 6
+},
+{
+"nom": "Jetons numérotés",
+"qte": 18
+},
+{
+"nom": "Fiches Coûts de construction",
+"qte": 4
+},
+{
+"nom": "Fiches spéciales",
+"qte": 2
+},
+{
+"nom": "Cartes Ressource",
+"qte": 95
+},
+{
+"nom": "Cartes Développement",
+"qte": 25
+},
+{
+"nom": "Figurines",
+"qte": 96
+},
+{
+"nom": "Pion Voleur",
+"qte": 1
+},
+{
+"nom": "Boîtes de rangement",
+"qte": 4
+},
+{
+"nom": "Dés",
+"qte": 2
+},
+{
+"nom": "Sabots à cartes",
+"qte": 2
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Catan Duel",
+"editeur": "Kosmos",
+"categorie": "Cartes / stratégie",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 22.5,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 180
+},
+{
+"nom": "Jeton Hégémonie",
+"qte": 1
+},
+{
+"nom": "Jeton Commerce",
+"qte": 1
+},
+{
+"nom": "Dé Production",
+"qte": 1
+},
+{
+"nom": "Dé Événement",
+"qte": 1
+},
+{
+"nom": "Sabots à cartes",
+"qte": 4
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Raids",
+"editeur": "IELLO",
+"categorie": "Stratégie / vikings",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 40,
+"tarif": 5.0,
+"valeur": 31.5,
+"caution": 37.0,
+"pieces": [
+{
+"nom": "Plateau principal",
+"qte": 1
+},
+{
+"nom": "Plateaux Drakkar",
+"qte": 4
+},
+{
+"nom": "Pions Drakkar",
+"qte": 4
+},
+{
+"nom": "Pions Viking",
+"qte": 40
+},
+{
+"nom": "Pièces métalliques",
+"qte": 20
+},
+{
+"nom": "Tuiles Voyage",
+"qte": 64
+},
+{
+"nom": "Tuiles Arrivée",
+"qte": 9
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Tag Team",
+"editeur": "Scorpion Masqué",
+"categorie": "Cartes / affrontement",
+"joueursMin": 2,
+"joueursMax": 2,
+"age": 10,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 20.5,
+"caution": 26.0,
+"pieces": [
+{
+"nom": "Cartes Combat",
+"qte": 120
+},
+{
+"nom": "Cartes Sélection",
+"qte": 12
+},
+{
+"nom": "Plateaux Combattant",
+"qte": 12
+},
+{
+"nom": "Cubes Puissance violets",
+"qte": 40
+},
+{
+"nom": "Marqueurs Points de vie verts",
+"qte": 6
+},
+{
+"nom": "Marqueurs spéciaux jaunes",
+"qte": 4
+},
+{
+"nom": "Jeton Shérif",
+"qte": 1
+},
+{
+"nom": "Jeton Golem",
+"qte": 1
+},
+{
+"nom": "Jeton Serpent",
+"qte": 1
+},
+{
+"nom": "Jetons Concentration",
+"qte": 2
+},
+{
+"nom": "Jetons Flamme",
+"qte": 5
+},
+{
+"nom": "Jetons Intrigue",
+"qte": 11
+},
+{
+"nom": "Guide des combattants",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Zenith",
+"editeur": "PlayPunk",
+"categorie": "Stratégie / affrontement",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 29.95,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Plateau Technologie recto verso (3 parties)",
+"qte": 1
+},
+{
+"nom": "Plateau Planètes",
+"qte": 1
+},
+{
+"nom": "Plateau Diplomatie recto verso",
+"qte": 1
+},
+{
+"nom": "Cartes Agent",
+"qte": 90
+},
+{
+"nom": "Disques Influence",
+"qte": 20
+},
+{
+"nom": "Jetons Zenithium",
+"qte": 16
+},
+{
+"nom": "Jetons Bonus",
+"qte": 16
+},
+{
+"nom": "Jetons Crédit",
+"qte": 30
+},
+{
+"nom": "Marqueurs Technologie",
+"qte": 6
+},
+{
+"nom": "Jeton Leader",
+"qte": 1
+},
+{
+"nom": "Aides de jeu",
+"qte": 2
+},
+{
+"nom": "Lexique des icônes",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Heat – Pedal to the Metal",
+"editeur": "Days of Wonder",
+"categorie": "Course / stratégie",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 59.95,
+"caution": 65.0,
+"pieces": [
+{
+"nom": "Plateaux Circuit double face",
+"qte": 2
+},
+{
+"nom": "Cartes Circuit",
+"qte": 4
+},
+{
+"nom": "Voitures miniatures",
+"qte": 6
+},
+{
+"nom": "Leviers de vitesse",
+"qte": 6
+},
+{
+"nom": "Plateaux Joueur",
+"qte": 6
+},
+{
+"nom": "Cartes Vitesse",
+"qte": 72
+},
+{
+"nom": "Cartes Heat",
+"qte": 48
+},
+{
+"nom": "Cartes Stress",
+"qte": 37
+},
+{
+"nom": "Cartes Amélioration (18 de départ comprises)",
+"qte": 114
+},
+{
+"nom": "Cartes Sponsoring",
+"qte": 35
+},
+{
+"nom": "Cartes Légende",
+"qte": 10
+},
+{
+"nom": "Cartes Événement",
+"qte": 10
+},
+{
+"nom": "Plateau Légendes",
+"qte": 1
+},
+{
+"nom": "Plateau Championnat",
+"qte": 1
+},
+{
+"nom": "Jetons Météo",
+"qte": 6
+},
+{
+"nom": "Jetons État de la piste",
+"qte": 12
+},
+{
+"nom": "Silhouettes Presse",
+"qte": 2
+},
+{
+"nom": "Carnet de scores",
+"qte": 1
+},
+{
+"nom": "Livrets de règles",
+"qte": 2
+}
+]
+},
+{
+"nom": "Rauha",
+"editeur": "GRRRE Games",
+"categorie": "Stratégie / construction",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 10,
+"dureePartie": 45,
+"tarif": 5.0,
+"valeur": 35.5,
+"caution": 41.0,
+"pieces": [
+{
+"nom": "Plateau central",
+"qte": 1
+},
+{
+"nom": "Modules pour le plateau central",
+"qte": 2
+},
+{
+"nom": "Plateaux Satellite",
+"qte": 5
+},
+{
+"nom": "Plateau Trou noir",
+"qte": 1
+},
+{
+"nom": "Plateaux individuels recto verso",
+"qte": 5
+},
+{
+"nom": "Cartes Biome",
+"qte": 80
+},
+{
+"nom": "Tuiles Entité divine Biome",
+"qte": 4
+},
+{
+"nom": "Tuiles Entité divine Animal",
+"qte": 3
+},
+{
+"nom": "Avatars",
+"qte": 5
+},
+{
+"nom": "Marqueurs Énergie",
+"qte": 5
+},
+{
+"nom": "Spores",
+"qte": 45
+},
+{
+"nom": "Cristaux",
+"qte": 52
+},
+{
+"nom": "? marqueurs +100 / +200",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Fireworks",
+"editeur": "À confirmer",
+"categorie": "Coopératif / temps réel",
+"tarif": 5.0,
+"valeur": 24.9,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Sabliers",
+"qte": 6
+},
+{
+"nom": "Cartes Feux d’artifice",
+"qte": 60
+},
+{
+"nom": "Cartes Défi",
+"qte": 30
+},
+{
+"nom": "Piste Compte à rebours",
+"qte": 1
+},
+{
+"nom": "Jetons Foule",
+"qte": 3
+},
+{
+"nom": "Zone du public",
+"qte": 1
+},
+{
+"nom": "Jeton Premier joueur",
+"qte": 1
+},
+{
+"nom": "Guide des festivals",
+"qte": 1
+},
+{
+"nom": "Enveloppe Encore !",
+"qte": 1
+},
+{
+"nom": "Carnet de score",
+"qte": 1
+}
+]
+},
+{
+"nom": "TRÖK",
+"editeur": "GRRRE Games",
+"categorie": "Cartes / commerce",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 22.5,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Plateau Marché",
+"qte": 1
+},
+{
+"nom": "Pièces",
+"qte": 55
+},
+{
+"nom": "Jeton Maître du Commerce",
+"qte": 1
+},
+{
+"nom": "Cartes Équipement",
+"qte": 58
+},
+{
+"nom": "Cartes Amélioration",
+"qte": 27
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Andor – La Libération de Chaumebourg",
+"editeur": "Kosmos / IELLO",
+"categorie": "Coopératif / aventure",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 40,
+"tarif": 5.0,
+"valeur": 27.0,
+"caution": 32.0,
+"pieces": [
+{
+"nom": "Plateau de jeu",
+"qte": 1
+},
+{
+"nom": "Cartes Rencontre – Créature (11 à bord rouge comprises)",
+"qte": 45
+},
+{
+"nom": "Cartes Rencontre – Objet",
+"qte": 8
+},
+{
+"nom": "Cartes Allié",
+"qte": 8
+},
+{
+"nom": "Cartes Narrateur",
+"qte": 22
+},
+{
+"nom": "Cartes Mission",
+"qte": 16
+},
+{
+"nom": "Cartes Aide de jeu",
+"qte": 2
+},
+{
+"nom": "Cartes Héros",
+"qte": 19
+},
+{
+"nom": "Pions Héros avec supports",
+"qte": 6
+},
+{
+"nom": "Jetons Points de Volonté",
+"qte": 18
+},
+{
+"nom": "Jetons Carquois",
+"qte": 16
+},
+{
+"nom": "Tuiles Grimoire",
+"qte": 6
+},
+{
+"nom": "Tuile Hache",
+"qte": 1
+},
+{
+"nom": "Tuile Esprit des Eaux",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Smile Life – Jeu de base",
+"editeur": "Smile Life",
+"categorie": "Cartes / ambiance",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Cartes",
+"qte": 200
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dice Forge",
+"editeur": "Libellud",
+"categorie": "Dés / stratégie",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 40,
+"tarif": 5.0,
+"valeur": 42.95,
+"caution": 48.0,
+"pieces": [
+{
+"nom": "Plateau Temple",
+"qte": 1
+},
+{
+"nom": "Étui Temple",
+"qte": 1
+},
+{
+"nom": "Plateau Îles",
+"qte": 1
+},
+{
+"nom": "Cartes Exploit héroïque",
+"qte": 96
+},
+{
+"nom": "Dés à faces interchangeables",
+"qte": 8
+},
+{
+"nom": "Faces de dé",
+"qte": 108
+},
+{
+"nom": "Plateaux Inventaire de héros",
+"qte": 4
+},
+{
+"nom": "Pions Héros",
+"qte": 4
+},
+{
+"nom": "Marqueurs de ressources",
+"qte": 20
+},
+{
+"nom": "Jetons Marteau",
+"qte": 4
+},
+{
+"nom": "Tuiles Coffre",
+"qte": 4
+},
+{
+"nom": "Jetons à usage unique",
+"qte": 8
+},
+{
+"nom": "Jetons 100 points",
+"qte": 8
+},
+{
+"nom": "Jeton Premier joueur",
+"qte": 1
+},
+{
+"nom": "Marqueur Compte-tours",
+"qte": 1
+},
+{
+"nom": "Aide de jeu",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Space Lab",
+"editeur": "Studio H",
+"categorie": "Cartes / stratégie",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 16.9,
+"caution": 22.0,
+"pieces": [
+{
+"nom": "Tuiles Capsule",
+"qte": 12
+},
+{
+"nom": "Tuiles Objectif",
+"qte": 12
+},
+{
+"nom": "Tuiles Validation",
+"qte": 12
+},
+{
+"nom": "Cartes Lab",
+"qte": 60
+},
+{
+"nom": "Cartes Projet",
+"qte": 24
+},
+{
+"nom": "Bloc de score",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Lanterns – The Harvest Festival",
+"editeur": "Renegade Game Studios",
+"categorie": "Tuiles / placement",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 34.19,
+"caution": 40.0,
+"pieces": [
+{
+"nom": "Tuiles Lac",
+"qte": 36
+},
+{
+"nom": "Cartes Lanterne",
+"qte": 56
+},
+{
+"nom": "Jetons Faveur",
+"qte": 20
+},
+{
+"nom": "Jetons Dédicace",
+"qte": 30
+},
+{
+"nom": "Marqueur Premier joueur (bateau selon édition)",
+"qte": 1
+},
+{
+"nom": "Livret de règles",
+"qte": 1
+}
+]
+},
+{
+"nom": "Captain's War",
+"editeur": "Bragelonne Games",
+"categorie": "Dés / roll & write",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 24.0,
+"caution": 29.0,
+"pieces": [
+{
+"nom": "Https://trictrac.net/jeu-de-societe/captains-war",
+"qte": 1
+}
+]
+},
+{
+"nom": "Wazabi",
+"editeur": "Gigamic",
+"categorie": "Dés / ambiance",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 21.99,
+"caution": 27.0,
+"pieces": [
+{
+"nom": "Https://www.gigamic.com/jeux-de-voyage/54-wazabi-3421272103324.html",
+"qte": 1
+}
+]
+},
+{
+"nom": "Rébus Mix",
+"editeur": "Lubee",
+"categorie": "Ambiance / dessin",
+"joueursMin": 4,
+"joueursMax": 14,
+"age": 8,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Https://trictrac.net/jeu-de-societe/rebus-mix",
+"qte": 1
+}
+]
+},
+{
+"nom": "Level Up",
+"editeur": "Ravensburger",
+"categorie": "Cartes / combinaisons",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 8,
+"dureePartie": 60,
+"tarif": 3.0,
+"valeur": 15.9,
+"caution": 21.0,
+"pieces": [
+{
+"nom": "Https://www.ravensburger.fr/fr-FR/produits/jeux-de-societe/jeux-famille/level-up-24925",
+"qte": 1
+}
+]
+},
+{
+"nom": "Brick Like This!",
+"editeur": "Dotted Games / Asmodee",
+"categorie": "Ambiance / construction",
+"joueursMin": 2,
+"joueursMax": 8,
+"age": 7,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 17.5,
+"caution": 23.0,
+"pieces": [
+{
+"nom": "Https://www.asmodee.fr/product/brick-like-this/",
+"qte": 1
+}
+]
+},
+{
+"nom": "Le Souffle du Dragon",
+"editeur": "Haba (édition à confirmer)",
+"categorie": "Enfants / dextérité",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 5,
+"dureePartie": 15,
+"tarif": 3.0,
+"valeur": 19.9,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Https://all4play.fr/produit/le-souffle-du-dragon/",
+"qte": 1
+}
+]
+},
+{
+"nom": "Doudou",
+"editeur": "Oka Luda",
+"categorie": "Enfants / enquête coopérative",
+"joueursMin": 1,
+"tarif": 3.0,
+"valeur": 15.0,
+"caution": 20.0,
+"pieces": [
+{
+"nom": "Https://okaluda.fr/produit/doudou/",
+"qte": 1
+}
+]
+},
+{
+"nom": "Clac Clac",
+"editeur": "Amigo / Gigamic",
+"categorie": "Rapidité / observation",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 4,
+"dureePartie": 10,
+"tarif": 3.0,
+"valeur": 19.99,
+"caution": 25.0,
+"pieces": [
+{
+"nom": "Https://www.gigamic.com/jeux-de-rapidite/43-clac-clac-3421277121514.html",
+"qte": 1
+}
+]
+},
+{
+"nom": "Pas vu pas pris",
+"editeur": "Letheia / Blackrock",
+"categorie": "Famille / observation",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 8,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 29.9,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Https://www.king-jouet.com/jeu-jouet/jeux-societes/jeux-strategie-reflexion/ref-887658-pas-vu-pas-pris.htm",
+"qte": 1
+}
+]
+},
+{
+"nom": "Raptor Race",
+"editeur": "FlexiQ",
+"categorie": "Famille / course",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 6,
+"dureePartie": 20,
+"tarif": 5.0,
+"valeur": 24.95,
+"caution": 30.0,
+"pieces": [
+{
+"nom": "Https://www.asmodee.fr/product/raptor-race/",
+"qte": 1
+}
+]
+},
+{
+"nom": "Île en Vue : Moussaillons !",
+"editeur": "Gigamic",
+"categorie": "Enfants / mémoire coopérative",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 4,
+"dureePartie": 15,
+"tarif": 5.0,
+"valeur": 22.99,
+"caution": 28.0,
+"pieces": [
+{
+"nom": "Https://www.gigamic.com/jeux-de-memoire/1189-ile-en-vue-moussaillons--3421272199914.html",
+"qte": 1
+}
+]
+},
+{
+"nom": "Dixit Kids",
+"editeur": "Space Cow / Asmodee",
+"categorie": "Enfants / coopératif",
+"joueursMin": 3,
+"joueursMax": 6,
+"age": 6,
+"dureePartie": 25,
+"tarif": 5.0,
+"valeur": 29.9,
+"caution": 35.0,
+"pieces": [
+{
+"nom": "Https://www.asmodeekids.com/game/dixit-kids/",
+"qte": 1
+}
+]
+},
+{
+"nom": "Unlock! Risky Adventures",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / coopératif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 31.9,
+"caution": 35.0
+},
+{
+"nom": "Unlock! Enchanted Adventures",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / coopératif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 31.9,
+"caution": 35.0
+},
+{
+"nom": "Unlock! Supernatural Adventures",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / coopératif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 31.9,
+"caution": 35.0
+},
+{
+"nom": "Unlock! Secret Adventures",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / coopératif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 31.9,
+"caution": 37.0
+},
+{
+"nom": "Unlock! Legendary Adventures",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / coopératif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 60,
+"tarif": 5.0,
+"valeur": 31.9,
+"caution": 35.0
+},
+{
+"nom": "Unlock! Kids – Histoires de l'île d'Émeraude",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / enfants",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 6,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 17.49,
+"caution": 20.0
+},
+{
+"nom": "Unlock! Kids – Histoires d'époques",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / enfants",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 6,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 24.5,
+"caution": 30.0
+},
+{
+"nom": "Unlock! Kids – Histoires de détectives",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / enfants",
+"joueursMin": 1,
+"joueursMax": 4,
+"age": 6,
+"dureePartie": 30,
+"tarif": 5.0,
+"valeur": 29.99,
+"caution": 35.0
+},
+{
+"nom": "Unlock! Short Adventures – Assassin's Creed : L'Épreuve de l'initiée",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / coopératif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 6.9,
+"caution": 10.0
+},
+{
+"nom": "Unlock! Short Adventures – Le Cœur de l'Océan",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / coopératif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 6.5,
+"caution": 10.0
+},
+{
+"nom": "Unlock! Short Adventures – L'Ascension",
+"editeur": "Space Cowboys",
+"categorie": "Escape game / coopératif",
+"joueursMin": 1,
+"joueursMax": 6,
+"age": 10,
+"dureePartie": 30,
+"tarif": 3.0,
+"valeur": 7.99,
+"caution": 13.0
+},
+{
+"nom": "Smile Life – Extension Apocalypse",
+"editeur": "Smile Life",
+"categorie": "Extension / cartes",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 45,
+"tarif": 3.0,
+"valeur": 10.9,
+"caution": 15.0
+},
+{
+"nom": "Smile Life – Extension Vie de luxe",
+"editeur": "Smile Life",
+"categorie": "Extension / cartes",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 45,
+"tarif": 3.0,
+"valeur": 10.9,
+"caution": 15.0
+},
+{
+"nom": "Smile Life – Extension Fantastique",
+"editeur": "Smile Life",
+"categorie": "Extension / cartes",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 45,
+"tarif": 3.0,
+"valeur": 10.9,
+"caution": 15.0
+},
+{
+"nom": "Smile Life – Extension Politique",
+"editeur": "Smile Life",
+"categorie": "Extension / cartes",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 45,
+"tarif": 3.0,
+"valeur": 10.9,
+"caution": 15.0
+},
+{
+"nom": "Smile Life – Extension Trash",
+"editeur": "Smile Life",
+"categorie": "Extension / cartes",
+"joueursMin": 2,
+"joueursMax": 6,
+"age": 12,
+"dureePartie": 45,
+"tarif": 3.0,
+"valeur": 10.9,
+"caution": 15.0
+},
+{
+"nom": "Aurealis",
+"editeur": "La Boîte de Jeu",
+"categorie": "Exploration / stratégie",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"tarif": 5.0,
+"valeur": 24.99,
+"caution": 30.0
+},
+{
+"nom": "Dragons des Mers",
+"editeur": "Gigamic",
+"categorie": "Placement / stratégie",
+"joueursMin": 2,
+"joueursMax": 5,
+"age": 8,
+"tarif": 5.0,
+"valeur": 35.5,
+"caution": 41.0
+},
+{
+"nom": "Misfit Heroes – Les Supers Décalés !",
+"editeur": "Gigamic",
+"categorie": "Cartes / stratégie",
+"joueursMin": 2,
+"joueursMax": 4,
+"age": 10,
+"tarif": 5.0,
+"valeur": 29.9,
+"caution": 35.0
+},
+{
+"nom": "Erazer",
+"categorie": "Ambiance / dessin",
+"tarif": 5.0,
+"valeur": 20.4,
+"caution": 26.0
+}
+]
+}

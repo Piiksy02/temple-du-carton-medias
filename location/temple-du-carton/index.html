@@ -606,7 +606,7 @@ function vJeux(){
     if(ui.jeuFilter!=="tous"&&!(ui.jeuFilter===st||(ui.jeuFilter==="loue"&&st==="retard")))return false;
     return!q||[j.nom,j.code,j.editeur,j.categorie].join(" ").toLowerCase().includes(q)});
   const F=[["tous","Tous"],["dispo","Disponibles"],["loue","Loués"],["indispo","Indisponibles"]];
-  $("#view").innerHTML=`<div class="head"><h1 class="grow">Jeux</h1><button class="btn" data-act="labels">Étiquettes QR</button><button class="btn" data-act="rapide">Ajout rapide</button><button class="btn primary" data-act="newjeu">+ Ajouter un jeu</button></div>
+  $("#view").innerHTML=`<div class="head"><h1 class="grow">Jeux</h1><button class="btn" data-act="labels">Étiquettes QR</button>${window.APP_CATALOGUE?'<button class="btn" data-act="completer">Compléter avec le catalogue</button>':""}<button class="btn" data-act="rapide">Ajout rapide</button><button class="btn primary" data-act="newjeu">+ Ajouter un jeu</button></div>
   <div class="toolbar"><input class="search" id="jeuQ" placeholder="Rechercher un jeu, un code, un éditeur…" value="${esc(ui.jeuQ)}" aria-label="Rechercher"><div class="chips">${F.map(([k,t])=>`<button class="chip ${ui.jeuFilter===k?"on":""}" data-f="${k}">${t}</button>`).join("")}</div></div>
   ${jeux.length?`<div class="games">${jeux.map(j=>{const r=nextResa(j.id);return`<div class="game" data-jeu="${j.id}" tabindex="0"><div class="ph">${j.photo?`<img src="${esc(j.photo)}" alt="">`:esc((j.nom||"?")[0])}</div><div class="b"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span class="code">${esc(j.code)}</span>${pill(JEU_PILL[jeuState(j)])}</div><h3>${esc(j.nom)}</h3><div class="small muted">${(j.pieces||[]).length} types de pièces<span class="pay"> · ${eur(j.tarif)} · caution ${eur(j.caution)}</span></div>${r?`<div class="small" style="color:var(--warn)">Réservé à partir du ${fd(r.dateDepart)}</div>`:""}</div></div>`}).join("")}</div>`
   :'<div class="panel empty">Aucun jeu ici. Ajoutez votre premier jeu avec sa liste de pièces.</div>'}`;
@@ -772,7 +772,7 @@ function bindCommon(){
   $$("[data-jeu]").forEach(e=>{e.onclick=()=>openJeu(e.dataset.jeu);e.onkeydown=k=>{if(k.key==="Enter")openJeu(e.dataset.jeu)}});
   $$("[data-cli]").forEach(e=>e.onclick=()=>openClient(e.dataset.cli));
   $$("[data-act]").forEach(b=>b.onclick=()=>{const a=b.dataset.act;
-    if(a==="newloc")openLocForm({});if(a==="newresa")openLocForm({mode:"reservation"});if(a==="newjeu")openJeuForm();if(a==="newcli")openClientForm();if(a==="labels")openLabels();if(a==="rapide")openAjoutRapide();
+    if(a==="newloc")openLocForm({});if(a==="newresa")openLocForm({mode:"reservation"});if(a==="newjeu")openJeuForm();if(a==="newcli")openClientForm();if(a==="labels")openLabels();if(a==="rapide")openAjoutRapide();if(a==="completer")openCompleter();
     if(a==="exemples"){loadExamples();toast("Exemples chargés");render()}
     if(a==="csv")exportCSV();if(a==="backup")openBackup();if(a==="exportCat")exportCatalog();
     if(a==="install")doInstall();if(a==="installHide"){lsSet(NS+":installHide","1");render()}});
@@ -868,6 +868,41 @@ function openAjoutRapide(){
         if(j){if(g.pieces.length){j.pieces=g.pieces;Store.put("jeux",j);maj++}return}
         const n={id:uid(),code:nextCode(),nom:g.nom,pieces:g.pieces,tarif:s.tarifDefaut,caution:s.cautionDefaut,etat:"Très bon",creeLe:Date.now()};Store.put("jeux",n);ex[normNom(n.nom)]=n;nv++});
       closeModal();toast(`${nv} jeu(x) ajouté(s)${maj?`, ${maj} mis à jour`:""}`);location.hash="jeux";render()};
+  });
+}
+/* ================= Compléter avec le catalogue (fichier catalogue.json publié avec l'appli) ================= */
+const baseNom=t=>normNom(String(t||"").split(/\s[–—-]\s|\s:\s/)[0]);
+function matcher(cat){const idx={},base={};cat.forEach(c=>{idx[normNom(c.nom)]=c;const b=baseNom(c.nom);(base[b]=base[b]||[]).push(c)});
+  return j=>{const k=normNom(j.nom);if(idx[k])return idx[k];if(base[k]&&base[k].length===1)return base[k][0];const b=baseNom(j.nom);if(base[b]&&base[b].length===1)return base[b][0];
+    const pre=cat.filter(c=>{const n=normNom(c.nom);return n.startsWith(k+" ")||k.startsWith(n+" ")});if(pre.length===1)return pre[0];
+    /* mots du nom (sans les petits mots) tous présents dans la fiche du catalogue */
+    const STOP=new Set(["le","la","les","l","de","des","du","d","un","une","the","a","jeu","et"]);const mots=t=>normNom(t).split(" ").filter(w=>w&&!STOP.has(w));
+    const mj=mots(j.nom);if(!mj.length)return null;let cands=cat.filter(c=>{const mc=new Set(mots(c.nom));return mj.every(w=>mc.has(w))});
+    if(cands.length>1){const std=cands.filter(c=>/classique|jeu de base|original|standard/i.test(c.nom));if(std.length===1)return std[0];const exact=cands.filter(c=>mots(c.nom).length===mj.length);if(exact.length===1)return exact[0]}
+    return cands.length===1?cands[0]:null}}
+async function openCompleter(){
+  let cat;try{const r=await fetch(window.APP_CATALOGUE,{cache:"no-store"});cat=(await r.json()).jeux||[]}catch(e){toast("Catalogue introuvable : vérifiez la connexion internet.");return}
+  const jeux=Store.all("jeux").sort((a,b)=>a.nom.localeCompare(b.nom,"fr")),m=matcher(cat);
+  const choix={};jeux.forEach(j=>{const c=m(j);if(c)choix[j.id]=c.nom});
+  const dejaPris=new Set(Object.values(choix));
+  const absents=cat.filter(c=>!dejaPris.has(c.nom));
+  const opts=sel=>`<option value="">— ne pas compléter —</option>`+cat.map(c=>`<option ${c.nom===sel?"selected":""}>${esc(c.nom)}</option>`).join("");
+  openModal("Compléter avec le catalogue",`<p style="margin:0">Le catalogue contient <b>${cat.length} jeux</b> (joueurs, âge, durée, éditeur, prix de location, caution, valeur à neuf et pièces). Vos jeux sont reconnus par leur nom ; vérifiez la correspondance, corrigez-la si besoin, puis validez. Les codes QR, photos et historiques ne changent pas.</p>
+    <div class="scroll"><table class="tbl"><thead><tr><th>Jeu dans l'appli</th><th>Fiche du catalogue utilisée</th></tr></thead><tbody>
+    ${jeux.map(j=>`<tr><td><b>${esc(j.nom)}</b> <span class="code">${esc(j.code)}</span>${(j.pieces||[]).length?`<div class="small muted">${j.pieces.length} types de pièces déjà saisis</div>`:""}</td><td><select data-cj="${j.id}" style="max-width:100%;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--bg)">${opts(choix[j.id])}</select></td></tr>`).join("")||'<tr><td colspan="2" class="muted">Aucun jeu dans l\'appli pour l\'instant.</td></tr>'}
+    </tbody></table></div>
+    <label class="check"><input type="checkbox" id="cpPieces"><span>Remplacer aussi les listes de pièces déjà saisies (sinon, seuls les jeux sans pièces les reçoivent)</span></label>
+    <label class="check"><input type="checkbox" id="cpAjout"><span>Ajouter aussi les <b>${absents.length}</b> jeux du catalogue absents de l'appli</span></label>
+    <div class="callout warn small">Le catalogue indique que les listes de pièces sont « à contrôler » : comptez chaque boîte une fois avant sa première location.</div>`,
+  `<button class="btn" type="button" id="cpCancel">Annuler</button><button class="btn primary" type="button" id="cpGo">Compléter</button>`,
+  ()=>{
+    $("#cpCancel").onclick=closeModal;
+    $("#cpGo").onclick=()=>{const byNom={};cat.forEach(c=>byNom[c.nom]=c);const repl=$("#cpPieces").checked,s=S();let maj=0,nv=0;const utilises=new Set();
+      const appliquer=(j,c)=>{["editeur","categorie","joueursMin","joueursMax","age","dureePartie","tarif","caution","valeur"].forEach(k=>{if(c[k]!==undefined&&c[k]!==null&&c[k]!=="")j[k]=c[k]});
+        if(c.pieces&&c.pieces.length&&(repl||!(j.pieces||[]).length))j.pieces=c.pieces.map(p=>Object.assign({},p))};
+      $$("[data-cj]").forEach(x=>{const c=byNom[x.value];if(!c)return;const j=Store.get("jeux",x.dataset.cj);if(!j)return;appliquer(j,c);Store.put("jeux",j);utilises.add(c.nom);maj++});
+      if($("#cpAjout").checked)cat.forEach(c=>{if(utilises.has(c.nom)||dejaPris.has(c.nom))return;const j={id:uid(),code:nextCode(),nom:c.nom,pieces:[],tarif:s.tarifDefaut,caution:s.cautionDefaut,etat:"Très bon",creeLe:Date.now()};appliquer(j,c);Store.put("jeux",j);nv++});
+      closeModal();toast(`${maj} jeu(x) complété(s)${nv?`, ${nv} ajouté(s)`:""}`);location.hash="jeux";render()};
   });
 }
 function openJeuForm(j,code){
