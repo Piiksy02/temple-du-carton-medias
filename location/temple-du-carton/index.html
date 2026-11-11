@@ -861,7 +861,9 @@ function labelCanvas(j,echelle=1){
 }
 /* Petit format 65 × 35 mm (24 par planche A4 : 3 colonnes × 8 rangées, sans espace) */
 const MM=v=>Math.round(v/25.4*300);
-const FMT={grand:{nom:"Grand · 90 × 55 mm · 10 par planche",w:LAB.W,h:LAB.H,cols:2,rows:5},petit:{nom:"Petit · 65 × 35 mm · 24 par planche",w:MM(65),h:MM(35),cols:3,rows:8}};
+const FMT={grand:{nom:"Grand · 90 × 55 mm · 10 par planche",w:LAB.W,h:LAB.H,cols:2,rows:5},petit:{nom:"Petit · 65 × 35 mm · 24 par planche",w:MM(65),h:MM(35),cols:3,rows:8},
+  /* planche autocollante Niceday 4841037 / Avery L7159 : 63,5 × 33,9 mm, 3 × 8, marge gauche 7,25 mm, haut 12,9 mm, pas horizontal 66 mm, pas vertical 33,9 mm */
+  niceday:{nom:"Autocollant Niceday · 63,5 × 33,9 mm · 24",w:MM(63.5),h:MM(33.9),cols:3,rows:8,autocollant:true,gauche:7.25,haut:12.9,pasX:66,pasY:33.9}};
 function labelPetit(j,echelle=1){
   const s=S(),W=FMT.petit.w,H=FMT.petit.h,c=document.createElement("canvas");c.width=Math.round(W*echelle);c.height=Math.round(H*echelle);const x=c.getContext("2d");x.scale(echelle,echelle);
   x.fillStyle=LAB.bg;x.fillRect(0,0,W,H);
@@ -890,31 +892,49 @@ function labelPetit(j,echelle=1){
   }else{x.strokeStyle=LAB.gold;x.lineWidth=2.5;rrect(x,X,by,wTxt,82,10);x.stroke();x.fillStyle=LAB.goldL;x.font="600 32px Oswald, sans-serif";x.letterSpacing="3px";x.fillText("PRÊT GRATUIT",X+18,by+54);x.letterSpacing="0px"}
   return c;
 }
-const dessinEtiquette=(j,fmt,e)=>fmt==="petit"?labelPetit(j,e):labelCanvas(j,e);
-const fmtChoisi=()=>lsGet(NS+":fmtEtiq")==="petit"?"petit":"grand";
+function dessinEtiquette(j,fmt,e=1){if(fmt==="grand")return labelCanvas(j,e);const c=labelPetit(j,e);if(fmt!=="niceday")return c;
+  const F=FMT.niceday,o=document.createElement("canvas");o.width=Math.round(F.w*e);o.height=Math.round(F.h*e);o.getContext("2d").drawImage(c,0,0,o.width,o.height);return o}
+const fmtChoisi=()=>{const f=lsGet(NS+":fmtEtiq");return FMT[f]?f:"niceday"};
+const reglageNum=(k,d)=>{const v=parseFloat(lsGet(NS+":"+k));return isNaN(v)?d:v};
 async function etiquettePNG(j){await pretEtiquettes();return canvasBlob(dessinEtiquette(j,fmtChoisi()))}
-async function planchesA4(jeux,onProgress,fmt="grand"){await pretEtiquettes();const F=FMT[fmt],per=F.cols*F.rows,PW=2480,PH=3508;
+async function planchesA4(jeux,onProgress,fmt="grand",premiere=1){await pretEtiquettes();const F=FMT[fmt],per=F.cols*F.rows,PW=2480,PH=3508;
   const sansEspace=fmt==="petit",mx=sansEspace?(PW-F.cols*F.w)/2:(PW-F.cols*F.w)/(F.cols+1),my=sansEspace?(PH-F.rows*F.h)/2:(PH-F.rows*F.h)/(F.rows+1);
-  const pos=i=>{const c=i%F.cols,r=Math.floor(i/F.cols);return sansEspace?[mx+c*F.w,my+r*F.h]:[mx+c*(F.w+mx),my+r*(F.h+my)]};
-  for(let p=0;p*per<jeux.length;p++){const page=document.createElement("canvas");page.width=PW;page.height=PH;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
-    jeux.slice(p*per,p*per+per).forEach((j,i)=>{const [X,Y]=pos(i);x.drawImage(dessinEtiquette(j,fmt),X,Y);if(!sansEspace){x.strokeStyle="#bbb";x.setLineDash([12,10]);x.lineWidth=2;x.strokeRect(X-8,Y-8,F.w+16,F.h+16);x.setLineDash([])}});
+  const dx=F.autocollant?reglageNum("decX",0):0,dy=F.autocollant?reglageNum("decY",0):0;
+  const pos=i=>{const c=i%F.cols,r=Math.floor(i/F.cols);if(F.autocollant)return[MM(F.gauche+dx+c*F.pasX),MM(F.haut+dy+r*F.pasY)];return sansEspace?[mx+c*F.w,my+r*F.h]:[mx+c*(F.w+mx),my+r*(F.h+my)]};
+  const cases=[...Array(Math.max(0,Math.min(per,premiere)-1)).fill(null),...jeux];
+  for(let p=0;p*per<cases.length;p++){const page=document.createElement("canvas");page.width=PW;page.height=PH;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
+    cases.slice(p*per,p*per+per).forEach((j,i)=>{if(!j)return;const [X,Y]=pos(i);
+      if(F.autocollant){const b=MM(1.2);x.fillStyle=LAB.bg;x.fillRect(X-b,Y-b,F.w+2*b,F.h+2*b)}
+      x.drawImage(dessinEtiquette(j,fmt),X,Y);
+      if(!sansEspace&&!F.autocollant){x.strokeStyle="#bbb";x.setLineDash([12,10]);x.lineWidth=2;x.strokeRect(X-8,Y-8,F.w+16,F.h+16);x.setLineDash([])}});
     if(sansEspace){x.strokeStyle="#9a9a9a";x.lineWidth=2;x.setLineDash([10,8]);x.beginPath();for(let c=0;c<=F.cols;c++){x.moveTo(mx+c*F.w,0);x.lineTo(mx+c*F.w,my-6);x.moveTo(mx+c*F.w,PH-my+6);x.lineTo(mx+c*F.w,PH)}for(let r=0;r<=F.rows;r++){x.moveTo(0,my+r*F.h);x.lineTo(mx-6,my+r*F.h);x.moveTo(PW-mx+6,my+r*F.h);x.lineTo(PW,my+r*F.h)}x.stroke();x.setLineDash([])}
-    if(onProgress)onProgress(p+1,Math.ceil(jeux.length/per));
+    if(onProgress)onProgress(p+1,Math.ceil(cases.length/per));
     await saveFile(`etiquettes-${fmt}-page${p+1}.png`,await canvasBlob(page),"image/png")}}
+/* page d'essai : contours des cases à imprimer sur papier normal et à superposer à la planche */
+async function pageEssai(){const F=FMT.niceday,PW=2480,PH=3508,c=document.createElement("canvas");c.width=PW;c.height=PH;const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
+  const dx=reglageNum("decX",0),dy=reglageNum("decY",0);x.strokeStyle="#000";x.lineWidth=3;x.font="40px sans-serif";x.fillStyle="#000";
+  for(let i=0;i<24;i++){const X=MM(F.gauche+dx+(i%3)*F.pasX),Y=MM(F.haut+dy+Math.floor(i/3)*F.pasY);rrect(x,X,Y,F.w,F.h,MM(2));x.stroke();x.fillText(String(i+1),X+F.w/2-12,Y+F.h/2+14)}
+  await saveFile("essai-planche-niceday.png",await canvasBlob(c),"image/png")}
 function openLabels(){
   const tous=Store.all("jeux").sort((a,b)=>a.code.localeCompare(b.code));let fmt=fmtChoisi();
   openModal("Étiquettes",`<p class="small muted" style="margin:0">Votre logo, le prix de location, la caution et le QR code. Imprimez les planches A4 à 100 % (taille réelle, sans « ajuster à la page »), puis découpez le long des repères.</p>
     <div class="chips">${Object.entries(FMT).map(([k,f])=>`<button type="button" class="chip ${k===fmt?"on":""}" data-fmt="${k}">${f.nom}</button>`).join("")}</div>
+    <div id="optAuto" class="callout info small" ${fmt==="niceday"?"":"hidden"}>Planche Niceday 4841037 (même format qu'Avery L7159). Imprimez en <b>taille réelle (100 %)</b>, type de papier « étiquettes ».
+      Conseil : imprimez d'abord la <b>page d'essai</b> sur une feuille normale et posez-la sur une planche à contre-jour ; si les cases ne tombent pas pile, corrigez le décalage.
+      <div class="form" style="margin-top:8px"><div class="f"><label for="decX">Décalage → (mm)</label><input id="decX" type="number" step="0.5" value="${reglageNum("decX",0)}"></div><div class="f"><label for="decY">Décalage ↓ (mm)</label><input id="decY" type="number" step="0.5" value="${reglageNum("decY",0)}"></div><div class="f"><label for="prem">1re case libre (planche entamée)</label><input id="prem" type="number" min="1" max="24" value="1"></div></div>
+      <div style="margin-top:8px"><button class="btn sm" type="button" id="essai">Télécharger la page d'essai</button></div></div>
     ${tous.length?`<div class="toolbar" style="margin:0"><input class="search" id="labQ" placeholder="Filtrer (nom ou code)…" aria-label="Filtrer"><span class="small muted" id="labN"></span></div><div class="labels" id="labList"></div>`:'<div class="empty">Aucun jeu.</div>'}`,
     `<button class="btn primary" id="dlLab" type="button" ${tous.length?"":"disabled"}>Télécharger les planches A4</button>`,
     async()=>{let liste=tous;await pretEtiquettes();
       const draw=()=>{const q=($("#labQ")||{}).value||"",F=FMT[fmt];liste=tous.filter(j=>!q||(j.nom+" "+j.code).toLowerCase().includes(q.toLowerCase()));if(!$("#labList"))return;
         $("#labN").textContent=`${liste.length} étiquette(s) · ${Math.ceil(liste.length/(F.cols*F.rows))} planche(s)`;
-        $("#labList").style.gridTemplateColumns=`repeat(auto-fill,minmax(${fmt==="petit"?190:230}px,1fr))`;
-        $("#labList").innerHTML=liste.slice(0,60).map(j=>`<img alt="Étiquette ${esc(j.nom)}" style="width:100%;border-radius:6px;display:block" src="${dessinEtiquette(j,fmt,fmt==="petit"?.4:.32).toDataURL("image/jpeg",.85)}">`).join("")+(liste.length>60?`<div class="small muted">… et ${liste.length-60} autres</div>`:"")};
+        $("#labList").style.gridTemplateColumns=`repeat(auto-fill,minmax(${fmt==="grand"?230:190}px,1fr))`;
+        $("#labList").innerHTML=liste.slice(0,60).map(j=>`<img alt="Étiquette ${esc(j.nom)}" style="width:100%;border-radius:6px;display:block" src="${dessinEtiquette(j,fmt,fmt==="grand"?.32:.4).toDataURL("image/jpeg",.85)}">`).join("")+(liste.length>60?`<div class="small muted">… et ${liste.length-60} autres</div>`:"")};
       draw();if($("#labQ"))$("#labQ").oninput=draw;
-      $$("[data-fmt]").forEach(b=>b.onclick=()=>{fmt=b.dataset.fmt;lsSet(NS+":fmtEtiq",fmt);$$("[data-fmt]").forEach(x=>x.classList.toggle("on",x===b));draw()});
-      $("#dlLab").onclick=async()=>{if(!liste.length)return;$("#dlLab").disabled=true;await planchesA4(liste,(a,b)=>{$("#dlLab").textContent=`Planche ${a}/${b}…`},fmt);$("#dlLab").disabled=false;$("#dlLab").textContent="Télécharger les planches A4"}});
+      $$("[data-fmt]").forEach(b=>b.onclick=()=>{fmt=b.dataset.fmt;lsSet(NS+":fmtEtiq",fmt);$$("[data-fmt]").forEach(x=>x.classList.toggle("on",x===b));$("#optAuto").hidden=fmt!=="niceday";draw()});
+      ["decX","decY"].forEach(k=>$("#"+k).onchange=()=>lsSet(NS+":"+k,String(num($("#"+k).value))));
+      $("#essai").onclick=pageEssai;
+      $("#dlLab").onclick=async()=>{if(!liste.length)return;$("#dlLab").disabled=true;await planchesA4(liste,(a,b)=>{$("#dlLab").textContent=`Planche ${a}/${b}…`},fmt,fmt==="niceday"?Math.max(1,Math.min(24,parseInt($("#prem").value)||1)):1);$("#dlLab").disabled=false;$("#dlLab").textContent="Télécharger les planches A4"}});
 }
 /* ================= Ajout rapide (liste collée) =================
    Une ligne = un jeu. Les lignes qui commencent par « - » sont les pièces du jeu au-dessus :
