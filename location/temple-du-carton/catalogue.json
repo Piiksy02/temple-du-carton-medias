@@ -8035,7 +8035,7 @@
 "dureePartie": 60,
 "tarif": 5.0,
 "valeur": 31.9,
-"caution": 35.0
+"caution": 37.0
 },
 {
 "nom": "Unlock! Enchanted Adventures",
@@ -8047,7 +8047,7 @@
 "dureePartie": 60,
 "tarif": 5.0,
 "valeur": 31.9,
-"caution": 35.0
+"caution": 37.0
 },
 {
 "nom": "Unlock! Supernatural Adventures",
@@ -8059,7 +8059,7 @@
 "dureePartie": 60,
 "tarif": 5.0,
 "valeur": 31.9,
-"caution": 35.0
+"caution": 37.0
 },
 {
 "nom": "Unlock! Secret Adventures",
@@ -8083,7 +8083,7 @@
 "dureePartie": 60,
 "tarif": 5.0,
 "valeur": 31.9,
-"caution": 35.0
+"caution": 37.0
 },
 {
 "nom": "Unlock! Kids – Histoires de l'île d'Émeraude",
@@ -8095,7 +8095,7 @@
 "dureePartie": 30,
 "tarif": 3.0,
 "valeur": 17.49,
-"caution": 20.0
+"caution": 23.0
 },
 {
 "nom": "Unlock! Kids – Histoires d'époques",
@@ -8131,7 +8131,7 @@
 "dureePartie": 30,
 "tarif": 3.0,
 "valeur": 6.9,
-"caution": 10.0
+"caution": 12.0
 },
 {
 "nom": "Unlock! Short Adventures – Le Cœur de l'Océan",
@@ -8143,7 +8143,7 @@
 "dureePartie": 30,
 "tarif": 3.0,
 "valeur": 6.5,
-"caution": 10.0
+"caution": 12.0
 },
 {
 "nom": "Unlock! Short Adventures – L'Ascension",
@@ -8167,7 +8167,7 @@
 "dureePartie": 45,
 "tarif": 3.0,
 "valeur": 10.9,
-"caution": 15.0
+"caution": 16.0
 },
 {
 "nom": "Smile Life – Extension Vie de luxe",
@@ -8179,7 +8179,7 @@
 "dureePartie": 45,
 "tarif": 3.0,
 "valeur": 10.9,
-"caution": 15.0
+"caution": 16.0
 },
 {
 "nom": "Smile Life – Extension Fantastique",
@@ -8191,7 +8191,7 @@
 "dureePartie": 45,
 "tarif": 3.0,
 "valeur": 10.9,
-"caution": 15.0
+"caution": 16.0
 },
 {
 "nom": "Smile Life – Extension Politique",
@@ -8203,7 +8203,7 @@
 "dureePartie": 45,
 "tarif": 3.0,
 "valeur": 10.9,
-"caution": 15.0
+"caution": 16.0
 },
 {
 "nom": "Smile Life – Extension Trash",
@@ -8215,7 +8215,7 @@
 "dureePartie": 45,
 "tarif": 3.0,
 "valeur": 10.9,
-"caution": 15.0
+"caution": 16.0
 },
 {
 "nom": "Aurealis",
