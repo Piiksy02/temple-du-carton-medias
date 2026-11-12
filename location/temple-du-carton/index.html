@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script>window.APP_VERSION="12/11/2026 02:29";</script>
+<script>window.APP_VERSION="12/11/2026 02:37";</script>
 </head><body>
 <title>Le Temple du Carton · Location de jeux</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -921,7 +921,7 @@ async function planchesA4(jeux,onProgress,fmt="grand",premiere=1,mode={}){await 
       if(!sansEspace&&!F.autocollant){x.strokeStyle="#bbb";x.setLineDash([12,10]);x.lineWidth=2;x.strokeRect(X-8,Y-8,F.w+16,F.h+16);x.setLineDash([])}});
     if(sansEspace){x.strokeStyle="#9a9a9a";x.lineWidth=2;x.setLineDash([10,8]);x.beginPath();for(let c=0;c<=F.cols;c++){x.moveTo(mx+c*F.w,0);x.lineTo(mx+c*F.w,my-6);x.moveTo(mx+c*F.w,PH-my+6);x.lineTo(mx+c*F.w,PH)}for(let r=0;r<=F.rows;r++){x.moveTo(0,my+r*F.h);x.lineTo(mx-6,my+r*F.h);x.moveTo(PW-mx+6,my+r*F.h);x.lineTo(PW,my+r*F.h)}x.stroke();x.setLineDash([])}
     if(onProgress)onProgress(p+1,nb);
-    if(mode.pdf){pdfPages.push(page.toDataURL("image/jpeg",.92));continue}
+    if(mode.pdf){/* PDF allégé : 200 points par pouce suffisent pour le QR et les textes */const c2=document.createElement("canvas");c2.width=1654;c2.height=2339;const x2=c2.getContext("2d");x2.imageSmoothingQuality="high";x2.drawImage(page,0,0,c2.width,c2.height);pdfPages.push(c2.toDataURL("image/jpeg",.85));continue}
     await saveFile(`etiquettes-${fmt}-planche${p+1}.png`,await canvasBlob(page),"image/png")}
   if(mode.pdf&&pdfPages.length)await saveFile(`etiquettes-${fmt}-${pdfPages.length}-planches.pdf`,pdfA4(pdfPages),"application/pdf")}
 /* petit fabricant de PDF : une image JPEG pleine page A4 par page */
@@ -933,7 +933,7 @@ function pdfA4(jpegs){const enc=new TextEncoder(),parts=[],offs=[];let len=0;con
   jpegs.forEach((d,i)=>{const bin=atob(d.split(",")[1]),img=new Uint8Array(bin.length);for(let k=0;k<bin.length;k++)img[k]=bin.charCodeAt(k);
     const pg=3+i*3,im=pg+1,ct=pg+2,cs=`q ${W} 0 0 ${H} 0 0 cm /Im0 Do Q`;
     obj(pg,`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${W} ${H}] /Resources << /XObject << /Im0 ${im} 0 R >> >> /Contents ${ct} 0 R >>`);
-    obj(im,[`<< /Type /XObject /Subtype /Image /Width 2480 /Height 3508 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${img.length} >>\nstream\n`,img,"\nendstream"]);
+    obj(im,[`<< /Type /XObject /Subtype /Image /Width 1654 /Height 2339 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${img.length} >>\nstream\n`,img,"\nendstream"]);
     obj(ct,`<< /Length ${cs.length} >>\nstream\n${cs}\nendstream`)});
   const xref=len,tot=3+n*3;add(`xref\n0 ${tot}\n0000000000 65535 f \n`);for(let k=1;k<tot;k++)add(String(offs[k]).padStart(10,"0")+" 00000 n \n");
   add(`trailer\n<< /Size ${tot} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`);return new Blob(parts,{type:"application/pdf"})}
