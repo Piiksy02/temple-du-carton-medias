@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<script>window.APP_VERSION="11/11/2026 20:26";</script>
+<script>window.APP_VERSION="12/11/2026 01:02";</script>
 </head><body>
 <title>Le Temple du Carton · Location de jeux</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -913,7 +913,7 @@ async function planchesA4(jeux,onProgress,fmt="grand",premiere=1){await pretEtiq
   const dx=F.autocollant?reglageNum("decX",0):0,dy=F.autocollant?reglageNum("decY",0):0;
   const pos=i=>{const c=i%F.cols,r=Math.floor(i/F.cols);if(F.autocollant)return[MM(F.gauche+dx+c*F.pasX),MM(F.haut+dy+r*F.pasY)];return sansEspace?[mx+c*F.w,my+r*F.h]:[mx+c*(F.w+mx),my+r*(F.h+my)]};
   const cases=[...Array(Math.max(0,Math.min(per,premiere)-1)).fill(null),...jeux];
-  for(let p=0;p*per<cases.length;p++){const page=document.createElement("canvas");page.width=PW;page.height=PH;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
+  for(let p=0;p*per<cases.length;p++){const page=document.createElement("canvas");page.width=PW;page.height=PH;const x=page.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);if(F.autocollant)compenserEchelle(x,PW,PH);
     cases.slice(p*per,p*per+per).forEach((j,i)=>{if(!j)return;const [X,Y]=pos(i);
             x.drawImage(dessinEtiquette(j,fmt),X,Y);
       if(!sansEspace&&!F.autocollant){x.strokeStyle="#bbb";x.setLineDash([12,10]);x.lineWidth=2;x.strokeRect(X-8,Y-8,F.w+16,F.h+16);x.setLineDash([])}});
@@ -921,8 +921,9 @@ async function planchesA4(jeux,onProgress,fmt="grand",premiere=1){await pretEtiq
     if(onProgress)onProgress(p+1,Math.ceil(cases.length/per));
     await saveFile(`etiquettes-${fmt}-page${p+1}.png`,await canvasBlob(page),"image/png")}}
 /* page d'essai : contours des cases à imprimer sur papier normal et à superposer à la planche */
+function compenserEchelle(x,PW,PH){const e=reglageNum("echelle",100);if(!e||e===100)return;const k=100/e;x.translate(PW/2,PH/2);x.scale(k,k);x.translate(-PW/2,-PH/2)}
 async function pageEssai(){const F=FMT.niceday,PW=2480,PH=3508,c=document.createElement("canvas");c.width=PW;c.height=PH;const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
-  const dx=reglageNum("decX",0),dy=reglageNum("decY",0);x.strokeStyle="#000";x.lineWidth=3;x.font="40px sans-serif";x.fillStyle="#000";
+  compenserEchelle(x,PW,PH);const dx=reglageNum("decX",0),dy=reglageNum("decY",0);x.strokeStyle="#000";x.lineWidth=3;x.font="40px sans-serif";x.fillStyle="#000";
   for(let i=0;i<24;i++){const X=MM(F.gauche+dx+(i%3)*F.pasX),Y=MM(F.haut+dy+Math.floor(i/3)*F.pasY);rrect(x,X,Y,F.w,F.h,MM(2));x.stroke();x.fillText(String(i+1),X+F.w/2-12,Y+F.h/2+14)}
   /* règle de contrôle : ce trait doit mesurer exactement 10 cm une fois imprimé */
   const rx=MM(55),ry=MM(6);x.lineWidth=3;x.beginPath();x.moveTo(rx,ry);x.lineTo(rx+MM(100),ry);for(let i=0;i<=100;i++){const h=i%10===0?MM(3):i%5===0?MM(2):MM(1);x.moveTo(rx+MM(i),ry);x.lineTo(rx+MM(i),ry+h)}x.stroke();
@@ -934,7 +935,7 @@ function openLabels(){
     <div class="chips">${Object.entries(FMT).map(([k,f])=>`<button type="button" class="chip ${k===fmt?"on":""}" data-fmt="${k}">${f.nom}</button>`).join("")}</div>
     <div id="optAuto" class="callout info small" ${fmt==="niceday"?"":"hidden"}>Planche Niceday 4841037 (étiquettes 64,5 × 34,5 mm mesurées sur votre planche). Imprimez en <b>taille réelle (100 %)</b>, type de papier « étiquettes ».
       Conseil : imprimez d'abord la <b>page d'essai</b> sur une feuille normale et posez-la sur une planche à contre-jour ; si les cases ne tombent pas pile, corrigez le décalage.
-      <div class="form" style="margin-top:8px"><div class="f"><label for="decX">Décalage → (mm)</label><input id="decX" type="number" step="0.5" value="${reglageNum("decX",0)}"></div><div class="f"><label for="decY">Décalage ↓ (mm)</label><input id="decY" type="number" step="0.5" value="${reglageNum("decY",0)}"></div><div class="f"><label for="prem">1re case libre (planche entamée)</label><input id="prem" type="number" min="1" max="24" value="1"></div></div>
+      <div class="form" style="margin-top:8px"><div class="f"><label for="echelle">Échelle de l'imprimante (%)</label><input id="echelle" type="number" step="0.5" min="80" max="110" value="${reglageNum("echelle",100)}"><span class="small muted">Si la règle de 10 cm mesure 9,6 cm, mettez 96.</span></div><div class="f"><label for="decX">Décalage → (mm)</label><input id="decX" type="number" step="0.5" value="${reglageNum("decX",0)}"></div><div class="f"><label for="decY">Décalage ↓ (mm)</label><input id="decY" type="number" step="0.5" value="${reglageNum("decY",0)}"></div><div class="f"><label for="prem">1re case libre (planche entamée)</label><input id="prem" type="number" min="1" max="24" value="1"></div></div>
       <div style="margin-top:8px"><button class="btn sm" type="button" id="essai">Télécharger la page d'essai</button></div></div>
     ${tous.length?`<div class="toolbar" style="margin:0"><input class="search" id="labQ" placeholder="Filtrer (nom ou code)…" aria-label="Filtrer"><span class="small muted" id="labN"></span></div><div class="labels" id="labList"></div>`:'<div class="empty">Aucun jeu.</div>'}`,
     `<button class="btn primary" id="dlLab" type="button" ${tous.length?"":"disabled"}>Télécharger les planches A4</button>`,
@@ -945,7 +946,7 @@ function openLabels(){
         $("#labList").innerHTML=liste.slice(0,60).map(j=>`<img alt="Étiquette ${esc(j.nom)}" style="width:100%;border-radius:6px;display:block" src="${dessinEtiquette(j,fmt,fmt==="grand"?.32:.4).toDataURL("image/jpeg",.85)}">`).join("")+(liste.length>60?`<div class="small muted">… et ${liste.length-60} autres</div>`:"")};
       draw();if($("#labQ"))$("#labQ").oninput=draw;
       $$("[data-fmt]").forEach(b=>b.onclick=()=>{fmt=b.dataset.fmt;lsSet(NS+":fmtEtiq2",fmt);$$("[data-fmt]").forEach(x=>x.classList.toggle("on",x===b));$("#optAuto").hidden=fmt!=="niceday";draw()});
-      ["decX","decY"].forEach(k=>$("#"+k).onchange=()=>lsSet(NS+":"+k,String(num($("#"+k).value))));
+      ["decX","decY","echelle"].forEach(k=>$("#"+k).onchange=()=>lsSet(NS+":"+k,String(num($("#"+k).value))));
       $("#essai").onclick=pageEssai;
       $("#dlLab").onclick=async()=>{if(!liste.length)return;$("#dlLab").disabled=true;await planchesA4(liste,(a,b)=>{$("#dlLab").textContent=`Planche ${a}/${b}…`},fmt,fmt==="niceday"?Math.max(1,Math.min(24,parseInt($("#prem").value)||1)):1);$("#dlLab").disabled=false;$("#dlLab").textContent="Télécharger les planches A4"}});
 }
